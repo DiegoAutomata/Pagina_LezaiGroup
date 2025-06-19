@@ -111,7 +111,7 @@ const config: Config = {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'gold-gradient': 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
         'dark-gradient': 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%)',
-        'hero-gradient': 'linear-gradient(135deg, #030712 0%, #111827 25%, #1f2937 50%, #374151 75%, #f59e0b 100%)',
+        'hero-gradient': 'linear-gradient(135deg, #030712 0%, #111827 100%)',
       },
     },
   },

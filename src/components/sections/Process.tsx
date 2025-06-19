@@ -16,7 +16,7 @@ const processSteps = [
     icon: CogIcon,
     title: 'Diseño e Implementación',
     description: 'Desarrollamos y configuramos tus agentes IA y workflows personalizados.',
-    duration: '5-7 días',
+    duration: '10-14 días',
   },
   {
     icon: RocketLaunchIcon,

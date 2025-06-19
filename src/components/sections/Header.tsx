@@ -8,8 +8,8 @@ import { cn, scrollToElement } from '@/lib/utils';
 // Navigation items for internal sections
 const navigationItems = [
   { name: 'Inicio', href: 'hero' },
-  { name: 'Proceso', href: 'process' },
-  { name: 'Beneficios', href: 'benefits' },
+  { name: 'Servicios', href: 'benefits' },
+  { name: 'Nosotros', href: 'process' },
   { name: 'Contacto', href: 'contact' },
 ];
 
@@ -55,7 +55,7 @@ export function Header() {
             className="flex-shrink-0"
           >
             <h1 className="text-2xl font-display font-bold text-gold-gradient">
-              AI<span className="text-white">Agency</span>
+              Lezai<span className="text-white">Group</span>
             </h1>
           </motion.div>
 

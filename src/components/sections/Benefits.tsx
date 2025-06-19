@@ -25,20 +25,19 @@ const mainServices = [
       'Personalización a escala',
       'Integración con CRM existente'
     ],
-    roi: '400%',
+
     color: 'from-gold-400 to-gold-600'
   },
   {
     icon: ChatBubbleLeftRightIcon,
-    title: 'Customer Support IA',
-    description: 'Asistentes conversacionales que resuelven el 80% de consultas instantáneamente',
+    title: 'Asistente multicanal 24/7',
+    subtitle: 'Integración directa con tus sistemas actuales',
+    description: 'La misma IA responde en WhatsApp, web, email. Conoce inventario, precios, políticas. Escala a humano cuando es necesario.',
     benefits: [
-      'Respuesta instantánea 24/7',
-      '90% de resolución automática',
-      'Escalamiento inteligente',
-      'Análisis de sentimientos'
+      'Almacena conversaciones para análisis de datos',
+      'Respuestas consistentes',
+      'Métricas en tiempo real'
     ],
-    roi: '300%',
     color: 'from-gold-500 to-gold-700'
   },
   {
@@ -49,9 +48,9 @@ const mainServices = [
       'Procesos completamente automatizados',
       'Integración con +500 apps',
       'Reducción 80% tiempo manual',
-      'Monitoreo y alertas inteligentes'
+      'Reducción de costos operativos'
     ],
-    roi: '250%',
+
     color: 'from-gold-600 to-gold-800'
   }
 ];
@@ -66,7 +65,7 @@ const additionalBenefits = [
   {
     icon: ClockIcon,
     title: 'Implementación Rápida',
-    description: 'Sistema funcionando en 7 días o menos, sin interrumpir operaciones',
+    description: 'Sistema funcionando en 14 días o menos, sin interrumpir operaciones',
   },
   {
     icon: CurrencyDollarIcon,
@@ -139,50 +138,46 @@ export function Benefits() {
           </motion.div>
 
           {/* Main services grid */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {mainServices.map((service, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative group"
+                className="bg-dark-800/50 p-8 rounded-3xl border border-gold-500/10 hover:border-gold-500/30 transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                <div className="card-premium h-full space-y-6 relative overflow-hidden">
-                  {/* ROI Badge */}
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-gold-gradient text-dark-950 text-xs font-bold px-3 py-1 rounded-full">
-                      +{service.roi} ROI
-                    </div>
+                <div className="space-y-4 flex flex-col h-full">
+                  <div>
+                    <service.icon className="w-10 h-10 text-gold-400" />
                   </div>
-
-                  {/* Icon with gradient background */}
-                  <div className="relative">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center`}>
-                      <service.icon className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-display font-bold text-white group-hover:text-gold-400 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  {/* Benefits list */}
-                  <div className="space-y-3">
-                    {service.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-start space-x-3">
-                        <div className="w-1.5 h-1.5 bg-gold-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm text-gray-300">{benefit}</span>
-                      </div>
+                  <h3 className="text-2xl font-display font-bold text-white">
+                    {service.title}
+                  </h3>
+                  {service.subtitle && (
+                    <p className="font-semibold text-gray-200">{service.subtitle}</p>
+                  )}
+                  <p className="text-gray-300 leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-3 text-gray-300 pt-2 flex-grow">
+                    {service.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start">
+                        <div className="w-4 h-4 rounded-full bg-green-500/30 flex-shrink-0 mt-1 mr-3 flex items-center justify-center">
+                          <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                        </div>
+                        <span>{benefit}</span>
+                      </li>
                     ))}
-                  </div>
-
-                  {/* Hover effect gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gold-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </ul>
+                  {service.roi && (
+                    <div className="pt-4">
+                      <div className="inline-flex items-center text-lg font-semibold text-white">
+                        <span className="text-3xl font-bold text-gold-gradient mr-2">
+                          {service.roi}
+                        </span>
+                        ROI Potencial
+                      </div>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -200,8 +195,8 @@ export function Benefits() {
                   <div className="text-sm text-gray-300">Empresas Transformadas</div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">$50M+</div>
-                  <div className="text-sm text-gray-300">ROI Generado</div>
+                  <div className="text-3xl font-bold text-gold-400">+25 hs</div>
+                  <div className="text-sm text-gray-300">ahorradas a la semana</div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-gold-400">24/7</div>

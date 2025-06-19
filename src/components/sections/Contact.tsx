@@ -28,7 +28,7 @@ export function Contact() {
         >
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Automatiza tu Negocio en{' '}
-            <span className="text-gold-gradient">7 Días</span>
+            <span className="text-gold-gradient">14 Días</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
             Completa el formulario y obtén una consulta estratégica gratuita para transformar 
