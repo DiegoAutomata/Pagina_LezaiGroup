@@ -77,43 +77,6 @@ export function Process() {
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
               Cómo <span className="text-gold-gradient">Transformamos</span> tu Negocio
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Un proceso sistemático y probado que ha generado más de{' '}
-              <span className="text-gold-400 font-semibold">$50M en ROI</span>{' '}
-              para nuestros clientes
-            </p>
-          </motion.div>
-
-          {/* Video section */}
-          <motion.div variants={itemVariants} className="relative">
-            <div className="relative max-w-4xl mx-auto">
-              {/* Video container with premium styling */}
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-dark-800 border border-gold-500/20 shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 to-transparent z-10" />
-                
-                {/* YouTube embed iframe */}
-                <iframe
-                  src="https://www.youtube.com/embed/D9km3yXmR8k?start=6910&autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0"
-                  title="Nuestro Proceso de Automatización IA"
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-                
-                {/* Overlay with title */}
-                <div className="absolute bottom-4 left-4 z-20">
-                  <div className="bg-dark-900/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-gold-500/20">
-                    <p className="text-gold-400 text-sm font-medium">
-                      Proceso Completo de Implementación
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-gold-500/10 rounded-full blur-xl" />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-gold-600/5 rounded-full blur-xl" />
-            </div>
           </motion.div>
 
           {/* Process steps */}

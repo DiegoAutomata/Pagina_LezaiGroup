@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { MetricCard, MetricData } from '@/components/ui/MetricCard';
 import { ArrowRightIcon, SparklesIcon, BoltIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/lib/utils';
 
@@ -39,6 +40,33 @@ const floatingIconVariants = {
   },
 };
 
+const metricsData: MetricData[] = [
+  {
+    statistic: "$3.7 ROI",
+    description: "por cada $1 invertido en IA Generativa",
+    detailedDescription: "Un estudio de IDC muestra que por cada dólar que las organizaciones invierten en IA generativa, obtienen un retorno promedio de 3,70 dólares, revelando el potencial de la IA para transformar procesos empresariales.",
+    source: "Microsoft Official Blog, 2024"
+  },
+  {
+    statistic: "2.4x",
+    description: "mayor productividad en empresas líderes con IA",
+    detailedDescription: "Las empresas líderes que han incorporado IA en sus procesos alcanzan 2,4 veces mayor productividad que sus pares rezagados, demostrando una ventaja competitiva significativa.",
+    source: "Accenture, 2024"
+  },
+  {
+    statistic: "91%",
+    description: "de PyMEs incrementaron su facturación con IA",
+    detailedDescription: "El 91% de las pequeñas y medianas empresas que adoptaron IA afirman que esta ha incrementado su facturación, ayudando a atraer y convertir más clientes potenciales.",
+    source: "Salesforce, 2024"
+  },
+  {
+    statistic: "74%",
+    description: "de proyectos de IA cumplen o superan expectativas",
+    detailedDescription: "El 74% de las organizaciones reporta que sus proyectos con IA generativa y automatización han cumplido o superado los beneficios esperados, validando la eficacia de la inversión.",
+    source: "Accenture, 2024"
+  }
+];
+
 export function Hero() {
   const handleCTAClick = () => {
     scrollToElement('contact');
@@ -66,7 +94,7 @@ export function Hero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8 text-center lg:text-left"
+            className="space-y-8 text-center lg:text-left pt-8"
           >
             {/* Main headline */}
             <motion.div variants={itemVariants} className="space-y-4">
@@ -83,16 +111,16 @@ export function Hero() {
             <motion.div variants={itemVariants}>
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm sm:text-base">
                 <div className="flex items-center text-gray-300">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full mr-2.5" />
-                  Resultados garantizados en 60 dias
+                  <span className="text-green-400 mr-2.5">✓</span>
+                  Consulta gratis 30 min
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full mr-2.5" />
-                  Atención al cliente 24/7
+                  <span className="text-green-400 mr-2.5">✓</span>
+                  Habla directamente con nuestro desarrollador
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full mr-2.5" />
-                  Implementación en 14 días
+                  <span className="text-green-400 mr-2.5">✓</span>
+                  Sin compromisos
                 </div>
               </div>
             </motion.div>
@@ -122,25 +150,16 @@ export function Hero() {
 
           </motion.div>
 
-          {/* Right Column: Metrics (Placeholder) */}
+          {/* Right Column: Interactive Metrics */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="hidden lg:grid grid-cols-2 gap-6"
           >
-            <motion.div variants={itemVariants} className="glass p-6 rounded-2xl text-center">
-              <p className="text-gray-400">Métrica 1</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="glass p-6 rounded-2xl text-center">
-              <p className="text-gray-400">Métrica 2</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="glass p-6 rounded-2xl text-center">
-              <p className="text-gray-400">Métrica 3</p>
-            </motion.div>
-            <motion.div variants={itemVariants} className="glass p-6 rounded-2xl text-center">
-              <p className="text-gray-400">Métrica 4</p>
-            </motion.div>
+            {metricsData.map((metric, i) => (
+              <MetricCard key={i} metric={metric} />
+            ))}
           </motion.div>
         </div>
       </div>

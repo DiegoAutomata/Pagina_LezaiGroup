@@ -48,7 +48,8 @@ const mainServices = [
       'Procesos completamente automatizados',
       'Integración con +500 apps',
       'Reducción 80% tiempo manual',
-      'Reducción de costos operativos'
+      'Reducción de costos operativos',
+      'Metricas de el funcionamiento de tu negocio a tu disposición'
     ],
 
     color: 'from-gold-600 to-gold-800'
@@ -191,8 +192,8 @@ export function Benefits() {
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">500+</div>
-                  <div className="text-sm text-gray-300">Empresas Transformadas</div>
+                  <div className="text-3xl font-bold text-gold-400">X2 Facturacion</div>
+                  <div className="text-sm text-gray-300">Sin contratar mas personal</div>
                 </div>
                 <div className="space-y-2">
                   <div className="text-3xl font-bold text-gold-400">+25 hs</div>
