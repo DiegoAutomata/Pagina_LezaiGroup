@@ -2,7 +2,9 @@ import { Header } from '@/components/sections/Header';
 import { Hero } from '@/components/sections/Hero';
 import { Process } from '@/components/sections/Process';
 import { Benefits } from '@/components/sections/Benefits';
-import { Contact } from '@/components/sections/Contact';
+import dynamic from 'next/dynamic';
+
+const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => mod.Contact), { ssr: false });
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
 
@@ -42,10 +44,10 @@ export default function Home() {
               Lezai<span className="text-white">Group</span>
             </h3>
             <p className="text-gray-400">
-              Automatización IA que transforma negocios · Resultados garantizados en 30 días
+              Inteligencia Artificial a medida para tu Negocio
             </p>
             <div className="flex justify-center items-center space-x-8 text-sm text-gray-500">
-              <span>© 2024 LezaiGroup. Todos los derechos reservados.</span>
+              <span>&#169; 2024 LezaiGroup. Todos los derechos reservados.</span>
             </div>
           </div>
         </div>

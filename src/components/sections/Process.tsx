@@ -97,7 +97,7 @@ export function Process() {
                   variants={itemVariants}
                   className="relative"
                 >
-                  <div className="card-premium text-center space-y-6 relative">
+                  <div className="card-premium text-center space-y-6 relative flex flex-col h-full">
                     {/* Step number */}
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                       <div className="w-8 h-8 bg-gold-gradient rounded-full flex items-center justify-center text-dark-950 font-bold text-sm">
@@ -113,7 +113,7 @@ export function Process() {
                     </div>
 
                     {/* Content */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 flex-grow">
                       <h4 className="text-xl font-display font-semibold text-white">
                         {step.title}
                       </h4>

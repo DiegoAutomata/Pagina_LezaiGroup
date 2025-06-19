@@ -45,10 +45,10 @@ export const MetricCard = ({ metric }: MetricCardProps) => {
             onClick={() => setIsModalOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
               className="bg-dark-900 border border-gold-500/20 rounded-2xl p-8 max-w-md w-full relative"
               onClick={(e) => e.stopPropagation()}
             >

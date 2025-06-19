@@ -1,7 +1,26 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import "./globals.css";
 import { StructuredData } from "@/components/ui/StructuredData";
 import { ChatBot } from "@/components/ui/ChatBot";
+
+const fontSans = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
+
+const fontDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700', '800', '900'],
+});
+
+const fontMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+});
 
 export const metadata: Metadata = {
   title: "AI Agency - Automatización IA que Transforma Negocios",
@@ -75,11 +94,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}>
       <head>
         <StructuredData />
       </head>
-      <body className="antialiased">
+      <body className={`antialiased font-sans`}>
         {children}
         {/* AI Chatbot Widget */}
         <ChatBot />

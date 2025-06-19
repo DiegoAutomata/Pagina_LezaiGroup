@@ -1,41 +1,29 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { MetricCard, MetricData } from '@/components/ui/MetricCard';
 import { ArrowRightIcon, SparklesIcon, BoltIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/lib/utils';
 
-// Animation variants for staggered animations
-const containerVariants = {
+// Simplified animation variants for performance
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 0.5,
       ease: 'easeOut',
-    },
-  },
-};
-
-const floatingIconVariants = {
-  animate: {
-    y: [-10, 10, -10],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: 'easeInOut',
     },
   },
 };

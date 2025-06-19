@@ -13,19 +13,32 @@ import {
   BoltIcon
 } from '@heroicons/react/24/outline';
 
+import type { ElementType } from 'react';
+
+interface Service {
+  icon: ElementType;
+  title: string;
+  subtitle?: string;
+  description: string;
+  benefits: string[];
+  roi?: string;
+  color: string;
+}
+
 // Main services data (80/20 principle)
-const mainServices = [
+const mainServices: Service[] = [
   {
     icon: UserGroupIcon,
-    title: 'Lead Generation Agents',
+    title: 'Agentes de Generacion de clientes',
     description: 'Agentes IA que identifican, califican y nutren prospectos automáticamente',
     benefits: [
-      '+400% más leads calificados',
+      'Creación de contenido con IA',
       'Prospección 24/7 sin descanso',
       'Personalización a escala',
-      'Integración con CRM existente'
+      'Integración con CRM existente',
+      'Agente de IA en tu Web para responder consultas'
     ],
-
+    roi: '+400%',
     color: 'from-gold-400 to-gold-600'
   },
   {
@@ -38,6 +51,7 @@ const mainServices = [
       'Respuestas consistentes',
       'Métricas en tiempo real'
     ],
+    roi: undefined,
     color: 'from-gold-500 to-gold-700'
   },
   {
@@ -51,7 +65,7 @@ const mainServices = [
       'Reducción de costos operativos',
       'Metricas de el funcionamiento de tu negocio a tu disposición'
     ],
-
+    roi: undefined,
     color: 'from-gold-600 to-gold-800'
   }
 ];
@@ -169,16 +183,7 @@ export function Benefits() {
                       </li>
                     ))}
                   </ul>
-                  {service.roi && (
-                    <div className="pt-4">
-                      <div className="inline-flex items-center text-lg font-semibold text-white">
-                        <span className="text-3xl font-bold text-gold-gradient mr-2">
-                          {service.roi}
-                        </span>
-                        ROI Potencial
-                      </div>
-                    </div>
-                  )}
+
                 </div>
               </motion.div>
             ))}
@@ -186,13 +191,13 @@ export function Benefits() {
 
           {/* Stats section */}
           <motion.div variants={itemVariants} className="text-center">
-            <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-4xl mx-auto">
+            <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-5xl mx-auto">
               <h3 className="text-2xl font-display font-bold text-white mb-8">
                 Resultados que <span className="text-gold-gradient">Hablan por Sí Solos</span>
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">X2 Facturacion</div>
+                  <div className="text-3xl font-bold text-gold-400">$ X2</div>
                   <div className="text-sm text-gray-300">Sin contratar mas personal</div>
                 </div>
                 <div className="space-y-2">
@@ -247,7 +252,7 @@ export function Benefits() {
                 ¿Listo para <span className="text-gold-gradient">Multiplicar</span> tus Resultados?
               </h3>
               <p className="text-lg text-gray-300">
-                Únete a las 500+ empresas que ya están automatizando sus procesos más críticos 
+                Únete a las empresas que ya están automatizando sus procesos más críticos 
                 y generando resultados 24/7 con nuestros sistemas de IA
               </p>
               <motion.button

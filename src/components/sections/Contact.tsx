@@ -77,19 +77,11 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Email</p>
-                    <p className="text-white">contacto@aiagency.com</p>
+                    <a href="mailto:contacto@lezaigroup.com" className="text-white hover:text-gold-400 transition-colors">contacto@lezaigroup.com</a>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gold-gradient rounded-lg flex items-center justify-center">
-                    <PhoneIcon className="w-5 h-5 text-dark-950" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">WhatsApp</p>
-                    <p className="text-white">+52 55 1234 5678</p>
-                  </div>
-                </div>
+                
 
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-gold-gradient rounded-lg flex items-center justify-center">
@@ -97,7 +89,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Horario</p>
-                    <p className="text-white">Lun-Vie 9:00-18:00 (GMT-6)</p>
+                    <p className="text-white">Lun-Vie 9:00-18:00 (GMT-3)</p>
                   </div>
                 </div>
               </div>
@@ -133,28 +125,7 @@ export function Contact() {
               </div>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="glass p-6 rounded-2xl text-center"
-            >
-              <div className="space-y-4">
-                <div>
-                  <div className="text-3xl font-bold text-gold-500">500+</div>
-                  <div className="text-gray-400 text-sm">Empresas transformadas</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-gold-500">$50M+</div>
-                  <div className="text-gray-400 text-sm">ROI generado</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-gold-500">99%</div>
-                  <div className="text-gray-400 text-sm">Satisfacción</div>
-                </div>
-              </div>
-            </motion.div>
+            
           </div>
         </div>
       </div>

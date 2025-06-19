@@ -9,7 +9,7 @@ interface FormData {
   email: string;
   phone: string;
   company: string;
-  revenue: string;
+  whatsappVolume: string;
   service: string;
   message: string;
 }
@@ -19,17 +19,17 @@ interface FormErrors {
 }
 
 const serviceOptions = [
-  { value: 'lead-generation', label: 'Lead Generation Agents (+400% ROI)' },
-  { value: 'customer-support', label: 'Customer Support IA (+300% ROI)' },
-  { value: 'n8n-automation', label: 'N8N Automations (+250% ROI)' },
+  { value: 'lead-generation', label: 'Agentes de Generacion de clientes' },
+  { value: 'customer-support', label: 'Asistente multicanal 24/7' },
+  { value: 'n8n-automation', label: 'N8N Automations' },
   { value: 'custom-solution', label: 'Solución Personalizada' },
 ];
 
-const revenueOptions = [
-  { value: '0-100k', label: '$0 - $100K USD/año' },
-  { value: '100k-500k', label: '$100K - $500K USD/año' },
-  { value: '500k-1m', label: '$500K - $1M USD/año' },
-  { value: '1m+', label: '$1M+ USD/año' },
+const whatsappVolumeOptions = [
+  { value: '0-100', label: 'Menos de 100 / mes' },
+  { value: '100-500', label: '100 - 500 / mes' },
+  { value: '500-2000', label: '500 - 2,000 / mes' },
+  { value: '2000+', label: 'Más de 2,000 / mes' },
 ];
 
 export function ContactForm() {
@@ -38,7 +38,7 @@ export function ContactForm() {
     email: '',
     phone: '',
     company: '',
-    revenue: '',
+    whatsappVolume: '',
     service: '',
     message: '',
   });
@@ -69,8 +69,8 @@ export function ContactForm() {
       newErrors.company = 'La empresa es requerida';
     }
 
-    if (!formData.revenue) {
-      newErrors.revenue = 'Selecciona los ingresos anuales';
+    if (!formData.whatsappVolume) {
+      newErrors.whatsappVolume = 'Selecciona el volumen de clientes';
     }
 
     if (!formData.service) {
@@ -117,7 +117,7 @@ export function ContactForm() {
           email: '',
           phone: '',
           company: '',
-          revenue: '',
+          whatsappVolume: '',
           service: '',
           message: '',
         });
@@ -275,33 +275,33 @@ export function ContactForm() {
             {/* Business Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="revenue" className="block text-sm font-medium text-gray-300 mb-2">
-                  Ingresos Anuales *
+                <label htmlFor="whatsappVolume" className="block text-sm font-medium text-gray-300 mb-2">
+                  Volumen de clientes en WhatsApp *
                 </label>
                 <select
-                  id="revenue"
-                  name="revenue"
-                  value={formData.revenue}
+                  id="whatsappVolume"
+                  name="whatsappVolume"
+                  value={formData.whatsappVolume}
                   onChange={handleChange}
                   className={`w-full bg-dark-800/50 border ${
-                    errors.revenue ? 'border-red-500' : 'border-gray-600'
+                    errors.whatsappVolume ? 'border-red-500' : 'border-gray-600'
                   } rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors`}
                 >
                   <option value="">Selecciona un rango</option>
-                  {revenueOptions.map(option => (
+                  {whatsappVolumeOptions.map(option => (
                     <option key={option.value} value={option.value} className="bg-dark-800">
                       {option.label}
                     </option>
                   ))}
                 </select>
-                {errors.revenue && (
+                {errors.whatsappVolume && (
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-red-500 text-sm mt-1 flex items-center gap-1"
                   >
                     <ExclamationCircleIcon className="w-4 h-4" />
-                    {errors.revenue}
+                    {errors.whatsappVolume}
                   </motion.p>
                 )}
               </div>
