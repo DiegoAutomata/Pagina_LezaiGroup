@@ -6,7 +6,23 @@ import { motion } from 'framer-motion';
 export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const rafId = useRef<number | null>(null);
+
+  // Detectar dispositivos móviles para evitar ejecutar el cursor
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                           window.innerWidth < 768 ||
+                           'ontouchstart' in window;
+      setIsMobile(isMobileDevice);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Optimización: Throttling con requestAnimationFrame
   const updateMousePosition = useCallback((e: MouseEvent) => {
@@ -23,12 +39,15 @@ export function CustomCursor() {
   const handleMouseLeave = useCallback(() => setIsHovering(false), []);
 
   useEffect(() => {
+    // No ejecutar en móviles para mejor performance
+    if (isMobile) return;
+
     // Add hover listeners to interactive elements
     const interactiveElements = document.querySelectorAll('button, a, [role="button"]');
     
     interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
+      el.addEventListener('mouseenter', handleMouseEnter, { passive: true });
+      el.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     });
 
     window.addEventListener('mousemove', updateMousePosition, { passive: true });
@@ -45,7 +64,12 @@ export function CustomCursor() {
         cancelAnimationFrame(rafId.current);
       }
     };
-  }, [updateMousePosition, handleMouseEnter, handleMouseLeave]);
+  }, [updateMousePosition, handleMouseEnter, handleMouseLeave, isMobile]);
+
+  // No renderizar en móviles
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>

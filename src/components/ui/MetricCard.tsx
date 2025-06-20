@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Info, X } from 'lucide-react';
+import React, { useState } from 'react';
 
 export interface MetricData {
   statistic: string;
@@ -13,70 +11,75 @@ interface MetricCardProps {
   metric: MetricData;
 }
 
-export const MetricCard = ({ metric }: MetricCardProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export function MetricCard({ metric }: MetricCardProps) {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <motion.div
-        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-        className="glass p-6 rounded-2xl text-center relative h-full flex flex-col justify-between"
-      >
+      {/* Optimized card - CSS animations instead of framer-motion */}
+      <div className="metric-card glass p-6 rounded-2xl text-center relative h-full flex flex-col justify-between">
         <div>
-          <h3 className="text-4xl font-bold text-gold-gradient mb-2">{metric.statistic}</h3>
-          <p className="text-gray-300 text-sm">{metric.description}</p>
+          <h3 className="text-4xl font-bold text-gold-gradient mb-2">
+            {metric.statistic}
+          </h3>
+          <p className="text-gray-300 text-sm">
+            {metric.description}
+          </p>
         </div>
+        
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setShowModal(true)}
           className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
           aria-label="Más información"
         >
-          <Info size={18} />
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-info" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 16v-4"></path>
+            <path d="M12 8h.01"></path>
+          </svg>
         </button>
-      </motion.div>
+      </div>
 
-      <AnimatePresence>
-        {isModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-            onClick={() => setIsModalOpen(false)}
+      {/* Optimized modal - CSS transitions */}
+      {showModal && (
+        <div 
+          className="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setShowModal(false)}
+        >
+          <div 
+            className="modal-content bg-dark-800 border border-gold-500/20 rounded-2xl p-8 max-w-lg w-full mx-4"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="bg-dark-900 border border-gold-500/20 rounded-2xl p-8 max-w-md w-full relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-                aria-label="Cerrar"
-              >
-                <X size={24} />
-              </button>
-              <h4 className="text-xl font-bold text-white mb-4">Estadística de IA Empresarial</h4>
-              <div className="text-center mb-6">
-                <p className="text-5xl font-bold text-gold-gradient mb-2">{metric.statistic}</p>
+            <div className="space-y-4">
+              <div className="flex items-start justify-between">
+                <h4 className="text-2xl font-bold text-gold-gradient">
+                  {metric.statistic}
+                </h4>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label="Cerrar"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x" aria-hidden="true">
+                    <path d="M18 6 6 18"></path>
+                    <path d="M6 6l12 12"></path>
+                  </svg>
+                </button>
               </div>
-              <div className="space-y-4">
-                <div>
-                  <h5 className="font-semibold text-white mb-1">Descripción</h5>
-                  <p className="text-gray-300">{metric.detailedDescription}</p>
-                </div>
-                <div>
-                  <h5 className="font-semibold text-white mb-1">Fuente</h5>
-                  <p className="text-gray-400 italic">{metric.source}</p>
-                </div>
+              
+              <p className="text-gray-300 leading-relaxed">
+                {metric.detailedDescription}
+              </p>
+              
+              <div className="pt-4 border-t border-gold-500/20">
+                <p className="text-sm text-gold-400 font-medium">
+                  Fuente: {metric.source}
+                </p>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
-};
+}

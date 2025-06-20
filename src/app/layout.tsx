@@ -9,6 +9,7 @@ const fontSans = Inter({
   variable: '--font-sans',
   weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
+  preload: true,
 });
 
 const fontDisplay = Playfair_Display({
@@ -16,6 +17,7 @@ const fontDisplay = Playfair_Display({
   variable: '--font-display',
   weight: ['400', '600', '700'],
   display: 'swap',
+  preload: true,
 });
 
 const fontMono = JetBrains_Mono({
@@ -23,6 +25,7 @@ const fontMono = JetBrains_Mono({
   variable: '--font-mono',
   weight: ['400', '500', '600'],
   display: 'swap',
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -100,10 +103,13 @@ export default function RootLayout({
     <html lang="es" className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}>
       <head>
         <StructuredData />
+        <link rel="preload" href="/_next/static/css/app/globals.css" as="style" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="theme-color" content="#030712" />
       </head>
-      <body className={`antialiased font-sans`}>
+      <body className={`antialiased font-sans`} suppressHydrationWarning>
         {children}
-        {/* AI Chatbot Widget */}
         <ChatBot />
       </body>
     </html>

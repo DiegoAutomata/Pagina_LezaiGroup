@@ -1,32 +1,10 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
 import { MetricCard, MetricData } from '@/components/ui/MetricCard';
-import { ArrowRightIcon, SparklesIcon, BoltIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/lib/utils';
 
-// Simplified animation variants for performance
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-    },
-  },
-};
+// Removido framer-motion para mejorar performance crítica - usando CSS animations
 
 const metricsData: MetricData[] = [
   {
@@ -65,27 +43,19 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-hero-gradient pt-32 pb-16 lg:pt-20"
     >
-      {/* Animated background elements */}
+      {/* Optimized background elements - CSS only */}
       <div className="absolute inset-0 overflow-hidden">
-
-
-        {/* Gradient orbs */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-600/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '3s' }} />
       </div>
 
-      {/* Main content */}
+      {/* Main content - CSS animations instead of framer-motion */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text content */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8 text-center lg:text-left pt-8"
-          >
+          <div className="hero-content space-y-8 text-center lg:text-left pt-8">
             {/* Main headline */}
-            <motion.div variants={itemVariants} className="space-y-4">
+            <div className="hero-text space-y-4">
               <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
                 Inteligencia Artificial{' '}
                 <span className="text-gold-gradient">a medida</span> para tu Negocio
@@ -93,10 +63,10 @@ export function Hero() {
               <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
                 Desarrollamos soluciones de IA que se integran a tus operaciones, automatizando procesos y generando un crecimiento exponencial.
               </p>
-            </motion.div>
+            </div>
 
             {/* Key benefits */}
-            <motion.div variants={itemVariants}>
+            <div className="hero-benefits">
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm sm:text-base">
                 <div className="flex items-center text-gray-300">
                   <span className="text-green-400 mr-2.5">✓</span>
@@ -111,48 +81,35 @@ export function Hero() {
                   Sin compromisos
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* CTA buttons */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <motion.button
+            <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button
                 onClick={handleCTAClick}
-                className="btn-primary text-lg px-10 py-4 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="btn-primary text-lg px-10 py-4 group hover:scale-105 transition-transform"
               >
                 Agendar Asesoría Gratuita
                 <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
-              </motion.button>
+              </button>
               
-              <motion.button
+              <button
                 onClick={() => scrollToElement('process')}
-                className="btn-secondary text-lg px-10 py-4"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="btn-secondary text-lg px-10 py-4 hover:scale-105 transition-transform"
               >
                 Ver Nuestro Proceso
-              </motion.button>
-            </motion.div>
-
-
-          </motion.div>
+              </button>
+            </div>
+          </div>
 
           {/* Right Column: Interactive Metrics */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="hidden lg:grid grid-cols-2 gap-6"
-          >
+          <div className="hero-metrics hidden lg:grid grid-cols-2 gap-6">
             {metricsData.map((metric, i) => (
               <MetricCard key={i} metric={metric} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
-
-
     </section>
   );
 } 
