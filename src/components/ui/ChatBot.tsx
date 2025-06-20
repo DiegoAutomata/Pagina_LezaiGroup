@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChatBubbleLeftRightIcon, 
@@ -15,8 +15,9 @@ import { getChatBotConfig } from '@/lib/chatbot-config';
 /**
  * Main ChatBot component that handles the floating chat bubble and chat window
  * Integrated with N8N webhook for AI agent communication
+ * Optimizado con React.memo para performance
  */
-export function ChatBot() {
+const ChatBot = memo(function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const config = getChatBotConfig();
   const {
@@ -228,4 +229,6 @@ export function ChatBot() {
       </AnimatePresence>
     </>
   );
-} 
+});
+
+export { ChatBot }; 

@@ -7,19 +7,22 @@ import { ChatBot } from "@/components/ui/ChatBot";
 const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
 });
 
 const fontDisplay = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '600', '700'],
+  display: 'swap',
 });
 
 const fontMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

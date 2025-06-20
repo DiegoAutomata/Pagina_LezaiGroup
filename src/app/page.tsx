@@ -1,14 +1,20 @@
 import { Header } from '@/components/sections/Header';
-import { Hero } from '@/components/sections/Hero';
-import { Process } from '@/components/sections/Process';
-import { Benefits } from '@/components/sections/Benefits';
 import dynamic from 'next/dynamic';
-
-const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => mod.Contact), { ssr: false });
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
-
-import { ChatBot } from '@/components/ui/ChatBot';
+// Lazy loading para componentes pesados que mejora la performance
+const Hero = dynamic(() => import('@/components/sections/Hero').then(mod => mod.Hero), { 
+  ssr: true // Mantener SSR para SEO pero cargar de forma optimizada
+});
+const Process = dynamic(() => import('@/components/sections/Process').then(mod => mod.Process), { 
+  ssr: false // No crítico para initial load
+});
+const Benefits = dynamic(() => import('@/components/sections/Benefits').then(mod => mod.Benefits), { 
+  ssr: true // Importante para SEO
+});
+const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => mod.Contact), { 
+  ssr: false // Ya estaba implementado
+});
 
 export default function Home() {
   return (
@@ -16,11 +22,6 @@ export default function Home() {
       {/* Premium UI Components */}
       <ScrollIndicator />
 
-
-      
-      {/* AI Chatbot Assistant */}
-      <ChatBot />
-      
       {/* Header with navigation */}
       <Header />
       

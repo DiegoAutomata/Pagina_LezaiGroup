@@ -1,20 +1,28 @@
 'use client';
 
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 
 export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const rafId = useRef<number | null>(null);
+
+  // Optimización: Throttling con requestAnimationFrame
+  const updateMousePosition = useCallback((e: MouseEvent) => {
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current);
+    }
+    
+    rafId.current = requestAnimationFrame(() => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    });
+  }, []);
+
+  const handleMouseEnter = useCallback(() => setIsHovering(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovering(false), []);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-
     // Add hover listeners to interactive elements
     const interactiveElements = document.querySelectorAll('button, a, [role="button"]');
     
@@ -23,7 +31,7 @@ export function CustomCursor() {
       el.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    window.addEventListener('mousemove', updateMousePosition);
+    window.addEventListener('mousemove', updateMousePosition, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
@@ -31,8 +39,13 @@ export function CustomCursor() {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
       });
+      
+      // Cleanup RAF
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
     };
-  }, []);
+  }, [updateMousePosition, handleMouseEnter, handleMouseLeave]);
 
   return (
     <>

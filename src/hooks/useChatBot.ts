@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { ChatMessageType } from '@/components/ui/ChatMessage';
 import { getChatBotConfig } from '@/lib/chatbot-config';
 
@@ -18,6 +18,7 @@ interface ChatBotState {
 /**
  * Custom hook for managing chatbot state and N8N webhook communication
  * Handles message sending, receiving, and conversation state
+ * Optimizado para performance con useCallback y useMemo
  */
 export function useChatBot(): ChatBotState {
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
@@ -26,8 +27,8 @@ export function useChatBot(): ChatBotState {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  // Get chatbot configuration
-  const config = getChatBotConfig();
+  // Get chatbot configuration - memoizado para evitar recálculos
+  const config = useMemo(() => getChatBotConfig(), []);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -35,16 +36,16 @@ export function useChatBot(): ChatBotState {
   }, [messages, isTyping]);
 
   /**
-   * Generate unique message ID
+   * Generate unique message ID - optimizado con useCallback
    */
-  const generateMessageId = (): string => {
+  const generateMessageId = useCallback((): string => {
     return `msg_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  };
+  }, []);
 
   /**
-   * Add a new message to the conversation
+   * Add a new message to the conversation - optimizado con useCallback
    */
-  const addMessage = (content: string, role: 'user' | 'assistant', status?: 'sending' | 'sent' | 'error'): ChatMessageType => {
+  const addMessage = useCallback((content: string, role: 'user' | 'assistant', status?: 'sending' | 'sent' | 'error'): ChatMessageType => {
     const newMessage: ChatMessageType = {
       id: generateMessageId(),
       content,
@@ -55,12 +56,12 @@ export function useChatBot(): ChatBotState {
     
     setMessages(prev => [...prev, newMessage]);
     return newMessage;
-  };
+  }, [generateMessageId]);
 
   /**
-   * Update message status
+   * Update message status - optimizado con useCallback
    */
-  const updateMessageStatus = (messageId: string, status: 'sending' | 'sent' | 'error') => {
+  const updateMessageStatus = useCallback((messageId: string, status: 'sending' | 'sent' | 'error') => {
     setMessages(prev => 
       prev.map(msg => 
         msg.id === messageId 
@@ -68,12 +69,12 @@ export function useChatBot(): ChatBotState {
           : msg
       )
     );
-  };
+  }, []);
 
   /**
-   * Try single webhook with specific timeout
+   * Try single webhook with specific timeout - optimizado con useCallback
    */
-  const tryWebhook = async (url: string, message: string, timeout: number): Promise<string> => {
+  const tryWebhook = useCallback(async (url: string, message: string, timeout: number): Promise<string> => {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
@@ -133,13 +134,12 @@ export function useChatBot(): ChatBotState {
     } finally {
       clearTimeout(timeoutId);
     }
-  };
+  }, []);
 
   /**
-   * Smart webhook sender with TEST → PRODUCTION fallback
-   * Prioritizes test webhook, falls back to production automatically
+   * Smart webhook sender with TEST → PRODUCTION fallback - optimizado con useCallback
    */
-  const sendToWebhook = async (message: string, retryCount = 0): Promise<string> => {
+  const sendToWebhook = useCallback(async (message: string, retryCount = 0): Promise<string> => {
     try {
       // STEP 1: Try TEST webhook first (fast timeout)
       if (config.webhook.url) {
@@ -190,12 +190,12 @@ export function useChatBot(): ChatBotState {
         return 'Disculpa, hay un problema temporal con la conexión. Por favor, intenta de nuevo en unos momentos.';
       }
     }
-  };
+  }, [config, tryWebhook]);
 
   /**
-   * Send a message and handle the conversation flow
+   * Send a message and handle the conversation flow - optimizado con useCallback
    */
-  const sendMessage = async (content: string): Promise<void> => {
+  const sendMessage = useCallback(async (content: string): Promise<void> => {
     if (!content.trim() || isLoading) return;
 
     setIsLoading(true);
@@ -235,16 +235,17 @@ export function useChatBot(): ChatBotState {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [isLoading, addMessage, updateMessageStatus, sendToWebhook]);
 
   /**
-   * Clear all messages (for future use)
+   * Clear all messages (for future use) - optimizado con useCallback
    */
-  const clearMessages = () => {
+  const clearMessages = useCallback(() => {
     setMessages([]);
-  };
+  }, []);
 
-  return {
+  // Memoizar el objeto de retorno para evitar re-renders innecesarios
+  return useMemo(() => ({
     messages,
     inputMessage,
     setInputMessage,
@@ -253,7 +254,7 @@ export function useChatBot(): ChatBotState {
     sendMessage,
     messagesEndRef,
     clearMessages
-  };
+  }), [messages, inputMessage, isTyping, isLoading, sendMessage, clearMessages]);
 }
 
 /**
