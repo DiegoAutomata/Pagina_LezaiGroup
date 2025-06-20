@@ -1,5 +1,3 @@
-import crypto from 'crypto';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Optimizaciones de performance avanzadas
@@ -30,9 +28,9 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Webpack optimizations
+  // Webpack optimizations simplificadas para evitar conflictos
   webpack: (config, { dev, isServer }) => {
-    // Production optimizations
+    // Solo optimizaciones que no entren en conflicto
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
@@ -44,44 +42,14 @@ const nextConfig = {
             priority: 40,
             enforce: true,
           },
-          lib: {
-            test(module) {
-              return (
-                module.size() > 160000 &&
-                /node_modules[/\\]/.test(module.identifier())
-              );
-            },
-            name(module) {
-              const hash = crypto.createHash('sha1');
-              if (module.type === 'css/mini-extract') {
-                hash.update(module.userRequest);
-              } else {
-                hash.update(module.identifier());
-              }
-              return hash.digest('hex').substring(0, 8);
-            },
-            priority: 30,
-            minChunks: 1,
-            reuseExistingChunk: true,
-          },
           commons: {
             name: 'commons',
             minChunks: 2,
             priority: 20,
           },
-          shared: {
-            name: false,
-            priority: 10,
-            minChunks: 2,
-            reuseExistingChunk: true,
-          },
         },
       };
     }
-    
-    // Tree shaking improvements
-    config.optimization.usedExports = true;
-    config.optimization.sideEffects = false;
     
     return config;
   },
