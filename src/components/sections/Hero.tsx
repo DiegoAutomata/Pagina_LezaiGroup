@@ -2,7 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { MetricCard, MetricData } from '@/components/ui/MetricCard';
-import { ArrowRightIcon, SparklesIcon, BoltIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { scrollToElement } from '@/lib/utils';
 
 // Simplified animation variants for performance
@@ -23,7 +23,6 @@ const itemVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: 'easeOut',
     },
   },
 };

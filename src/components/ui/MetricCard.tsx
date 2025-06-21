@@ -48,7 +48,7 @@ export const MetricCard = ({ metric }: MetricCardProps) => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2, ease: 'easeOut' }}
+              transition={{ duration: 0.2 }}
               className="bg-dark-900 border border-gold-500/20 rounded-2xl p-8 max-w-md w-full relative"
               onClick={(e) => e.stopPropagation()}
             >

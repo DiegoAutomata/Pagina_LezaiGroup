@@ -31,7 +31,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ 
         duration: 0.3, 
-        ease: 'easeOut' 
+ 
       }}
       className={`flex items-start space-x-2 ${
         isUser ? 'flex-row-reverse space-x-reverse' : 'flex-row'
