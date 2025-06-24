@@ -100,26 +100,42 @@ export function useChatBot(): ChatBotState {
 
       const data = await response.json();
       
+      // Debug logging
+      console.log('🔍 Webhook response data:', data);
+      console.log('🔍 Type of data:', typeof data);
+      console.log('🔍 Data keys:', Object.keys(data));
+      
       // Handle different response formats from N8N
       // Format 1: LezaiGroup outputParser format (NEW - for your webhook)
       if (data.outputParser) {
-        return typeof data.outputParser === 'string' ? data.outputParser : String(data.outputParser);
+        console.log('✅ Found outputParser:', data.outputParser);
+        console.log('✅ Type of outputParser:', typeof data.outputParser);
+        
+        // Ensure we always return a string, even if outputParser is an object
+        if (typeof data.outputParser === 'string') {
+          return data.outputParser;
+        } else if (typeof data.outputParser === 'object') {
+          // If it's an object, try to stringify it or extract text
+          return JSON.stringify(data.outputParser);
+        } else {
+          return String(data.outputParser);
+        }
       }
       // Format 2: Direct object with output property (N8N current format)
       else if (data.output) {
-        return data.output;
+        return String(data.output);
       }
       // Format 3: Array with output property (N8N alternative format)
       else if (Array.isArray(data) && data.length > 0 && data[0].output) {
-        return data[0].output;
+        return String(data[0].output);
       }
       // Format 4: Object with response property
       else if (data.response) {
-        return data.response;
+        return String(data.response);
       }
       // Format 5: Object with message property
       else if (data.message) {
-        return data.message;
+        return String(data.message);
       }
       // Format 6: Direct string
       else if (typeof data === 'string') {
@@ -127,12 +143,22 @@ export function useChatBot(): ChatBotState {
       }
       // Format 7: Nested data object
       else if (data.data && data.data.response) {
-        return data.data.response;
+        return String(data.data.response);
       }
-      // Fallback
+      // Fallback - if all else fails, try to extract any text-like property
       else {
-        console.warn('Unexpected webhook response format:', data);
-        return 'Gracias por tu mensaje. Te responderé pronto.';
+        console.warn('🚨 Unexpected webhook response format:', data);
+        
+        // Try to find any string property in the object
+        for (const [key, value] of Object.entries(data)) {
+          if (typeof value === 'string' && value.trim().length > 0) {
+            console.log(`🔧 Using fallback property: ${key} = ${value}`);
+            return value;
+          }
+        }
+        
+        // Last resort: return a safe fallback message
+        return 'Recibí tu mensaje. ¿Puedes intentar de nuevo?';
       }
 
     } finally {
