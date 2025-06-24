@@ -101,32 +101,37 @@ export function useChatBot(): ChatBotState {
       const data = await response.json();
       
       // Handle different response formats from N8N
-      // Format 1: Direct object with output property (N8N current format)
-      if (data.output) {
+      // Format 1: LezaiGroup outputParser format (NEW - for your webhook)
+      if (data.outputParser) {
+        return typeof data.outputParser === 'string' ? data.outputParser : String(data.outputParser);
+      }
+      // Format 2: Direct object with output property (N8N current format)
+      else if (data.output) {
         return data.output;
       }
-      // Format 2: Array with output property (N8N alternative format)
+      // Format 3: Array with output property (N8N alternative format)
       else if (Array.isArray(data) && data.length > 0 && data[0].output) {
         return data[0].output;
       }
-      // Format 3: Object with response property
+      // Format 4: Object with response property
       else if (data.response) {
         return data.response;
       }
-      // Format 4: Object with message property
+      // Format 5: Object with message property
       else if (data.message) {
         return data.message;
       }
-      // Format 5: Direct string
+      // Format 6: Direct string
       else if (typeof data === 'string') {
         return data;
       }
-      // Format 6: Nested data object
+      // Format 7: Nested data object
       else if (data.data && data.data.response) {
         return data.data.response;
       }
       // Fallback
       else {
+        console.warn('Unexpected webhook response format:', data);
         return 'Gracias por tu mensaje. Te responderé pronto.';
       }
 
