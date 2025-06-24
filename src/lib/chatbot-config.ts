@@ -38,11 +38,10 @@ export interface ChatBotConfig {
  */
 export const defaultChatBotConfig: ChatBotConfig = {
   webhook: {
-    // SMART WEBHOOK SYSTEM: Test (priority) + Production (fallback)
-    url: 'https://zzn8n.danielcarreon.site/webhook-test/chat', // Primary (TEST)
-    fallbackUrl: 'https://zzwebhookn8n.danielcarreon.site/webhook/chat', // Fallback (PROD)
+    // LezaiGroup N8N Webhook (único)
+    url: 'https://devwebhook.lezaigroup.com/webhook/chat', // LezaiGroup webhook
     timeout: 30000, // 30 seconds for production
-    testTimeout: 3000, // 3 seconds for test webhook
+    testTimeout: 5000, // 5 seconds for LezaiGroup webhook
     retries: 3
   },
   ui: {

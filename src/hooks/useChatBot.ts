@@ -136,49 +136,32 @@ export function useChatBot(): ChatBotState {
   }, []);
 
   /**
-   * Smart webhook sender with TEST → PRODUCTION fallback - memoized function
-   * Prioritizes test webhook, falls back to production automatically
+   * Send message to LezaiGroup webhook - memoized function
+   * Uses only the main LezaiGroup webhook with retry logic
    */
   const sendToWebhook = useCallback(async (message: string, retryCount = 0): Promise<string> => {
     try {
-      // STEP 1: Try TEST webhook first (fast timeout)
+      // Send to LezaiGroup webhook
       if (config.webhook.url) {
-        try {
-          console.log('🧪 Trying TEST webhook:', config.webhook.url);
-          const testResponse = await tryWebhook(
-            config.webhook.url, 
-            message, 
-            config.webhook.testTimeout || 3000
-          );
-          console.log('✅ TEST webhook successful');
-          return testResponse;
-        } catch {
-          console.log('❌ TEST webhook failed, falling back to PRODUCTION');
-          // Continue to production fallback
-        }
-      }
-
-      // STEP 2: Fallback to PRODUCTION webhook
-      if (config.webhook.fallbackUrl) {
-        console.log('🚀 Using PRODUCTION webhook:', config.webhook.fallbackUrl);
-        const prodResponse = await tryWebhook(
-          config.webhook.fallbackUrl, 
+        console.log('🚀 Sending to LezaiGroup webhook:', config.webhook.url);
+        const response = await tryWebhook(
+          config.webhook.url, 
           message, 
           config.webhook.timeout
         );
-        console.log('✅ PRODUCTION webhook successful');
-        return prodResponse;
+        console.log('✅ LezaiGroup webhook successful');
+        return response;
       }
 
-      // No fallback available
-      throw new Error('No webhook URLs configured');
+      // No webhook configured
+      throw new Error('No webhook URL configured');
 
     } catch (error) {
-      console.error('All webhooks failed:', error);
+      console.error('LezaiGroup webhook failed:', error);
       
-      // Retry logic (only for production webhook)
-      if (retryCount < config.webhook.retries && config.webhook.fallbackUrl) {
-        console.log(`🔄 Retrying PRODUCTION webhook... Attempt ${retryCount + 1}`);
+      // Retry logic
+      if (retryCount < config.webhook.retries) {
+        console.log(`🔄 Retrying LezaiGroup webhook... Attempt ${retryCount + 1}`);
         await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Exponential backoff
         return sendToWebhook(message, retryCount + 1);
       }

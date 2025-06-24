@@ -136,7 +136,7 @@ export function Process() {
           <motion.div variants={itemVariants} className="text-center">
             <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-3xl mx-auto">
               <h3 className="text-2xl font-display font-bold text-white mb-4">
-                ¿Listo para <span className="text-gold-gradient">Automatizar</span> tu Negocio?
+                ¿Listo para <span className="text-gold-gradient">Potenciar</span> tu Negocio?
               </h3>
               <p className="text-gray-300 mb-6">
                 Programa una consulta estratégica gratuita y descubre cómo podemos 
