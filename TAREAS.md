@@ -135,4 +135,61 @@ Crear la mejor landing page del mundo para una agencia de automatización con IA
 
 ---
 
+## 🚨 FASE 6: OPTIMIZACIÓN CRÍTICA LIGHTHOUSE
+### ⚠️ 6.1 Errores Críticos de Performance Identificados
+
+#### 🔥 ERROR 1: Minimiza el trabajo del hilo principal (CRÍTICO)
+- **Problema**: Aplicación ejecuta grandes cantidades de JavaScript en hilo principal, bloqueando UI
+- **Causa**: Bundles pesados (chunks/main-app.js, scheduler.development.js, motion-dom/batcher.mjs)
+- **Impacto**: Miles de milisegundos en parsing y ejecución antes de interacción
+- **Solución**:
+  - [ ] 📊 Analizar tamaño de bundles con webpack-bundle-analyzer
+  - [ ] ⚡ Aplicar code-splitting con dynamic(import()) y next/dynamic
+  - [ ] 🔄 Lazy-load dependencias de terceros con `<Script strategy="lazyOnload" />`
+  - [ ] 📦 Optimizar imports de librerías (import { m } from 'framer-motion')
+  - [ ] 🗜️ Activar swcMinify: true y compresión gzip/Brotli
+  - [ ] 📈 Medir resultados con Lighthouse antes/después
+
+#### ⏱️ ERROR 2: LCP tardío (Large Contentful Paint) (ALTO)
+- **Problema**: Elemento de contenido más grande tarda en renderizarse
+- **Causa**: Hilo principal ocupado, CSS crítico o fuentes tardan en cargar
+- **Impacto**: Retraso en pintura del texto destacado principal
+- **Solución**:
+  - [ ] 🔤 Preload de fuentes clave con `<link rel="preload" as="font">`
+  - [ ] 📄 Inline de CSS crítico en `<head>` para above-the-fold
+  - [ ] 🖥️ SSR de contenido para enviar LCP listo al cliente
+  - [ ] 🚀 Reducir bloqueo de JS (aplicar optimizaciones ERROR 1)
+  - [ ] 📐 Evitar layout-shifts con dimensiones definidas en imágenes/iframes
+
+#### 📦 ERROR 3: Reduce código JavaScript sin usar (MEDIO)
+- **Problema**: Bundle incluye código nunca ejecutado en carga inicial
+- **Causa**: Componentes/librerías no utilizadas añaden bytes innecesarios
+- **Impacto**: Aumento del parsing y tiempo de descarga
+- **Solución**:
+  - [ ] 🔍 Auditoría de imports con source-map-explorer
+  - [ ] 🌳 Tree-shaking efectivo con sideEffects: false en package.json
+  - [ ] 📱 Dynamic imports y lazy-loading para componentes secundarios
+  - [ ] 🗑️ Eliminar scripts de terceros innecesarios (kaspersky-labs.com)
+  - [ ] 📊 Generar reporte de megabytes/kilobytes liberados
+
+#### 🔄 ERROR 4: Cache atrás/adelante impedido (Back/Forward Cache) (MEDIO)
+- **Problema**: WebSockets y Cache-Control: no-store impiden bfcache
+- **Causa**: Conexiones persistentes y cabeceras restrictivas de cache
+- **Impacto**: Navegación atrás/adelante no utiliza estado retenido
+- **Solución**:
+  - [ ] 🔧 Revisar cabeceras HTTP: cambiar no-store por public, max-age=XXXXX
+  - [ ] 🔌 Separar WebSockets del hilo principal (Web Worker o bajo demanda)
+  - [ ] ⚡ Evitar XHR sincronizados y scripts con no-store
+  - [ ] ✅ Validar compatibilidad de navegación atrás/adelante en Chrome/Firefox
+
+### 📊 6.2 Métricas Objetivo Post-Optimización
+- **Performance Score**: De 36 a 85+ (Lighthouse)
+- **Script Evaluation**: De 4,089ms a <1,500ms
+- **Script Parsing**: De 1,840ms a <600ms
+- **Trabajo Hilo Principal**: De 6.1s a <2.5s
+- **LCP**: Mejora de ~1.6s
+- **Unused JavaScript**: Reducción >50%
+
+---
+
 **🎯 FILOSOFÍA**: Aplicar principio de Pareto en cada decisión - enfocarse en el 20% de características que generarán el 80% del impacto en conversiones y percepción de calidad. 

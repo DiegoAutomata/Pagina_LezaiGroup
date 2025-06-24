@@ -1,25 +1,34 @@
 import { Header } from '@/components/sections/Header';
-import { Hero } from '@/components/sections/Hero';
-import { Process } from '@/components/sections/Process';
-import { Benefits } from '@/components/sections/Benefits';
 import dynamic from 'next/dynamic';
-
-const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => mod.Contact), { ssr: false });
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
+// Lazy load heavy components for better performance
+const Hero = dynamic(() => import('@/components/sections/Hero').then(mod => ({ default: mod.Hero })), { 
+  ssr: true, // Critical above-the-fold content
+  loading: () => <div className="h-screen bg-dark-950 animate-pulse" />
+});
 
-import { ChatBot } from '@/components/ui/ChatBot';
+// Below-the-fold components - no SSR to reduce initial bundle
+const Benefits = dynamic(() => import('@/components/sections/Benefits').then(mod => ({ default: mod.Benefits })), { 
+  ssr: false, // Load only on client to reduce main thread work
+  loading: () => <div className="h-96 bg-dark-950 animate-pulse flex items-center justify-center"><div className="animate-spin rounded-full h-16 w-16 border-t-2 border-gold-500"></div></div>
+});
+
+const Process = dynamic(() => import('@/components/sections/Process').then(mod => ({ default: mod.Process })), { 
+  ssr: false, // Heavy video component - client-only
+  loading: () => <div className="h-96 bg-dark-950 animate-pulse flex items-center justify-center"><div className="animate-spin rounded-full h-16 w-16 border-t-2 border-gold-500"></div></div>
+});
+
+const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => ({ default: mod.Contact })), { 
+  ssr: false, // Form interactions - client-only
+  loading: () => <div className="h-96 bg-dark-950 animate-pulse flex items-center justify-center"><div className="animate-spin rounded-full h-16 w-16 border-t-2 border-gold-500"></div></div>
+});
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-dark-950 custom-scrollbar relative">
       {/* Premium UI Components */}
       <ScrollIndicator />
-
-
-      
-      {/* AI Chatbot Assistant */}
-      <ChatBot />
       
       {/* Header with navigation */}
       <Header />

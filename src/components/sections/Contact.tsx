@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { EnvelopeIcon, PhoneIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { ContactForm } from '@/components/ui/ContactForm';
 
 export function Contact() {
