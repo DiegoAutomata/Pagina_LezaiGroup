@@ -28,7 +28,7 @@ const nextConfig = {
   
   // Experimental features for better performance
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Temporarily disabled - missing critters dependency
     gzipSize: true,
     optimizePackageImports: ['framer-motion', '@heroicons/react', 'lucide-react'],
   },
