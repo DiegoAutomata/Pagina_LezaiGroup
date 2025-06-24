@@ -126,28 +126,18 @@ export default function RootLayout({
           `
         }} />
         
-        {/* Critical CSS preload */}
-        <link rel="preload" href="/_next/static/css/app/globals.css" as="style" />
-        
-        {/* Critical fonts preload for LCP optimization */}
-        <link 
-          rel="preload" 
-          href="/_next/static/fonts/Inter-600.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-        <link 
-          rel="preload" 
-          href="/_next/static/fonts/PlayfairDisplay-700.woff2" 
-          as="font" 
-          type="font/woff2" 
-          crossOrigin="anonymous" 
-        />
-        
-        {/* Font connections */}
+        {/* Font connections - optimize Google Fonts loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Local fonts preload for better performance */}
+        <link 
+          rel="preload" 
+          href="/fonts/GeistVF.woff" 
+          as="font" 
+          type="font/woff" 
+          crossOrigin="anonymous" 
+        />
         
         {/* Theme and viewport meta */}
         <meta name="theme-color" content="#030712" />
