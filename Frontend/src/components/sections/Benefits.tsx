@@ -29,14 +29,14 @@ interface Service {
 const mainServices: Service[] = [
   {
     icon: UserGroupIcon,
-    title: 'Agentes de Generacion de clientes',
-    description: 'Agentes IA que identifican, califican y nutren prospectos automáticamente',
+    title: 'Creación de Plataformas SaaS y Páginas Web',
+    description: 'Desarrollamos plataformas web personalizadas y sitios optimizados para tu negocio',
     benefits: [
-      'Creación de contenido con IA',
-      'Prospección 24/7 sin descanso',
-      'Personalización a escala',
-      'Integración con CRM existente',
-      'Agente de IA en tu Web para responder consultas'
+      'Desarrollo de plataformas SaaS completas',
+      'Landing pages optimizadas para conversión',
+      'Integración con sistemas de pago',
+      'Dashboard de administración personalizado',
+      'Responsive design para todos los dispositivos'
     ],
     roi: '+400%',
     color: 'from-gold-400 to-gold-600'
