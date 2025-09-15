@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo $env:APPDATA)",
+      "Read(//c/Users/DIEGO/AppData/Roaming/Claude/**)",
+      "mcp__github__get_file_contents",
+      "Bash(tree:*)",
+      "Bash(npm run dev:*)",
+      "Bash(pkill:*)",
+      "WebFetch(domain:www.synergykai.com)",
+      "WebFetch(domain:basdonax.com)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(copy package.json Frontend/)",
+      "Bash(copy package-lock.json Frontend/)",
+      "Bash(copy next.config.mjs Frontend/)",
+      "Bash(copy next-env.d.ts Frontend/)",
+      "Bash(copy tailwind.config.ts Frontend/)",
+      "Bash(copy postcss.config.mjs Frontend/)",
+      "Bash(copy tsconfig.json Frontend/)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "github",
+    "context7"
+  ]
+}
