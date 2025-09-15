@@ -21,7 +21,9 @@
       "Bash(copy tsconfig.json Frontend/)",
       "Bash(git add:*)",
       "Bash(git reset:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
