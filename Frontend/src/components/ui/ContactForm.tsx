@@ -19,9 +19,9 @@ interface FormErrors {
 }
 
 const serviceOptions = [
-  { value: 'lead-generation', label: 'Agentes de Generacion de clientes' },
+  { value: 'saas-platforms', label: 'Plataformas SaaS y Páginas Web' },
   { value: 'customer-support', label: 'Asistente multicanal 24/7' },
-  { value: 'n8n-automation', label: 'N8N Automations' },
+  { value: 'n8n-automation', label: 'Automatizaciones N8N' },
   { value: 'custom-solution', label: 'Solución Personalizada' },
 ];
 
@@ -371,16 +371,18 @@ export function ContactForm() {
               ) : (
                 <>
                   <PaperAirplaneIcon className="w-6 h-6" />
-                  Obtener Consulta Estratégica GRATIS
+                  Sí, Quiero Mi Consulta Gratuita
                 </>
               )}
             </motion.button>
 
             {/* Trust indicators */}
-            <div className="text-center text-sm text-gray-400 space-y-1">
-              <p>✅ Respuesta garantizada en 24 horas</p>
-              <p>✅ Consulta estratégia 100% gratuita</p>
-              <p>✅ Sin spam, solo valor real</p>
+            <div className="text-center text-sm text-gray-400 space-y-2 mt-6 pt-6 border-t border-gray-700">
+              <div className="space-y-1">
+                <p>✅ Respuesta garantizada en 24 horas</p>
+                <p>✅ Consulta 100% gratuita, sin compromisos</p>
+                <p>✅ Hablamos en español, sin tecnicismos</p>
+              </div>
             </div>
           </motion.form>
         )}

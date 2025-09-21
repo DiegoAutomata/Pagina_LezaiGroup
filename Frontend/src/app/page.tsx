@@ -1,7 +1,9 @@
 import { Header } from '@/components/sections/Header';
 import { Hero } from '@/components/sections/Hero';
+import { Stats } from '@/components/sections/Stats';
 import { Process } from '@/components/sections/Process';
 import { Benefits } from '@/components/sections/Benefits';
+import { FAQ } from '@/components/sections/FAQ';
 import dynamic from 'next/dynamic';
 
 const Contact = dynamic(() => import('@/components/sections/Contact').then(mod => mod.Contact), { ssr: false });
@@ -26,13 +28,19 @@ export default function Home() {
       
       {/* Hero section */}
       <Hero />
-      
+
+      {/* Stats/Testimonials section */}
+      <Stats />
+
       {/* Benefits section */}
       <Benefits />
 
       {/* Process section with video */}
       <Process />
-      
+
+      {/* FAQ section */}
+      <FAQ />
+
       {/* Contact form section */}
       <Contact />
       

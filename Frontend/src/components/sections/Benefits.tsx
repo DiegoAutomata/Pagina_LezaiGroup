@@ -2,14 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  UserGroupIcon, 
-  ChatBubbleLeftRightIcon, 
+import {
+  UserGroupIcon,
+  ChatBubbleLeftRightIcon,
   Cog8ToothIcon,
-  TrophyIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  ChartBarIcon,
   BoltIcon
 } from '@heroicons/react/24/outline';
 
@@ -29,70 +25,48 @@ interface Service {
 const mainServices: Service[] = [
   {
     icon: UserGroupIcon,
-    title: 'Creación de Plataformas SaaS y Páginas Web',
-    description: 'Desarrollamos plataformas web personalizadas y sitios optimizados para tu negocio',
+    title: 'Tu Plataforma Web Que Trabaja Mientras Duermes',
+    description: 'No más perder clientes por respuestas lentas o sitios que no convierten',
     benefits: [
-      'Desarrollo de plataformas SaaS completas',
-      'Landing pages optimizadas para conversión',
-      'Integración con sistemas de pago',
-      'Dashboard de administración personalizado',
-      'Responsive design para todos los dispositivos'
+      'Landing page que convierte visitantes en clientes',
+      'Sistema de pagos automático (no más perseguir facturas)',
+      'Dashboard donde ves todo lo importante de un vistazo',
+      'Funciona perfecto en celular (donde están tus clientes)',
+      'Se actualiza solo, sin que tengas que preocuparte'
     ],
-    roi: '+400%',
+    roi: 'Clientes reportan 40% más conversiones en promedio',
     color: 'from-gold-400 to-gold-600'
   },
   {
     icon: ChatBubbleLeftRightIcon,
-    title: 'Asistente multicanal 24/7',
-    subtitle: 'Integración directa con tus sistemas actuales',
-    description: 'La misma IA responde en WhatsApp, web, email. Conoce inventario, precios, políticas. Escala a humano cuando es necesario.',
+    title: 'Tu Asistente Personal Que Nunca Se Enferma Ni Pide Vacaciones',
+    description: 'Responde clientes en WhatsApp, email y web - siempre con la información correcta',
     benefits: [
-      'Almacena conversaciones para análisis de datos',
-      'Respuestas consistentes',
-      'Métricas en tiempo real'
+      'Responde consultas comunes 24/7 (precios, horarios, disponibilidad)',
+      'Agenda citas automáticamente en tu calendario',
+      'Almacena toda la información de cada cliente',
+      'Te avisa solo cuando realmente necesita que intervengas',
+      'Habla como tú hablarías con tus clientes'
     ],
-    roi: undefined,
+    roi: 'Promedio de 15 horas menos dedicadas a responder lo mismo',
     color: 'from-gold-500 to-gold-700'
   },
   {
     icon: Cog8ToothIcon,
-    title: 'N8N Automations',
-    description: 'Workflows inteligentes que conectan todas tus herramientas y procesos',
+    title: 'Conecta Todo Lo Que Usas Para Que Funcione Solo',
+    description: 'Tu CRM, WhatsApp, email, facturación... todo sincronizado automáticamente',
     benefits: [
-      'Procesos completamente automatizados',
-      'Integración con +500 apps',
-      'Reducción 80% tiempo manual',
-      'Reducción de costos operativos',
-      'Metricas de el funcionamiento de tu negocio a tu disposición'
+      'Cuando llega un cliente nuevo, se guarda en todas partes',
+      'Las facturas se envían solas en las fechas correctas',
+      'Reportes de tu negocio listos cada lunes en tu email',
+      'Recordatorios automáticos para seguimiento de clientes',
+      'Todo se actualiza solo, sin que tengas que recordar nada'
     ],
-    roi: undefined,
+    roi: 'Clientes ahorran 1-2 horas diarias en tareas repetitivas',
     color: 'from-gold-600 to-gold-800'
   }
 ];
 
-// Additional benefits data
-const additionalBenefits = [
-  {
-    icon: TrophyIcon,
-    title: 'Resultados Garantizados',
-    description: 'ROI medible en los primeros 30 días o devolvemos tu inversión',
-  },
-  {
-    icon: ClockIcon,
-    title: 'Implementación Rápida',
-    description: 'Sistema funcionando en 14 días o menos, sin interrumpir operaciones',
-  },
-  {
-    icon: CurrencyDollarIcon,
-    title: 'Inversión Recuperable',
-    description: 'La mayoría de clientes recuperan su inversión en menos de 60 días',
-  },
-  {
-    icon: ChartBarIcon,
-    title: 'Escalabilidad Infinita',
-    description: 'Crece sin límites de personal, costos fijos o restricciones geográficas',
-  },
-];
 
 export function Benefits() {
   const [ref, inView] = useInView({
@@ -142,12 +116,12 @@ export function Benefits() {
               Beneficios Comprobados
             </div>
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-              Los <span className="text-gold-gradient">3 Pilares</span> que Transforman Negocios
+              Las <span className="text-gold-gradient">3 Áreas Donde Más Tiempo Pierdes</span> (Y Cómo Recuperarlo)
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Nos enfocamos en las 3 automatizaciones que generan el{' '}
-              <span className="text-gold-400 font-semibold">80% de los resultados</span>{' '}
-              en menos tiempo y con mayor ROI garantizado
+              Nos enfocamos en los procesos que te quitan más tiempo cada día.{' '}
+              <span className="text-gold-400 font-semibold">Recupera hasta 25+ horas semanales</span>{' '}
+              automatizando lo que realmente importa
             </p>
           </motion.div>
 
@@ -183,88 +157,23 @@ export function Benefits() {
                     ))}
                   </ul>
 
+                  {/* ROI/Metric realista */}
+                  {service.roi && (
+                    <div className="mt-6 pt-4 border-t border-gold-500/20">
+                      <div className="text-center">
+                        <div className="text-sm text-gold-400 font-medium mb-1">📊 Resultado promedio:</div>
+                        <div className="text-sm text-gray-300 italic">"{service.roi}"</div>
+                      </div>
+                    </div>
+                  )}
+
                 </div>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Stats section */}
-          <motion.div variants={itemVariants} className="text-center">
-            <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-5xl mx-auto">
-              <h3 className="text-2xl font-display font-bold text-white mb-8">
-                Resultados que <span className="text-gold-gradient">Hablan por Sí Solos</span>
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">$ X2</div>
-                  <div className="text-sm text-gray-300">Sin contratar mas personal</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">+25 hs</div>
-                  <div className="text-sm text-gray-300">ahorradas a la semana</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">24/7</div>
-                  <div className="text-sm text-gray-300">Automatización</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="text-3xl font-bold text-gold-400">99%</div>
-                  <div className="text-sm text-gray-300">Satisfacción Cliente</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Additional benefits */}
-          <motion.div variants={itemVariants} className="space-y-12">
-            <div className="text-center">
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
-                Garantías que <span className="text-gold-gradient">Respaldan</span> tu Inversión
-              </h3>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {additionalBenefits.map((benefit, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="text-center space-y-4 p-6 rounded-xl bg-dark-800/30 border border-gold-500/10 hover:border-gold-500/30 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-gold-500/10 rounded-xl flex items-center justify-center mx-auto">
-                    <benefit.icon className="w-6 h-6 text-gold-400" />
-                  </div>
-                  <h4 className="text-lg font-semibold text-white">
-                    {benefit.title}
-                  </h4>
-                  <p className="text-sm text-gray-300 leading-relaxed">
-                    {benefit.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Final CTA */}
-          <motion.div variants={itemVariants} className="text-center">
-            <div className="max-w-3xl mx-auto space-y-6">
-              <h3 className="text-3xl font-display font-bold text-white">
-                ¿Listo para <span className="text-gold-gradient">Multiplicar</span> tus Resultados?
-              </h3>
-              <p className="text-lg text-gray-300">
-                Únete a las empresas que ya están automatizando sus procesos más críticos 
-                y generando resultados 24/7 con nuestros sistemas de IA
-              </p>
-              <motion.button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary text-lg px-12 py-5 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Programa tu Consulta Estratégica Gratis
-                <BoltIcon className="w-5 h-5 ml-2 group-hover:rotate-12 transition-transform inline" />
-              </motion.button>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -27,12 +27,12 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Automatiza tu Negocio en{' '}
-            <span className="text-gold-gradient">14 Días</span>
+            ¿Listo Para Recuperar Tu Tiempo?{' '}
+            <span className="text-gold-gradient">Platicamos Gratis 30 Minutos</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-            Completa el formulario y obtén una consulta estratégica gratuita para transformar 
-            tu empresa con inteligencia artificial. Sin compromiso, solo resultados.
+            Completa el formulario y hablemos de tu situación específica.
+            Sin presión, sin compromisos, solo una conversación honesta sobre cómo puedes automatizar lo que más tiempo te quita.
           </p>
         </motion.div>
 
@@ -47,10 +47,10 @@ export function Contact() {
             >
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Solicita tu Consulta Estratégica
+                  Cuéntanos Tu Situación
                 </h3>
                 <p className="text-gray-400">
-                  Completa los datos y te contactaremos en menos de 24 horas
+                  📞 Hablas directo con Diego, el desarrollador • ⏰ Respuesta garantizada en menos de 24 horas
                 </p>
               </div>
               
@@ -67,7 +67,7 @@ export function Contact() {
               className="glass p-6 rounded-2xl"
             >
               <h3 className="text-xl font-bold text-white mb-6">
-                Contacto Directo
+                💬 Contacto Personal
               </h3>
               
               <div className="space-y-4">
@@ -96,34 +96,6 @@ export function Contact() {
             </motion.div>
 
             {/* Trust signals */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="glass p-6 rounded-2xl"
-            >
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Garantías
-              </h4>
-              <div className="space-y-3 text-sm">
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full" />
-                  <span className="text-gray-300">Respuesta en 24hrs garantizada</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full" />
-                  <span className="text-gray-300">Consulta 100% gratuita</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full" />
-                  <span className="text-gray-300">Sin compromiso de compra</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-gold-500 rounded-full" />
-                  <span className="text-gray-300">ROI garantizado o reembolso</span>
-                </div>
-              </div>
-            </motion.div>
 
             
           </div>
