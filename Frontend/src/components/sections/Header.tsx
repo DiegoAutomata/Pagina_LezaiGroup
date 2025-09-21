@@ -52,11 +52,16 @@ export function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 flex items-center space-x-4"
           >
             <h1 className="text-2xl font-display font-bold text-gold-gradient">
               Lezai<span className="text-white">Group</span>
             </h1>
+
+            {/* Trust badge - only on desktop */}
+            <div className="hidden lg:flex items-center px-3 py-1 bg-gold-500/10 border border-gold-500/20 rounded-full text-xs text-gold-400">
+              🤝 Consulta gratis, sin presión
+            </div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -87,12 +92,17 @@ export function Header() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="hidden md:block"
           >
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="btn-primary text-sm"
-            >
-              Consulta Gratis
-            </button>
+            <div className="space-y-1">
+              <button
+                onClick={() => handleNavClick('contact')}
+                className="btn-primary text-sm"
+              >
+                Hablar Directo con Diego
+              </button>
+              <p className="text-xs text-gray-400 text-center">
+                WhatsApp directo con el desarrollador
+              </p>
+            </div>
           </motion.div>
 
           {/* Mobile menu button */}
@@ -136,15 +146,22 @@ export function Header() {
                   {item.name}
                 </motion.button>
               ))}
-              <motion.button
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
-                onClick={() => handleNavClick('contact')}
-                className="btn-primary w-full mt-4 text-sm"
+                className="space-y-2 mt-4"
               >
-                Consulta Gratis
-              </motion.button>
+                <button
+                  onClick={() => handleNavClick('contact')}
+                  className="btn-primary w-full text-sm"
+                >
+                  Hablar Directo con Diego
+                </button>
+                <p className="text-xs text-gray-400 text-center">
+                  💬 WhatsApp directo • 🆓 Sin compromisos
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         )}

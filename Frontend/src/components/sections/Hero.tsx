@@ -86,11 +86,11 @@ export function Hero() {
             {/* Main headline */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-                Inteligencia Artificial{' '}
-                <span className="text-gold-gradient">a medida</span> para tu Negocio
+                Automatiza Lo Que Te Quita Más Tiempo y{' '}
+                <span className="text-gold-gradient">Recupera 25+ Horas</span> a la Semana
               </h1>
               <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
-                Desarrollamos soluciones de IA que se integran a tus operaciones, automatizando procesos y generando un crecimiento exponencial.
+                Trabajamos solo con empresas que realmente quieren crecer - Cuéntanos tu situación
               </p>
             </motion.div>
 
@@ -98,16 +98,16 @@ export function Hero() {
             <motion.div variants={itemVariants}>
               <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm sm:text-base">
                 <div className="flex items-center text-gray-300">
-                  <span className="text-green-400 mr-2.5">✓</span>
-                  Consulta gratis 30 min
+                  <span className="text-green-400 mr-2.5">✅</span>
+                  Hablamos en español, sin tecnicismos
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <span className="text-green-400 mr-2.5">✓</span>
-                  Habla directamente con nuestro desarrollador
+                  <span className="text-green-400 mr-2.5">💬</span>
+                  Consulta de 30 min completamente gratis
                 </div>
                 <div className="flex items-center text-gray-300">
-                  <span className="text-green-400 mr-2.5">✓</span>
-                  Sin compromisos
+                  <span className="text-green-400 mr-2.5">🤝</span>
+                  Sin compromisos ni letra pequeña
                 </div>
               </div>
             </motion.div>
@@ -120,17 +120,17 @@ export function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Agendar Asesoría Gratuita
+                Quiero Ver Cómo Funciona Para Mi Negocio
                 <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
               </motion.button>
-              
+
               <motion.button
-                onClick={() => scrollToElement('process')}
+                onClick={handleCTAClick}
                 className="btn-secondary text-lg px-10 py-4"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Ver Nuestro Proceso
+                Hablar Directo con el Desarrollador
               </motion.button>
             </motion.div>
 

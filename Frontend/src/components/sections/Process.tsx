@@ -8,21 +8,21 @@ import { PlayIcon, ClockIcon, CogIcon, RocketLaunchIcon } from '@heroicons/react
 const processSteps = [
   {
     icon: ClockIcon,
-    title: 'Consulta Estratégica',
-    description: 'Analizamos tu negocio y identificamos oportunidades de automatización con mayor ROI.',
+    title: 'Platicamos 30 minutos',
+    description: 'Entendemos tu negocio sin tecnicismos. Nos cuentas qué te quita más tiempo y cómo trabajas actualmente.',
     duration: '30 min',
   },
   {
     icon: CogIcon,
-    title: 'Diseño e Implementación',
-    description: 'Desarrollamos y configuramos tus agentes IA y workflows personalizados.',
-    duration: '10-14 días',
+    title: 'Diseñamos tu solución',
+    description: 'Específica para lo que TÚ necesitas. No usamos plantillas genéricas - cada negocio es único.',
+    duration: '1-2 semanas',
   },
   {
     icon: RocketLaunchIcon,
-    title: 'Lanzamiento y Optimización',
-    description: 'Desplegamos tu sistema y lo optimizamos continuamente para máximo rendimiento.',
-    duration: 'Ongoing',
+    title: 'Te enseñamos a usarla',
+    description: 'Sin dejarte solo con un manual. Te acompañamos hasta que te sientas cómodo manejándolo.',
+    duration: 'Hasta que domines',
   },
 ];
 
@@ -74,7 +74,7 @@ export function Process() {
               Nuestro Proceso Probado
             </div>
             <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
-              Cómo <span className="text-gold-gradient">Transformamos</span> tu Negocio
+              Cómo Pasas De <span className="text-gold-gradient">'Estoy Saturado'</span> a 'Tengo Tiempo Para Crecer'
             </h2>
           </motion.div>
 
@@ -82,10 +82,10 @@ export function Process() {
           <motion.div variants={itemVariants} className="space-y-12">
             <div className="text-center">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
-                Nuestro Proceso en <span className="text-gold-gradient">3 Pasos</span>
+                Simple, Claro y <span className="text-gold-gradient">Sin Sorpresas</span>
               </h3>
               <p className="text-gray-300 max-w-2xl mx-auto">
-                Desde la consulta inicial hasta el lanzamiento, te acompañamos en cada etapa
+                Te explicamos exactamente qué va a pasar en cada paso, sin letra pequeña ni tecnicismos
               </p>
             </div>
 
@@ -139,11 +139,11 @@ export function Process() {
           <motion.div variants={itemVariants} className="text-center">
             <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-3xl mx-auto">
               <h3 className="text-2xl font-display font-bold text-white mb-4">
-                ¿Listo para <span className="text-gold-gradient">Automatizar</span> tu Negocio?
+                <span className="text-gold-gradient">✅ En 1-2 semanas</span> ya tienes todo funcionando
               </h3>
               <p className="text-gray-300 mb-6">
-                Programa una consulta estratégica gratuita y descubre cómo podemos 
-                generar resultados medibles en tu empresa
+                🤝 Te acompañamos hasta que te sientas cómodo usándolo<br />
+                💬 Platicamos sin compromiso sobre tu situación específica
               </p>
               <motion.button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -151,7 +151,7 @@ export function Process() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Programa tu Consulta Gratis
+                Quiero Platicar Mi Situación
               </motion.button>
             </div>
           </motion.div>
