@@ -1,151 +1,361 @@
-# 🚀 AI Agency - Landing Page Premium
+# 🚀 Next.js + Claude Code - Frontend Setup
 
-Una landing page de automatización IA de nivel Silicon Valley, diseñada para maximizar conversiones y transmitir profesionalismo absoluto.
+Setup completo de Next.js 16 + Supabase + Claude Code listo para producción. Arquitectura Feature-First optimizada para desarrollo asistido por IA.
 
-## ✨ Características Implementadas
+## 🎯 ¿Qué es esto?
 
-### 🎨 Diseño Premium
-- **Paleta de colores dorados y negros** - Transmite lujo y profesionalismo
-- **Tipografías modernas** - Inter para texto, Playfair Display para títulos
-- **Animaciones fluidas** - Framer Motion para transiciones premium
-- **Responsive design** - Optimizado para todos los dispositivos
-- **Glassmorphism effects** - Efectos modernos de vidrio y blur
+Un template **production-ready** para aplicaciones frontend modernas con:
 
-### 🏗️ Estructura Técnica
-- **Next.js 14** - Framework React de última generación
-- **TypeScript** - Tipado estático para mayor robustez
-- **Tailwind CSS** - Estilos optimizados y personalizados
-- **Componentes modulares** - Arquitectura limpia y mantenible
+- ✅ Next.js 16 (App Router) + TypeScript
+- ✅ Supabase (Database + Auth)
+- ✅ Tailwind CSS + shadcn/ui
+- ✅ Claude Code con comandos, agentes y skills
+- ✅ Arquitectura Feature-First optimizada para IA
+- ✅ Auto port detection (3000-3006)
+- ✅ Testing, linting y type checking configurados
 
-### 📱 Secciones Principales
+## 📦 Tech Stack
 
-#### 1. **Header Inteligente**
-- Navegación sticky con efecto glassmorphism
-- Logo con gradiente dorado
-- Menú responsive con animaciones
-- CTA prominente para conversión
-
-#### 2. **Hero Impactante**
-- Headline emocional y directo
-- Enfoque en los 3 servicios principales (80/20)
-- CTAs múltiples para diferentes intenciones
-- Elementos flotantes animados
-- Indicadores de confianza
-
-#### 3. **Proceso Transparente**
-- Video embed de YouTube optimizado
-- 3 pasos claros y concisos
-- Indicadores de tiempo real
-- Call-to-action estratégico
-
-#### 4. **Beneficios Comprobados**
-- Enfoque en Lead Gen Agents, Customer Support IA, N8N Workflows
-- ROI badges prominentes (+400%, +300%, +250%)
-- Stats sociales (500+ empresas, $50M ROI, 99% satisfacción)
-- Garantías que reducen fricción
-
-#### 5. **Contacto Directo**
-- Formulario simplificado (v1)
-- Información de contacto clara
-- Indicadores de confianza (24hrs respuesta, gratis, sin spam)
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Next.js 14** - Framework React
-- **TypeScript** - Tipado estático
-- **Tailwind CSS** - Framework CSS utility-first
-- **Framer Motion** - Animaciones fluidas
-- **Heroicons** - Iconografía consistente
-- **React Intersection Observer** - Animaciones on-scroll
-
-## 🚀 Comandos de Desarrollo
-
-```bash
-# Instalar dependencias
-npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Build para producción
-npm run build
-
-# Iniciar servidor de producción
-npm start
-
-# Linting
-npm run lint
+```yaml
+Runtime: Node.js + TypeScript
+Framework: Next.js 16 (App Router)
+Database: PostgreSQL/Supabase
+Styling: Tailwind CSS
+State: Zustand
+Testing: Jest + React Testing Library
+Validation: Zod
+AI Tooling: Claude Code + MCPs
 ```
 
-## 📊 Principios de Diseño Aplicados
-
-### 🎯 Principio de Pareto (80/20)
-- **Servicios principales**: Lead Gen Agents, Customer Support IA, N8N Workflows
-- **Beneficios clave**: ROI, automatización 24/7, implementación rápida
-- **CTAs estratégicos**: Consulta gratis, ver proceso, contacto directo
-
-### 💎 UX/UI Premium
-- **Jerarquía visual clara** - Guía natural del ojo
-- **Microinteracciones** - Hover effects y transiciones
-- **Loading states** - Feedback inmediato al usuario
-- **Responsive excellence** - Mobile-first approach
-
-### 🔥 Optimización para Conversión
-- **Headlines emocionales** - Conectan con dolor/deseo
-- **Social proof estratégico** - Números y testimonials
-- **Reducción de fricción** - Formulario simple, garantías claras
-- **CTAs múltiples** - Diferentes niveles de compromiso
-
-## 📁 Estructura del Proyecto
+## 🏗️ Arquitectura Feature-First
 
 ```
 src/
-├── app/
-│   ├── globals.css          # Estilos globales y componentes
-│   ├── layout.tsx           # Layout principal con metadatos SEO
-│   └── page.tsx             # Página principal
-├── components/
-│   └── sections/
-│       ├── Header.tsx       # Navegación sticky
-│       ├── Hero.tsx         # Sección principal
-│       ├── Process.tsx      # Video y proceso
-│       ├── Benefits.tsx     # Servicios y beneficios
-│       └── Contact.tsx      # Formulario contacto
-└── lib/
-    └── utils.ts             # Utilidades y helpers
+├── app/                      # Next.js App Router
+│   ├── (auth)/              # Rutas auth (grupo)
+│   ├── (main)/              # Rutas principales
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── features/                 # 🎯 Organizadas por funcionalidad
+│   ├── auth/
+│   │   ├── components/      # LoginForm, SignupForm
+│   │   ├── hooks/           # useAuth, useSession
+│   │   ├── services/        # authService.ts
+│   │   ├── types/           # User, Session
+│   │   └── store/           # authStore.ts
+│   │
+│   ├── dashboard/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   └── types/
+│   │
+│   └── [tu-feature]/
+│
+└── shared/                   # Código reutilizable
+    ├── components/          # Button, Card, Input
+    ├── hooks/               # useDebounce, useLocalStorage
+    ├── stores/              # appStore.ts
+    ├── types/               # api.ts, domain.ts
+    ├── utils/               # helpers
+    ├── lib/                 # supabase.ts, axios.ts
+    └── constants/
 ```
 
-## 🎨 Sistema de Colores
+> **¿Por qué Feature-First?** Cada feature tiene TODO lo necesario en un solo lugar. Perfecto para que la IA entienda contexto completo sin navegar múltiples carpetas.
 
-```css
-/* Dorados */
-gold-400: #fbbf24
-gold-500: #f59e0b  /* Primary */
-gold-600: #d97706
+## 🚀 Quick Start
 
-/* Oscuros */
-dark-800: #1f2937
-dark-900: #111827  /* Secondary */
-dark-950: #030712  /* Background */
+### 1. Instalar Dependencias
+
+```bash
+npm install
+# o
+pnpm install
 ```
 
-## 🌟 Próximas Mejoras
+### 2. Configurar Variables de Entorno
 
-- [ ] Formulario multi-step avanzado
-- [ ] Integración con backend/CRM
-- [ ] A/B testing de CTAs
-- [ ] Testimonials dinámicos
-- [ ] Chat widget IA
-- [ ] Analytics avanzados
+```bash
+# Crear .env.local
+cp .env.example .env.local
 
-## 📈 Métricas Objetivo
+# Editar con tus credenciales de Supabase
+NEXT_PUBLIC_SUPABASE_URL=tu_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=tu_anon_key
+```
 
-- **Tiempo de carga**: <3 segundos
-- **Lighthouse Score**: 90+
-- **Conversion Rate**: >5%
-- **Mobile Performance**: Excelente
-- **SEO Score**: 95+
+### 3. Configurar MCPs (Opcional)
+
+Edita `.mcp.json` con tu project ref de Supabase:
+
+```json
+{
+  "mcpServers": {
+    "supabase": {
+      "args": ["--project-ref=TU_PROJECT_REF"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "TU_TOKEN"
+      }
+    }
+  }
+}
+```
+
+### 4. Iniciar Desarrollo
+
+```bash
+npm run dev
+# Auto-detecta puerto disponible (3000-3006)
+```
+
+## 🛠️ Comandos Disponibles
+
+### Development
+```bash
+npm run dev          # Servidor desarrollo (auto-port 3000-3006)
+npm run build        # Build para producción
+npm run start        # Servidor producción
+```
+
+### Quality Assurance
+```bash
+npm run test         # Tests con Jest
+npm run test:watch   # Tests en modo watch
+npm run lint         # ESLint
+npm run lint:fix     # Fix automático
+npm run typecheck    # TypeScript check
+```
+
+### Skills Management
+```bash
+# Crear nuevo skill
+python .claude/skills/skill-creator/scripts/init_skill.py my-skill
+
+# Validar skill
+python .claude/skills/skill-creator/scripts/quick_validate.py ./my-skill
+
+# Empaquetar skill
+python .claude/skills/skill-creator/scripts/package_skill.py ./my-skill
+```
+
+## 🤖 Claude Code Integration
+
+### Comandos Disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `/explorador` | Explora codebase y arquitectura |
+| `/ejecutar-prp` | Ejecuta PRPs (features complejas) |
+| `/generar-prp` | Genera nuevo PRP |
+| `/preparar-paralelo` | Prepara tareas paralelas |
+| `/ejecutar-paralelo` | Ejecuta en paralelo |
+
+### Agentes Especializados
+
+1. **Codebase Analyst** - Analiza arquitectura y patrones
+2. **Gestor Documentación** - Mantiene docs actualizados
+
+### MCPs Configurados (El Cyborg)
+
+- 🧠 **Next.js DevTools** - Conectado a `/_next/mcp` para debug en tiempo real
+- 👁️ **Playwright** - Validación visual y testing automatizado
+- 🗄️ **Supabase** - Integración directa con DB y auth
+
+## 🎨 Bucle Agéntico con Playwright
+
+Este setup incluye integración con Playwright MCP para desarrollo visual:
+
+```
+1. Implementar componente
+2. Capturar screenshot automático
+3. Comparar vs requirements
+4. Iterar hasta pixel-perfect
+```
+
+Lee `.claude/prompts/bucle-agentico.md` para más detalles.
+
+## 📝 Crear tu Primera Feature
+
+### Opción 1: Manual
+
+```bash
+mkdir -p src/features/mi-feature/{components,hooks,services,types,store}
+```
+
+### Opción 2: Con PRP
+
+```bash
+# En Claude Code, ejecuta:
+/generar-prp
+
+# Describe tu feature, el agente generará:
+# - Estructura completa
+# - Componentes base
+# - Hooks necesarios
+# - Types + validaciones
+# - Tests
+```
+
+## 🔒 Supabase Setup
+
+### 1. Crear Proyecto en Supabase
+
+```bash
+# Visita: https://supabase.com/dashboard
+# Crea nuevo proyecto
+# Copia URL y Anon Key
+```
+
+### 2. Configurar Cliente
+
+El cliente ya está configurado en `src/shared/lib/supabase.ts`:
+
+```typescript
+import { createClient } from '@supabase/supabase-js'
+
+export const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+```
+
+### 3. Crear Migraciones
+
+```bash
+# Guardar migraciones en supabase/migrations/
+# Ejemplo: supabase/migrations/001_create_users.sql
+```
+
+## 🧪 Testing Strategy
+
+### Unit Tests
+
+```typescript
+// src/features/auth/hooks/useAuth.test.ts
+import { renderHook } from '@testing-library/react'
+import { useAuth } from './useAuth'
+
+test('should authenticate user', async () => {
+  const { result } = renderHook(() => useAuth())
+  await result.current.login('test@example.com', 'password')
+  expect(result.current.user).toBeDefined()
+})
+```
+
+### Run Tests
+
+```bash
+npm run test                    # Run all tests
+npm run test:watch              # Watch mode
+npm run test:coverage           # Coverage report
+```
+
+## 🎯 Best Practices
+
+### Component Structure
+
+```typescript
+// ✅ GOOD: Clear props, typed, documented
+interface ButtonProps {
+  children: React.ReactNode
+  variant?: 'primary' | 'secondary'
+  onClick: () => void
+}
+
+export function Button({ children, variant = 'primary', onClick }: ButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className={`btn btn-${variant}`}
+    >
+      {children}
+    </button>
+  )
+}
+```
+
+### Feature Organization
+
+```typescript
+// ✅ GOOD: Todo relacionado en un lugar
+src/features/auth/
+├── components/     # UI específicos de auth
+├── hooks/          # Lógica de auth
+├── services/       # API calls
+├── types/          # Types de auth
+└── store/          # Estado de auth
+```
+
+## 📚 Documentación
+
+- **CLAUDE.md** - System prompt completo (la fuente de verdad)
+- **.claude/prompts/** - Metodologías y patrones
+- **.claude/PRPs/prp-base.md** - Sistema de Blueprints
+- **.claude/skills/** - Skills reutilizables
+
+## 🚨 Troubleshooting
+
+### Puerto Ocupado (EADDRINUSE)
+
+```bash
+# El auto-port detection debería resolver esto
+# Si persiste:
+lsof -i :3000
+kill -9 <PID>
+
+# O usa el script directamente:
+node scripts/dev-server.js
+```
+
+### TypeScript Errors
+
+```bash
+npm run typecheck          # Verificar errores
+rm -rf .next               # Limpiar cache
+npm install                # Reinstalar deps
+```
+
+### Tests Failing
+
+```bash
+npm run test -- --clearCache    # Limpiar cache de Jest
+npm run test -- --verbose       # Ver detalles
+```
+
+## 🎯 Próximos Pasos
+
+1. **Lee CLAUDE.md** - Principios y convenciones completas
+2. **Configura Supabase** - Auth + Database
+3. **Crea tu primera feature** - Usa `/generar-prp`
+4. **Implementa autenticación** - Feature auth incluida
+5. **Deploy** - Vercel/Netlify ready
+
+## 🤝 Contribuir
+
+Este template está diseñado para ser extendido. Algunas ideas:
+
+- [ ] Añadir más features base (notifications, settings)
+- [ ] Crear más skills específicos
+- [ ] Mejorar PRPs templates
+- [ ] Añadir más tests de ejemplo
+
+## 📦 Deploy
+
+### Vercel (Recomendado)
+
+```bash
+npm install -g vercel
+vercel
+```
+
+### Configurar Variables de Entorno
+
+En tu dashboard de Vercel, añade:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
 ---
 
-**Desarrollado siguiendo principios SOLID, KISS, DRY y YAGNI para máxima calidad y mantenibilidad.**
+**Next.js + Claude Code Setup v1.0** | Built with AI-first development in mind 🤖

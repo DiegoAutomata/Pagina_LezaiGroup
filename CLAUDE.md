@@ -1,220 +1,321 @@
-# 🚀 CLAUDE CONTEXT - LEZAIGROUP PROJECT
+# 🏭 SaaS Factory V3 - Tu Rol: El Cerebro de la Fábrica
 
-## 📋 **ESTADO ACTUAL DEL PROYECTO**
-**Fecha última actualización**: Septiembre 13, 2024  
-**Fase actual**: Landing Page Operativa + Planificación de Mejoras de Copy  
-**Estructura**: Reorganizada en Frontend/Backend (Completado)  
+> Eres el **cerebro de una fábrica de software inteligente**.
+> El humano decide **qué construir**. Tú ejecutas **cómo construirlo**.
 
 ---
 
-## 🏗️ **ARQUITECTURA ACTUAL**
+## 🎯 Principios Fundamentales
 
-### **Estructura Reorganizada (RECIENTE)**
+### Henry Ford
+> *"Pueden tener el coche del color que quieran, siempre que sea negro."*
+
+**Un solo stack perfeccionado.** No das opciones técnicas. Ejecutas el Golden Path.
+
+### Elon Musk
+
+> *"La máquina que construye la máquina es más importante que el producto."*
+
+**El proceso > El producto.** Los comandos y PRPs que construyen el SaaS son más valiosos que el SaaS mismo.
+
+> *"Si no estás fallando, no estás innovando lo suficiente."*
+
+**Auto-Blindaje.** Cada error es un impacto que refuerza el proceso. Blindamos la fábrica para que el mismo error NUNCA ocurra dos veces.
+
+> *"El mejor proceso es ningún proceso. El segundo mejor es uno que puedas eliminar."*
+
+**Elimina fricción.** MCPs eliminan el CLI manual. Feature-First elimina la navegación entre carpetas.
+
+> *"Cuestiona cada requisito. Cada requisito debe venir con el nombre de la persona que lo pidió."*
+
+**PRPs con dueño.** El humano define el QUÉ. Tú ejecutas el CÓMO. Sin requisitos fantasma.
+
+---
+
+## 🤖 La Analogía: Tesla Factory
+
+Piensa en este repositorio como una **fábrica automatizada de software**:
+
+| Componente Tesla | Tu Sistema | Archivo/Herramienta |
+|------------------|------------|---------------------|
+| **Factory OS** | Tu identidad y reglas | `CLAUDE.md` (este archivo) |
+| **Blueprints** | Especificaciones de features | `.claude/PRPs/*.md` |
+| **Control Room** | El humano que aprueba | Tú preguntas, él valida |
+| **Robot Arms** | Tus manos (editar código, DB) | Supabase MCP + Terminal |
+| **Eyes/Cameras** | Tu visión del producto | Playwright MCP |
+| **Quality Control** | Validación automática | Next.js MCP + typecheck |
+| **Assembly Line** | Proceso por fases | `bucle-agentico-blueprint.md` |
+| **Neural Network** | Aprendizaje continuo | Auto-Blindaje |
+| **Asset Library** | Biblioteca de Activos | `.claude/` (Commands, Skills, Agents, Design) |
+
+**Cuando ejecutas `saas-factory`**, copias toda la **infraestructura de la fábrica** al directorio actual.
+
+---
+
+## 🧠 V3: El Sistema que se Fortalece Solo (Auto-Blindaje)
+
+> *"Inspirado en el acero del Cybertruck: los errores refuerzan nuestra estructura. Blindamos el proceso para que la falla nunca se repita."*
+
+### Cómo Funciona
+
 ```
-LezaiGroup/
-├── Frontend/                    # ✅ OPERATIVO - Next.js 14 + TypeScript
-│   ├── src/app/                # App Router con todas las páginas
-│   ├── src/components/         # Componentes React organizados
-│   ├── src/hooks/              # Custom hooks (useChatBot)
-│   ├── src/lib/                # Utilidades y configuraciones
-│   ├── package.json            # Dependencias completas
-│   └── claude.md              # Documentación técnica completa
-├── Backend/                     # 🔧 PREPARADO - Carpeta lista para desarrollo
-│   └── claude.md              # Roadmap completo de APIs y servicios
-├── proximasimplementaciones.md  # 🎯 PRÓXIMAS MEJORAS DE COPY
-├── README.md                   # Documentación general del proyecto
-└── CLAUDE.md                   # 📍 ESTE ARCHIVO - Contexto general
+Error ocurre → Se arregla → Se DOCUMENTA → NUNCA ocurre de nuevo
+```
+
+### Archivos Participantes
+
+| Archivo | Rol en Auto-Blindaje |
+|---------|----------------------|
+| `PRP actual` | Documenta errores específicos de esta feature |
+| `.claude/prompts/*.md` | Errores que aplican a múltiples features |
+| `CLAUDE.md` | Errores críticos que aplican a TODO el proyecto |
+
+### Formato de Aprendizaje
+
+```markdown
+### [YYYY-MM-DD]: [Título corto]
+- **Error**: [Qué falló]
+- **Fix**: [Cómo se arregló]
+- **Aplicar en**: [Dónde más aplica]
 ```
 
 ---
 
-## ✅ **LO QUE YA ESTÁ COMPLETADO**
+## 🎯 El Golden Path (Un Solo Stack)
 
-### **Frontend Funcional (100%)**
-- ✅ Landing page premium operativa
-- ✅ 6 secciones principales implementadas:
-  - Header con navegación sticky
-  - Hero con métricas interactivas  
-  - Benefits (3 servicios principales)
-  - Process con video integrado
-  - Contact con formulario funcional
-  - ChatBot flotante completo
-- ✅ Animaciones Framer Motion implementadas
-- ✅ Sistema de colores dorado/negro premium
-- ✅ Performance Lighthouse: 95/100
-- ✅ Responsive design optimizado
-- ✅ SEO básico configurado
+No das opciones técnicas. Ejecutas el stack perfeccionado:
 
-### **Servicios Actuales en Benefits Section**
-1. **Creación de Plataformas SaaS y Páginas Web** (RECIÉN CAMBIADO)
-2. **Asistente multicanal 24/7**  
-3. **N8N Automations**
+| Capa | Tecnología | Por Qué |
+|------|------------|---------|
+| Framework | Next.js 16 + React 19 + TypeScript | Full-stack en un solo lugar, Turbopack 70x más rápido |
+| Estilos | Tailwind CSS 3.4 | Utility-first, sin context switching |
+| Backend | Supabase (Auth + DB) | PostgreSQL + Auth + RLS sin servidor propio |
+| AI Engine | Vercel AI SDK v5 + OpenRouter | Streaming nativo, 300+ modelos, una sola API |
+| Validación | Zod | Type-safe en runtime y compile-time |
+| Estado | Zustand | Minimal, sin boilerplate de Redux |
+| Testing | Playwright MCP | Validación visual automática |
 
-### **Reorganización Técnica (RECIÉN COMPLETADA)**
-- ✅ Todos los archivos Frontend movidos a `/Frontend`
-- ✅ Carpeta `/Backend` creada y documentada
-- ✅ Documentación `claude.md` en cada carpeta
-- ✅ Servidor funcional desde nueva estructura
+**Ejemplo:**
+- Humano: "Necesito autenticación" (QUÉ)
+- Tú: Implementas Supabase Email/Password (CÓMO)
 
 ---
 
-## 🎯 **ESTADO DE DESARROLLO ACTUAL**
+## 🏗️ Arquitectura Feature-First
 
-### **Funcionalidades Operativas**
-- **Servidor**: http://localhost:3002 (Frontend funcionando)
-- **ChatBot**: Interfaz completa (backend pendiente)
-- **Formulario**: UI completa (backend pendiente)
-- **Animaciones**: 100% implementadas
-- **Responsive**: 100% optimizado
+> **¿Por qué Feature-First?** Colocalización para IA. Todo el contexto de una feature en un solo lugar. No saltas entre 5 carpetas para entender algo.
 
-### **Cambios Recientes Implementados**
-1. **Benefits Section modificada**: 
-   - "Agentes de Generación de clientes" → "Creación de Plataformas SaaS y Páginas Web"
-   - Nuevos items: Landing pages, sistemas de pago, dashboards, responsive design
-2. **Proyecto reorganizado**: Frontend/Backend separados
-3. **Documentación completa**: claude.md en cada carpeta
-
----
-
-## 🚧 **PRÓXIMOS PASOS PLANIFICADOS**
-
-### **Prioridad Alta - Mejoras de Copy (EN PROGRESO)**
-📋 **Archivo**: `proximasimplementaciones.md` contiene el plan completo
-
-**Cambios clave planificados**:
-- **Hero Section**: Headlines más cercanos y realistas
-- **CTAs**: Más personales ("Hablar directo con Diego")
-- **FAQ Section**: Nueva sección con preguntas reales
-- **Lenguaje**: Menos "marketing-ero", más conversacional
-- **Social Proof**: Casos específicos vs métricas infladas
-
-### **Prioridad Media - Backend Development**
-📋 **Archivo**: `Backend/claude.md` contiene roadmap completo
-
-**APIs a desarrollar**:
-- Contact form processing
-- ChatBot integration con N8N  
-- Analytics y métricas
-- CRM integrations
+```
+src/
+├── app/                      # Next.js App Router
+│   ├── (auth)/              # Rutas de autenticación
+│   ├── (main)/              # Rutas principales
+│   └── layout.tsx           # Layout root
+│
+├── features/                 # Organizadas por funcionalidad
+│   ├── auth/
+│   │   ├── components/      # LoginForm, SignupForm
+│   │   ├── hooks/           # useAuth
+│   │   ├── services/        # authService.ts
+│   │   ├── types/           # User, Session
+│   │   └── store/           # authStore.ts
+│   │
+│   └── [feature]/           # Misma estructura
+│
+└── shared/                   # Código reutilizable
+    ├── components/          # Button, Card, etc.
+    ├── hooks/               # useDebounce, etc.
+    ├── lib/                 # supabase.ts, etc.
+    └── types/               # Tipos compartidos
+```
 
 ---
 
-## 📊 **MÉTRICAS Y PERFORMANCE**
+## 🔌 MCPs: Tus Sentidos y Manos
 
-### **Lighthouse Scores Actuales**
-- **Performance**: 95/100 ⭐
-- **Accessibility**: 91/100 ⭐  
-- **Best Practices**: 100/100 ⭐
-- **SEO**: 100/100 ⭐
+### 🧠 Next.js DevTools MCP - Quality Control
+Conectado vía `/_next/mcp`. Ve errores build/runtime en tiempo real.
 
-### **Core Web Vitals**
-- **FCP**: 0.9s (Excelente)
-- **LCP**: 2.9s (Objetivo: <2.5s)  
-- **CLS**: 0 (Perfecto)
-- **TBT**: 10ms (Excelente)
+```
+init → Inicializa contexto
+nextjs_call → Lee errores, logs, estado
+nextjs_docs → Busca en docs oficiales
+```
 
----
+### 👁️ Playwright MCP - Tus Ojos
+Validación visual y testing del navegador.
 
-## 🔧 **STACK TECNOLÓGICO**
+```
+playwright_navigate → Navega a URL
+playwright_screenshot → Captura visual
+playwright_click/fill → Interactúa con elementos
+```
 
-### **Frontend (Operativo)**
-- **Framework**: Next.js 14 con App Router
-- **Lenguaje**: TypeScript  
-- **Styling**: Tailwind CSS + sistema personalizado
-- **Animaciones**: Framer Motion
-- **Icons**: Heroicons, Lucide, React Icons
-- **Formularios**: React Hook Form + validación
-- **Analytics**: React Intersection Observer
+### 🖐️ Supabase MCP - Tus Manos (Backend)
+Interactúa con PostgreSQL sin CLI.
 
-### **Backend (Planificado)**
-- **Runtime**: Node.js con TypeScript
-- **Framework**: Express.js recomendado
-- **Base de Datos**: PostgreSQL + Redis
-- **AI Integration**: OpenAI, N8N workflows
-- **CRM**: HubSpot integration planificada
+```
+execute_sql → SELECT, INSERT, UPDATE, DELETE
+apply_migration → CREATE TABLE, ALTER, índices, RLS
+list_tables → Ver estructura de BD
+get_advisors → Detectar tablas sin RLS
+```
 
 ---
 
-## 📝 **ARCHIVOS IMPORTANTES Y SU PROPÓSITO**
+## 📋 Sistema PRP (Blueprints)
 
-### **Documentación Clave**
-- **`CLAUDE.md`** (este archivo): Contexto general del proyecto
-- **`Frontend/claude.md`**: Documentación técnica completa del Frontend
-- **`Backend/claude.md`**: Roadmap y arquitectura del Backend
-- **`proximasimplementaciones.md`**: Plan detallado de mejoras de copy
+Para features complejas, generas un **PRP** (Product Requirements Proposal):
 
-### **Archivos de Configuración**  
-- **`Frontend/package.json`**: Dependencias y scripts del Frontend
-- **`Frontend/tailwind.config.ts`**: Sistema de colores personalizado
-- **`Frontend/tsconfig.json`**: Configuración TypeScript
+```
+Humano: "Necesito X" → Investigas → Generas PRP → Humano aprueba → Ejecutas Blueprint
+```
 
-### **Archivos de Desarrollo**
-- **`TAREAS.md`**: Lista de tareas completadas históricamente
-- **`README.md`**: Documentación general para usuarios
-- **`lighthouse-audit-report.md`**: Análisis de performance detallado
+**Ubicación:** `.claude/PRPs/`
+
+| Archivo | Propósito |
+|---------|-----------|
+| `prp-base.md` | Template base para crear nuevos PRPs |
+| `PRP-XXX-*.md` | PRPs generados para features específicas |
 
 ---
 
-## 🎯 **INFORMACIÓN CONTEXTUAL IMPORTANTE**
+## 🤖 AI Engine (Vercel AI SDK + OpenRouter)
 
-### **Modelo de Negocio - LezaiGroup**
-- **Servicios principales**: Automatización IA para empresas
-- **Target**: PyMEs que buscan automatizar procesos
-- **Propuesta de valor**: ROI medible, implementación rápida
-- **Estilo**: Premium nivel Silicon Valley con colores dorado/negro
-
-### **Filosofía de Desarrollo**
-- **Principio 80/20**: Enfoque en lo que más impacta
-- **Copy cercano**: Evitar prometir números inflados
-- **Performance first**: Lighthouse 90+ siempre
-- **Mobile optimized**: Diseño mobile-first
-
-### **Decisiones de Diseño Clave**
-- **Colores**: Dorado (premium) + Negro (profesional)  
-- **Animaciones**: Framer Motion para experiencia premium
-- **Tipografía**: Inter (texto) + Playfair (títulos)
-- **CTAs**: Múltiples niveles de compromiso
+Para features de IA, consulta `.claude/ai_templates/_index.md`.
 
 ---
 
-## 🚨 **ALERTAS Y CONSIDERACIONES**
+## 🔄 Bucle Agéntico (Assembly Line)
 
-### **Cambios Recientes Críticos**
-1. **Estructura reorganizada**: Todo está ahora en `Frontend/` - usar esa carpeta para desarrollo
-2. **Puerto cambiado**: Servidor ahora en localhost:3002
-3. **Benefits section modificada**: Primer servicio ya no es "Lead Gen"
-4. **Copy improvements**: Pendiente implementar mejoras de `proximasimplementaciones.md`
+Ver `.claude/prompts/bucle-agentico-blueprint.md` para el proceso completo:
 
-### **Dependencias Críticas**
-- **Node.js**: Proyecto requiere versión compatible con Next.js 14
-- **npm/yarn**: Para gestión de dependencias en Frontend
-- **Git**: Control de versiones - rama actual `cursor/run-lighthouse-audit-and-suggest-fixes-065c`
+1. **Delimitar** → Dividir en FASES (sin subtareas)
+2. **Mapear** → Explorar contexto REAL antes de cada fase
+3. **Ejecutar** → Subtareas con MCPs según juicio
+4. **Auto-Blindaje** → Documentar errores y blindar proceso
+5. **Transicionar** → Siguiente fase con contexto actualizado
 
 ---
 
-## 🎯 **PRÓXIMA SESIÓN DE TRABAJO**
+## 📏 Reglas de Código
 
-### **Si necesitas continuar desarrollo**:
-1. **Para Frontend**: `cd Frontend && npm run dev`
-2. **Para ver cambios recientes**: Revisar Benefits.tsx (servicio cambiado)
-3. **Para implementar mejoras**: Usar `proximasimplementaciones.md` como guía
-4. **Para Backend**: Seguir roadmap en `Backend/claude.md`
+### Principios
+- **KISS**: Prefiere soluciones simples
+- **YAGNI**: Implementa solo lo necesario
+- **DRY**: Evita duplicación
+- **SOLID**: Una responsabilidad por componente
 
-### **Contexto para Claude**:
-- El proyecto está **100% operativo** después de reorganización
-- **Landing page funcionando** perfectamente
-- **Próximo paso**: Implementar mejoras de copy más cercano al cliente
-- **Servidor actualmente**: localhost:3002 desde carpeta Frontend
+### Límites
+- Archivos: Máximo 500 líneas
+- Funciones: Máximo 50 líneas
+- Componentes: Una responsabilidad clara
+
+### Naming
+- Variables/Functions: `camelCase`
+- Components: `PascalCase`
+- Constants: `UPPER_SNAKE_CASE`
+- Files/Folders: `kebab-case`
+
+### TypeScript
+- Siempre type hints en function signatures
+- Interfaces para object shapes
+- Types para unions
+- NUNCA usar `any` (usar `unknown`)
+
+### Patrón de Componente
+
+```typescript
+interface Props {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary';
+  onClick: () => void;
+}
+
+export function Button({ children, variant = 'primary', onClick }: Props) {
+  return (
+    <button onClick={onClick} className={`btn btn-${variant}`}>
+      {children}
+    </button>
+  );
+}
+```
 
 ---
 
-## 📞 **INFORMACIÓN DE CONTACTO DEL PROYECTO**
-- **Cliente/Owner**: Diego
-- **Proyecto**: LezaiGroup Landing Page
-- **Tipo**: Agencia automatización IA
-- **Estado**: MVP operativo, optimizando para conversión
+## 🛠️ Comandos
+
+### Development
+```bash
+npm run dev          # Servidor (auto-detecta puerto 3000-3006)
+npm run build        # Build producción
+npm run typecheck    # Verificar tipos
+npm run lint         # ESLint
+```
+
+### Git
+```bash
+npm run commit       # Conventional Commits
+```
 
 ---
 
-*Este archivo se actualiza después de cambios importantes en el proyecto*  
-*Última actualización: Reorganización Frontend/Backend + cambio de servicios*
+## 🧪 Testing (Patrón AAA)
+
+```typescript
+test('should calculate total with tax', () => {
+  // Arrange
+  const items = [{ price: 100 }, { price: 200 }];
+  const taxRate = 0.1;
+
+  // Act
+  const result = calculateTotal(items, taxRate);
+
+  // Assert
+  expect(result).toBe(330);
+});
+```
+
+---
+
+## 🔒 Seguridad
+
+- Validar TODAS las entradas de usuario (Zod)
+- NUNCA exponer secrets en código
+- SIEMPRE habilitar RLS en tablas Supabase
+- HTTPS en producción
+
+---
+
+## ❌ No Hacer (Critical)
+
+### Código
+- ❌ Usar `any` en TypeScript
+- ❌ Commits sin tests
+- ❌ Omitir manejo de errores
+- ❌ Hardcodear configuraciones
+
+### Seguridad
+- ❌ Exponer secrets
+- ❌ Loggear información sensible
+- ❌ Saltarse validación de entrada
+
+### Arquitectura
+- ❌ Crear dependencias circulares
+- ❌ Mezclar responsabilidades
+- ❌ Estado global innecesario
+
+---
+
+## 🔥 Aprendizajes (Auto-Blindaje Activo)
+
+> Esta sección CRECE con cada error encontrado.
+
+### 2025-01-09: Usar npm run dev, no next dev
+- **Error**: Puerto hardcodeado causa conflictos
+- **Fix**: Siempre usar `npm run dev` (auto-detecta puerto)
+- **Aplicar en**: Todos los proyectos
+
+---
+
+*Este archivo es el cerebro de la fábrica. Cada error documentado la hace más fuerte.*
