@@ -35,14 +35,14 @@ const metricsData: MetricData[] = [
     },
     {
         statistic: "2.4x",
-        description: "mayor productividad en empresas líderes con IA",
-        detailedDescription: "Las empresas líderes que han incorporado IA en sus procesos alcanzan 2,4 veces mayor productividad que sus pares rezagados, demostrando una ventaja competitiva significativa.",
+        description: "mayor productividad en pymes con IA",
+        detailedDescription: "Las pymes que han incorporado IA en sus procesos alcanzan 2,4 veces mayor productividad que sus pares rezagados, demostrando una ventaja competitiva significativa.",
         source: "Accenture, 2024"
     },
     {
         statistic: "91%",
         description: "de PyMEs incrementaron su facturación con IA",
-        detailedDescription: "El 91% de las pequeñas y medianas empresas que adoptaron IA afirman que esta ha incrementado su facturación, ayudando a atraer y convertir más clientes potenciales.",
+        detailedDescription: "El 91% de las pymes que adoptaron IA afirman que esta ha incrementado su facturación, ayudando a atraer y convertir más clientes potenciales.",
         source: "Salesforce, 2024"
     },
     {
@@ -61,7 +61,7 @@ export function Hero() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex items-center overflow-hidden bg-hero-gradient pt-32 pb-16 lg:pt-20"
+            className="relative min-h-screen flex items-center overflow-hidden bg-gray-50 dark:bg-hero-gradient pt-32 pb-16 lg:pt-20 transition-colors duration-300"
         >
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl animate-pulse-slow" />
@@ -77,27 +77,27 @@ export function Hero() {
                         className="space-y-8 text-center lg:text-left pt-8"
                     >
                         <motion.div variants={itemVariants} className="space-y-4">
-                            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+                            <h1 className="text-4xl md:text-6xl font-extrabold text-dark-950 dark:text-white tracking-tight">
                                 Automatiza Lo Que Te Quita Más Tiempo y{' '}
                                 <span className="text-gold-gradient">Recupera 25+ Horas</span> a la Semana
                             </h1>
-                            <p className="text-lg text-gray-300 max-w-xl mx-auto lg:mx-0">
-                                Trabajamos solo con empresas que realmente quieren crecer - Cuéntanos tu situación
+                            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0">
+                                Trabajamos solo con pymes que realmente quieren crecer - Cuéntanos tu situación
                             </p>
                         </motion.div>
 
                         <motion.div variants={itemVariants}>
                             <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-2 text-sm sm:text-base">
-                                <div className="flex items-center text-gray-300">
-                                    <span className="text-green-400 mr-2.5">✅</span>
+                                <div className="flex items-center text-gray-600 dark:text-gray-300">
+                                    <span className="text-brand-cyan mr-2.5">✅</span>
                                     Hablamos en español, sin tecnicismos
                                 </div>
-                                <div className="flex items-center text-gray-300">
-                                    <span className="text-green-400 mr-2.5">💬</span>
+                                <div className="flex items-center text-gray-600 dark:text-gray-300">
+                                    <span className="text-brand-cyan mr-2.5">💬</span>
                                     Consulta de 30 min completamente gratis
                                 </div>
-                                <div className="flex items-center text-gray-300">
-                                    <span className="text-green-400 mr-2.5">🤝</span>
+                                <div className="flex items-center text-gray-600 dark:text-gray-300">
+                                    <span className="text-brand-cyan mr-2.5">🤝</span>
                                     Sin compromisos ni letra pequeña
                                 </div>
                             </div>
@@ -114,14 +114,16 @@ export function Hero() {
                                 <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
                             </motion.button>
 
-                            <motion.button
-                                onClick={handleCTAClick}
-                                className="btn-secondary text-lg px-10 py-4"
+                            <motion.a
+                                href="https://wa.me/1234567890"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-secondary text-lg px-10 py-4 inline-block text-center"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Hablar Directo con el Desarrollador
-                            </motion.button>
+                            </motion.a>
                         </motion.div>
                     </motion.div>
 

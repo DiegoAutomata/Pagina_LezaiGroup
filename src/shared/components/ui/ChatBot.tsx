@@ -107,7 +107,7 @@ export function ChatBot() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed bottom-24 right-6 z-40 w-96 max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] glass-dark shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-96 sm:bottom-24 sm:right-6"
+                        className="fixed bottom-24 right-6 z-40 w-96 max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-white dark:bg-dark-900/90 backdrop-blur-md border border-gray-200 dark:border-brand-cyan/20 shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-96 sm:bottom-24 sm:right-6"
                         initial={{
                             opacity: 0,
                             scale: 0.8,
@@ -130,19 +130,19 @@ export function ChatBot() {
                             damping: 25
                         }}
                     >
-                        <div className="bg-dark-900/90 border-b border-gold-500/20 p-4 flex items-center justify-between">
+                        <div className="bg-gray-50/90 dark:bg-dark-900/90 border-b border-gray-200 dark:border-brand-cyan/20 p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <div className="w-8 h-8 bg-gold-gradient rounded-full flex items-center justify-center">
-                                    <span className="text-dark-950 font-bold text-sm">AI</span>
+                                <div className="w-8 h-8 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold text-sm">AI</span>
                                 </div>
                                 <div>
-                                    <h3 className="text-white font-semibold">{config.branding.name}</h3>
-                                    <p className="text-gold-400 text-xs">{config.branding.description}</p>
+                                    <h3 className="text-dark-950 dark:text-white font-semibold">{config.branding.name}</h3>
+                                    <p className="text-brand-orange text-xs">{config.branding.description}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={toggleChat}
-                                className="text-gray-400 hover:text-white transition-colors p-1"
+                                className="text-gray-500 hover:text-dark-950 dark:text-gray-400 dark:hover:text-white transition-colors p-1"
                                 aria-label="Close chat"
                             >
                                 <XMarkIcon className="w-5 h-5" />
@@ -156,11 +156,11 @@ export function ChatBot() {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="text-center py-8"
                                 >
-                                    <div className="w-12 h-12 bg-gold-gradient rounded-full mx-auto mb-4 flex items-center justify-center">
-                                        <ChatBubbleLeftRightIcon className="w-6 h-6 text-dark-950" />
+                                    <div className="w-12 h-12 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full mx-auto mb-4 flex items-center justify-center">
+                                        <ChatBubbleLeftRightIcon className="w-6 h-6 text-white" />
                                     </div>
-                                    <h4 className="text-white font-semibold mb-2">¡Hola! 👋</h4>
-                                    <p className="text-gray-400 text-sm">
+                                    <h4 className="text-dark-950 dark:text-white font-semibold mb-2">¡Hola! 👋</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 text-sm">
                                         Soy tu asistente de IA. ¿En qué puedo ayudarte hoy?
                                     </p>
                                 </motion.div>
@@ -175,14 +175,14 @@ export function ChatBot() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="border-t border-gold-500/20 p-4">
+                        <div className="border-t border-gray-200 dark:border-brand-cyan/20 p-4">
                             <form onSubmit={handleSubmit} className="flex items-end space-x-2">
                                 <textarea
                                     value={inputMessage}
                                     onChange={(e) => setInputMessage(e.target.value)}
                                     onKeyDown={handleKeyPress}
                                     placeholder={config.ui.placeholderText}
-                                    className="flex-1 bg-dark-800 border border-gold-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500/40 focus:ring-1 focus:ring-gold-500/20 transition-all resize-none min-h-[48px] max-h-32 overflow-y-auto"
+                                    className="flex-1 bg-gray-50 dark:bg-dark-800 border border-gray-300 dark:border-brand-cyan/20 rounded-xl px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan/40 focus:ring-1 focus:ring-brand-cyan/20 transition-all resize-none min-h-[48px] max-h-32 overflow-y-auto"
                                     rows={1}
                                     disabled={isLoading}
                                     style={{

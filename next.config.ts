@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     mcpServer: true,
   },
+  images: {
+    domains: ['i.ibb.co'],
+  },
 }
 
 export default nextConfig

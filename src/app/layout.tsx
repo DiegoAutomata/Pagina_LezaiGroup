@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google';
 import { siteConfig } from '@/config/siteConfig'
 import { ChatBot } from '@/shared/components/ui/ChatBot'
+import { ThemeProvider } from '@/shared/components/providers/ThemeProvider'
 import './globals.css'
 
 const fontSans = Inter({
@@ -40,10 +41,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`}>
-      <body className={`antialiased font-sans bg-dark-950 text-white min-h-screen`}>
-        {children}
-        <ChatBot />
+    <html lang="es" className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable}`} suppressHydrationWarning>
+      <body className={`antialiased font-sans bg-white dark:bg-dark-950 text-dark-950 dark:text-white min-h-screen transition-colors duration-300`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+          <ChatBot />
+        </ThemeProvider>
       </body>
     </html>
   )

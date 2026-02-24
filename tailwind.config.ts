@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
@@ -9,19 +10,27 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // R&L AI Brand Colors
+        brand: {
+          cyan: '#06b6d4',
+          blue: '#1e3a8a',
+          orange: '#f97316',
+          amber: '#f59e0b',
+          dark: '#0f172a'
+        },
         // Custom AI Agency Gold & Black Palette
         gold: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
-          950: '#451a03',
+          50: '#ecfeff',
+          100: '#cffafe',
+          200: '#a5f3fc',
+          300: '#67e8f9',
+          400: '#06b6d4', // Using cyan for middle gold replacing
+          500: '#0891b2',
+          600: '#0e7490',
+          700: '#155e75',
+          800: '#164e63',
+          900: '#083344',
+          950: '#082f49',
         },
         dark: {
           50: '#f9fafb',
@@ -107,7 +116,7 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gold-gradient': 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #06b6d4 0%, #f97316 100%)',
         'dark-gradient': 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%)',
         'hero-gradient': 'linear-gradient(135deg, #030712 0%, #111827 100%)',
       },

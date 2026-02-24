@@ -56,7 +56,7 @@ export function Process() {
     return (
         <section
             id="process"
-            className="py-24 bg-gradient-to-b from-dark-950 to-dark-900"
+            className="py-24 bg-gray-50 dark:bg-gradient-to-b dark:from-dark-950 dark:to-dark-900 transition-colors duration-300"
             ref={ref}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,21 +67,21 @@ export function Process() {
                     className="space-y-16"
                 >
                     <motion.div variants={itemVariants} className="text-center space-y-4">
-                        <div className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-400 text-sm font-medium">
+                        <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan dark:text-brand-cyan text-sm font-medium">
                             <PlayIcon className="w-4 h-4 mr-2" />
                             Nuestro Proceso Probado
                         </div>
-                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
+                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-950 dark:text-white">
                             Cómo Pasas De <span className="text-gold-gradient">'Estoy Saturado'</span> a 'Tengo Tiempo Para Crecer'
                         </h2>
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="space-y-12">
                         <div className="text-center">
-                            <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
+                            <h3 className="text-2xl sm:text-3xl font-display font-bold text-dark-950 dark:text-white mb-4">
                                 Simple, Claro y <span className="text-gold-gradient">Sin Sorpresas</span>
                             </h3>
-                            <p className="text-gray-300 max-w-2xl mx-auto">
+                            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                                 Te explicamos exactamente qué va a pasar en cada paso, sin letra pequeña ni tecnicismos
                             </p>
                         </div>
@@ -93,27 +93,27 @@ export function Process() {
                                     variants={itemVariants}
                                     className="relative"
                                 >
-                                    <div className="card-premium text-center space-y-6 relative flex flex-col h-full">
+                                    <div className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 hover:border-brand-cyan/40 transition-all duration-300 hover:shadow-lg hover:shadow-brand-cyan/10 text-center space-y-6 relative flex flex-col h-full shadow-sm dark:shadow-none">
                                         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                                            <div className="w-8 h-8 bg-gold-gradient rounded-full flex items-center justify-center text-dark-950 font-bold text-sm">
+                                            <div className="w-8 h-8 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full flex items-center justify-center text-white font-bold text-sm">
                                                 {index + 1}
                                             </div>
                                         </div>
 
                                         <div className="flex justify-center pt-4">
-                                            <div className="w-16 h-16 bg-gold-500/10 rounded-xl flex items-center justify-center">
-                                                <step.icon className="w-8 h-8 text-gold-400" />
+                                            <div className="w-16 h-16 bg-brand-cyan/10 rounded-xl flex items-center justify-center">
+                                                <step.icon className="w-8 h-8 text-brand-orange" />
                                             </div>
                                         </div>
 
                                         <div className="space-y-3 flex-grow">
-                                            <h4 className="text-xl font-display font-semibold text-white">
+                                            <h4 className="text-xl font-display font-semibold text-dark-950 dark:text-white">
                                                 {step.title}
                                             </h4>
-                                            <p className="text-gray-300 leading-relaxed">
+                                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                                 {step.description}
                                             </p>
-                                            <div className="inline-flex items-center px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 text-sm">
+                                            <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan text-sm">
                                                 <ClockIcon className="w-4 h-4 mr-1" />
                                                 {step.duration}
                                             </div>
@@ -129,11 +129,11 @@ export function Process() {
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="text-center">
-                        <div className="bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 max-w-3xl mx-auto">
-                            <h3 className="text-2xl font-display font-bold text-white mb-4">
+                        <div className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 max-w-3xl mx-auto shadow-sm dark:shadow-none">
+                            <h3 className="text-2xl font-display font-bold text-dark-950 dark:text-white mb-4">
                                 <span className="text-gold-gradient">✅ En 1-2 semanas</span> ya tienes todo funcionando
                             </h3>
-                            <p className="text-gray-300 mb-6">
+                            <p className="text-gray-600 dark:text-gray-300 mb-6">
                                 🤝 Te acompañamos hasta que te sientas cómodo usándolo<br />
                                 💬 Platicamos sin compromiso sobre tu situación específica
                             </p>

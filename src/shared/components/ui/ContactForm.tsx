@@ -130,8 +130,8 @@ export function ContactForm() {
             className="text-center py-8"
         >
             <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-white mb-2">¡Mensaje Enviado!</h3>
-            <p className="text-gray-300">
+            <h3 className="text-2xl font-bold text-dark-950 dark:text-white mb-2">¡Mensaje Enviado!</h3>
+            <p className="text-gray-600 dark:text-gray-300">
                 Te contactaremos en las próximas 24 horas para tu consulta estratégica gratuita.
             </p>
         </motion.div>
@@ -152,7 +152,7 @@ export function ContactForm() {
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Nombre Completo *
                                 </label>
                                 <input
@@ -161,8 +161,8 @@ export function ContactForm() {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.name ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan transition-colors`}
                                     placeholder="Tu nombre completo"
                                 />
                                 {errors.name && (
@@ -178,7 +178,7 @@ export function ContactForm() {
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Email Corporativo *
                                 </label>
                                 <input
@@ -187,8 +187,8 @@ export function ContactForm() {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.email ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan transition-colors`}
                                     placeholder="tu@empresa.com"
                                 />
                                 {errors.email && (
@@ -206,7 +206,7 @@ export function ContactForm() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Teléfono/WhatsApp *
                                 </label>
                                 <input
@@ -215,8 +215,8 @@ export function ContactForm() {
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.phone ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan transition-colors`}
                                     placeholder="+52 55 1234 5678"
                                 />
                                 {errors.phone && (
@@ -232,7 +232,7 @@ export function ContactForm() {
                             </div>
 
                             <div>
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Empresa *
                                 </label>
                                 <input
@@ -241,8 +241,8 @@ export function ContactForm() {
                                     name="company"
                                     value={formData.company}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.company ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.company ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan transition-colors`}
                                     placeholder="Nombre de tu empresa"
                                 />
                                 {errors.company && (
@@ -260,7 +260,7 @@ export function ContactForm() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="whatsappVolume" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="whatsappVolume" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Volumen de clientes en WhatsApp *
                                 </label>
                                 <select
@@ -268,12 +268,12 @@ export function ContactForm() {
                                     name="whatsappVolume"
                                     value={formData.whatsappVolume}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.whatsappVolume ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.whatsappVolume ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white focus:outline-none focus:border-brand-cyan transition-colors`}
                                 >
                                     <option value="">Selecciona un rango</option>
                                     {whatsappVolumeOptions.map(option => (
-                                        <option key={option.value} value={option.value} className="bg-dark-800">
+                                        <option key={option.value} value={option.value} className="bg-white dark:bg-dark-800 text-dark-950 dark:text-white">
                                             {option.label}
                                         </option>
                                     ))}
@@ -291,7 +291,7 @@ export function ContactForm() {
                             </div>
 
                             <div>
-                                <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     Servicio de Interés *
                                 </label>
                                 <select
@@ -299,12 +299,12 @@ export function ContactForm() {
                                     name="service"
                                     value={formData.service}
                                     onChange={handleChange}
-                                    className={`w-full bg-dark-800/50 border ${errors.service ? 'border-red-500' : 'border-gray-600'
-                                        } rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold-500 transition-colors`}
+                                    className={`w-full bg-white dark:bg-dark-800/50 border ${errors.service ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                                        } rounded-lg px-4 py-3 text-dark-950 dark:text-white focus:outline-none focus:border-brand-cyan transition-colors`}
                                 >
                                     <option value="">Selecciona un servicio</option>
                                     {serviceOptions.map(option => (
-                                        <option key={option.value} value={option.value} className="bg-dark-800">
+                                        <option key={option.value} value={option.value} className="bg-white dark:bg-dark-800 text-dark-950 dark:text-white">
                                             {option.label}
                                         </option>
                                     ))}
@@ -323,7 +323,7 @@ export function ContactForm() {
                         </div>
 
                         <div>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Cuéntanos tu Desafío (Opcional)
                             </label>
                             <textarea
@@ -332,7 +332,7 @@ export function ContactForm() {
                                 value={formData.message}
                                 onChange={handleChange}
                                 rows={4}
-                                className="w-full bg-dark-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-gold-500 transition-colors resize-none"
+                                className="w-full bg-white dark:bg-dark-800/50 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan transition-colors resize-none"
                                 placeholder="Describe brevemente el principal desafío que quieres resolver con IA..."
                             />
                         </div>
@@ -357,7 +357,7 @@ export function ContactForm() {
                             )}
                         </motion.button>
 
-                        <div className="text-center text-sm text-gray-400 space-y-2 mt-6 pt-6 border-t border-gray-700">
+                        <div className="text-center text-sm text-gray-600 dark:text-gray-400 space-y-2 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                             <div className="space-y-1">
                                 <p>✅ Respuesta garantizada en 24 horas</p>
                                 <p>✅ Consulta 100% gratuita, sin compromisos</p>

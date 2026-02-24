@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { cn, scrollToElement } from '@/shared/lib/utils';
+import { ThemeToggle } from '@/shared/components/ui/ThemeToggle';
 
 const navigationItems = [
     { name: 'Inicio', href: 'hero' },
@@ -15,8 +18,11 @@ const navigationItems = [
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
@@ -38,7 +44,7 @@ export function Header() {
             className={cn(
                 'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
                 isScrolled
-                    ? 'bg-dark-950/95 backdrop-blur-lg border-b border-gold-500/20'
+                    ? 'bg-white/95 dark:bg-dark-950/95 backdrop-blur-lg border-b border-gray-200 dark:border-gold-500/20'
                     : 'bg-transparent'
             )}
         >
@@ -50,13 +56,19 @@ export function Header() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="flex-shrink-0 flex items-center space-x-4"
                     >
-                        <h1 className="text-2xl font-display font-bold text-gold-gradient">
-                            Lezai<span className="text-white">Group</span>
+                        {mounted && (
+                            <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-dark-950 border-2 border-brand-cyan/20">
+                                <Image
+                                    src="/logo-rl.jpg"
+                                    alt="R&L AI Logo"
+                                    fill
+                                    className="object-cover scale-[1.12]"
+                                />
+                            </div>
+                        )}
+                        <h1 className="text-xl font-display font-bold text-dark-950 dark:text-white transition-colors hidden sm:block">
+                            R&L AI
                         </h1>
-
-                        <div className="hidden lg:flex items-center px-3 py-1 bg-gold-500/10 border border-gold-500/20 rounded-full text-xs text-gold-400">
-                            🤝 Consulta gratis, sin presión
-                        </div>
                     </motion.div>
 
                     <motion.nav
@@ -72,7 +84,7 @@ export function Header() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                                 onClick={() => handleNavClick(item.href)}
-                                className="text-gray-300 hover:text-gold-400 px-3 py-2 text-sm font-medium transition-colors duration-200 animated-underline"
+                                className="text-gray-600 hover:text-brand-cyan dark:text-gray-300 dark:hover:text-brand-cyan px-3 py-2 text-sm font-medium transition-colors duration-200 animated-underline"
                             >
                                 {item.name}
                             </motion.button>
@@ -83,35 +95,28 @@ export function Header() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
-                        className="hidden md:block"
+                        className="hidden md:flex items-center space-x-6"
                     >
-                        <div className="space-y-1">
-                            <button
-                                onClick={() => handleNavClick('contact')}
-                                className="btn-primary text-sm"
-                            >
-                                Hablar Directo con Diego
-                            </button>
-                            <p className="text-xs text-gray-400 text-center">
-                                WhatsApp directo con el desarrollador
-                            </p>
-                        </div>
+                        <ThemeToggle />
                     </motion.div>
 
-                    <motion.button
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        className="md:hidden p-2 rounded-md text-gray-400 hover:text-gold-400 hover:bg-dark-800 transition-colors duration-200"
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    >
-                        <span className="sr-only">Abrir menú principal</span>
-                        {isMobileMenuOpen ? (
-                            <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                        ) : (
-                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                        )}
-                    </motion.button>
+                    <div className="flex items-center space-x-2 md:hidden">
+                        <ThemeToggle />
+                        <motion.button
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                            className="p-2 rounded-md text-gray-500 hover:text-brand-cyan hover:bg-gray-100 dark:text-gray-400 dark:hover:text-brand-cyan dark:hover:bg-dark-800 transition-colors duration-200"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            <span className="sr-only">Abrir menú principal</span>
+                            {isMobileMenuOpen ? (
+                                <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                            ) : (
+                                <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                            )}
+                        </motion.button>
+                    </div>
                 </div>
             </div>
 
@@ -122,7 +127,7 @@ export function Header() {
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="md:hidden bg-dark-950/98 backdrop-blur-lg border-b border-gold-500/20"
+                        className="md:hidden bg-white/98 dark:bg-dark-950/98 backdrop-blur-lg border-b border-gray-200 dark:border-brand-cyan/20 shadow-sm dark:shadow-none"
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {navigationItems.map((item, index) => (
@@ -132,7 +137,7 @@ export function Header() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, delay: index * 0.1 }}
                                     onClick={() => handleNavClick(item.href)}
-                                    className="text-gray-300 hover:text-gold-400 hover:bg-dark-800 block px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors duration-200"
+                                    className="text-gray-600 hover:text-brand-cyan hover:bg-gray-100 dark:text-gray-300 dark:hover:text-brand-cyan dark:hover:bg-dark-800 block px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors duration-200"
                                 >
                                     {item.name}
                                 </motion.button>
@@ -143,15 +148,6 @@ export function Header() {
                                 transition={{ duration: 0.3, delay: 0.4 }}
                                 className="space-y-2 mt-4"
                             >
-                                <button
-                                    onClick={() => handleNavClick('contact')}
-                                    className="btn-primary w-full text-sm"
-                                >
-                                    Hablar Directo con Diego
-                                </button>
-                                <p className="text-xs text-gray-400 text-center">
-                                    💬 WhatsApp directo • 🆓 Sin compromisos
-                                </p>
                             </motion.div>
                         </div>
                     </motion.div>

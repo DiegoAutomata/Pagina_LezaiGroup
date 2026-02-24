@@ -32,8 +32,8 @@ const faqData: FAQItem[] = [
         answer: "Casi nada. 30 minutos para explicarnos cómo trabajas, y nosotros nos encargamos del resto. Una vez funcionando, el sistema trabaja solo - tú solo tienes que revisar los resultados."
     },
     {
-        question: "¿Funciona para empresas pequeñas o solo para grandes?",
-        answer: "Especialmente para empresas pequeñas y medianas. Las grandes ya tienen equipos de TI. Nosotros le damos a tu PyME las mismas herramientas que usan las empresas grandes, pero adaptadas a tu tamaño y presupuesto."
+        question: "¿Funciona para pymes o solo para grandes?",
+        answer: "Especialmente para pymes. Las grandes ya tienen equipos de TI. Nosotros le damos a tu PyME las mismas herramientas que usan las empresas grandes, pero adaptadas a tu tamaño y presupuesto."
     }
 ];
 
@@ -78,7 +78,7 @@ export function FAQ() {
     return (
         <section
             id="faq"
-            className="py-24 bg-gradient-to-b from-dark-950 to-dark-900"
+            className="py-24 bg-gray-50 dark:bg-gradient-to-b dark:from-dark-950 dark:to-dark-900 transition-colors duration-300"
             ref={ref}
         >
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,11 +89,11 @@ export function FAQ() {
                     className="space-y-12"
                 >
                     <motion.div variants={itemVariants} className="text-center space-y-4">
-                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-white">
+                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-950 dark:text-white">
                             Las Preguntas Que Siempre{' '}
                             <span className="text-gold-gradient">Nos Hacen</span>
                         </h2>
-                        <p className="text-xl text-gray-300">
+                        <p className="text-xl text-gray-600 dark:text-gray-300">
                             (Con Respuestas Honestas)
                         </p>
                     </motion.div>
@@ -103,20 +103,20 @@ export function FAQ() {
                             <motion.div
                                 key={index}
                                 variants={itemVariants}
-                                className="bg-dark-800/50 border border-gold-500/10 rounded-2xl overflow-hidden hover:border-gold-500/30 transition-all duration-300"
+                                className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/10 rounded-2xl overflow-hidden hover:border-brand-cyan/30 transition-all duration-300 shadow-sm dark:shadow-none"
                             >
                                 <button
                                     onClick={() => toggleItem(index)}
-                                    className="w-full px-8 py-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-gold-500/50 rounded-2xl"
+                                    className="w-full px-8 py-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-brand-cyan/50 rounded-2xl"
                                 >
-                                    <h3 className="text-lg font-semibold text-white pr-4">
+                                    <h3 className="text-lg font-semibold text-dark-950 dark:text-white pr-4">
                                         {item.question}
                                     </h3>
                                     <div className="flex-shrink-0">
                                         {openItems.includes(index) ? (
-                                            <MinusIcon className="w-6 h-6 text-gold-400" />
+                                            <MinusIcon className="w-6 h-6 text-brand-orange" />
                                         ) : (
-                                            <PlusIcon className="w-6 h-6 text-gold-400" />
+                                            <PlusIcon className="w-6 h-6 text-brand-orange" />
                                         )}
                                     </div>
                                 </button>
@@ -130,8 +130,8 @@ export function FAQ() {
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="px-8 pb-6">
-                                        <p className="text-gray-300 leading-relaxed">
+                                    <div className="px-8 pb-6 border-t border-gray-100 dark:border-brand-cyan/5 pt-4">
+                                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                             {item.answer}
                                         </p>
                                     </div>
@@ -141,13 +141,13 @@ export function FAQ() {
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="text-center">
-                        <div className="bg-gold-500/5 border border-gold-500/20 rounded-2xl p-8">
-                            <h3 className="text-2xl font-display font-bold text-white mb-4">
+                        <div className="bg-white dark:bg-brand-cyan/5 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 shadow-sm dark:shadow-none">
+                            <h3 className="text-2xl font-display font-bold text-dark-950 dark:text-white mb-4">
                                 ¿Tienes Otras Preguntas?
                             </h3>
-                            <p className="text-gray-300 mb-6">
+                            <p className="text-gray-600 dark:text-gray-300 mb-6">
                                 Prefiero resolver todas tus dudas antes de que tomes cualquier decisión.{' '}
-                                <span className="text-gold-400 font-semibold">
+                                <span className="text-brand-orange font-semibold">
                                     Escríbeme directamente y te respondo en menos de 24 horas.
                                 </span>
                             </p>
