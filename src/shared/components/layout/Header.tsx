@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { cn, scrollToElement } from '@/shared/lib/utils';
@@ -55,7 +56,7 @@ export function Header() {
                     ? "max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10"
                     : "max-w-7xl px-4 sm:px-6 lg:px-8 bg-transparent shadow-none ring-0 rounded-none"
             )}>
-                <div className="flex items-center justify-between h-20">
+                <div className={cn("flex items-center justify-between transition-all duration-500", isScrolled ? "h-20 md:h-24" : "h-32 md:h-40")}>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -63,21 +64,20 @@ export function Header() {
                         className="flex-shrink-0 flex items-center space-x-4"
                     >
                         {mounted && (
-                            <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-white dark:bg-dark-950 ring-1 ring-gray-900/5 dark:ring-white/10 shadow-sm transition-transform duration-500 group-hover:scale-105">
+                            <Link href="/" className="relative flex-shrink-0 transition-transform duration-500 hover:scale-105 group-hover:opacity-90 flex items-center">
                                 <Image
-                                    src="/logo-rl.jpg"
-                                    alt="R&L AI Logo"
-                                    fill
-                                    className="object-cover scale-[1.12] transition-transform duration-500 group-hover:scale-[1.18]"
+                                    src="/logo-lezrai-cropped.png"
+                                    alt="Lezrai Logo"
+                                    width={325}
+                                    height={327}
+                                    className={cn(
+                                        "object-contain w-auto drop-shadow-md transition-all duration-500",
+                                        isScrolled ? "h-14 md:h-16" : "h-20 md:h-28 lg:h-32"
+                                    )}
+                                    priority
                                 />
-                            </div>
+                            </Link>
                         )}
-                        <h1 className={cn(
-                            "text-xl font-semibold transition-colors hidden sm:block tracking-tight",
-                            isScrolled ? "text-white" : "text-dark-950 dark:text-white"
-                        )}>
-                            R&L <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-amber to-brand-orange">AI</span>
-                        </h1>
                     </motion.div>
 
                     <motion.nav

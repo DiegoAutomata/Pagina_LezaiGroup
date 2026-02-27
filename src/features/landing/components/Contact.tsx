@@ -74,7 +74,7 @@ export function Contact() {
                                     </div>
                                     <div>
                                         <p className="text-gray-500 dark:text-gray-400 text-sm">Email</p>
-                                        <a href="mailto:contacto@lezaigroup.com" className="text-dark-950 dark:text-white hover:text-brand-cyan transition-colors">contacto@lezaigroup.com</a>
+                                        <a href="mailto:contacto@lezrai.com" className="text-dark-950 dark:text-white hover:text-brand-cyan transition-colors">contacto@lezrai.com</a>
                                     </div>
                                 </div>
 

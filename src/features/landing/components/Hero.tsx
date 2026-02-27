@@ -93,7 +93,7 @@ export function Hero() {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="space-y-8 text-center lg:text-left pt-8 flex flex-col items-center lg:items-start"
+                        className="space-y-8 text-center lg:text-left pt-24 lg:pt-32 flex flex-col items-center lg:items-start"
                     >
                         <motion.div variants={itemVariants} className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
                             <h1 className="text-5xl md:text-7xl font-extrabold text-dark-950 dark:text-white tracking-tight leading-[1.1]">
