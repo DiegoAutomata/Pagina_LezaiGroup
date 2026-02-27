@@ -10,7 +10,7 @@ export function Footer() {
                         Inteligencia Artificial a medida para tu Negocio
                     </p>
                     <div className="flex justify-center items-center space-x-8 text-sm text-gray-500 dark:text-gray-500">
-                        <span>&#169; {new Date().getFullYear()} R&L AI. Todos los derechos reservados.</span>
+                        <span>&#169; 2025 R&L AI. Todos los derechos reservados.</span>
                     </div>
                 </div>
             </div>

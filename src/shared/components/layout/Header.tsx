@@ -11,7 +11,8 @@ import { ThemeToggle } from '@/shared/components/ui/ThemeToggle';
 const navigationItems = [
     { name: 'Inicio', href: 'hero' },
     { name: 'Servicios', href: 'benefits' },
-    { name: 'Nosotros', href: 'process' },
+    { name: 'Procesos', href: 'process' },
+    { name: 'Preguntas Frecuentes', href: 'faq' },
     { name: 'Contacto', href: 'contact' },
 ];
 
@@ -42,13 +43,18 @@ export function Header() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
             className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+                'fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform',
                 isScrolled
-                    ? 'bg-white/95 dark:bg-dark-950/95 backdrop-blur-lg border-b border-gray-200 dark:border-gold-500/20'
-                    : 'bg-transparent'
+                    ? 'py-4'
+                    : 'py-0 bg-transparent dark:bg-transparent border-b border-transparent dark:border-transparent'
             )}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={cn(
+                "transition-all duration-500 mx-auto",
+                isScrolled
+                    ? "max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10"
+                    : "max-w-7xl px-4 sm:px-6 lg:px-8 bg-transparent shadow-none ring-0 rounded-none"
+            )}>
                 <div className="flex items-center justify-between h-20">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -57,17 +63,20 @@ export function Header() {
                         className="flex-shrink-0 flex items-center space-x-4"
                     >
                         {mounted && (
-                            <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-dark-950 border-2 border-brand-cyan/20">
+                            <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-white dark:bg-dark-950 ring-1 ring-gray-900/5 dark:ring-white/10 shadow-sm transition-transform duration-500 group-hover:scale-105">
                                 <Image
                                     src="/logo-rl.jpg"
                                     alt="R&L AI Logo"
                                     fill
-                                    className="object-cover scale-[1.12]"
+                                    className="object-cover scale-[1.12] transition-transform duration-500 group-hover:scale-[1.18]"
                                 />
                             </div>
                         )}
-                        <h1 className="text-xl font-display font-bold text-dark-950 dark:text-white transition-colors hidden sm:block">
-                            R&L AI
+                        <h1 className={cn(
+                            "text-xl font-semibold transition-colors hidden sm:block tracking-tight",
+                            isScrolled ? "text-white" : "text-dark-950 dark:text-white"
+                        )}>
+                            R&L <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-amber to-brand-orange">AI</span>
                         </h1>
                     </motion.div>
 
@@ -84,7 +93,12 @@ export function Header() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                                 onClick={() => handleNavClick(item.href)}
-                                className="text-gray-600 hover:text-brand-cyan dark:text-gray-300 dark:hover:text-brand-cyan px-3 py-2 text-sm font-medium transition-colors duration-200 animated-underline"
+                                className={cn(
+                                    "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full",
+                                    isScrolled
+                                        ? "text-gray-300 hover:text-white hover:bg-white/10"
+                                        : "text-dark-950 dark:text-white hover:bg-gray-900/5 dark:hover:bg-white/10"
+                                )}
                             >
                                 {item.name}
                             </motion.button>
@@ -106,7 +120,12 @@ export function Header() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className="p-2 rounded-md text-gray-500 hover:text-brand-cyan hover:bg-gray-100 dark:text-gray-400 dark:hover:text-brand-cyan dark:hover:bg-dark-800 transition-colors duration-200"
+                            className={cn(
+                                "p-2 rounded-full transition-all duration-300",
+                                isScrolled
+                                    ? "text-gray-300 hover:text-white hover:bg-white/10"
+                                    : "text-dark-950 dark:text-white hover:bg-gray-900/5 dark:hover:bg-white/10"
+                            )}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             <span className="sr-only">Abrir menú principal</span>
@@ -126,8 +145,8 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="md:hidden bg-white/98 dark:bg-dark-950/98 backdrop-blur-lg border-b border-gray-200 dark:border-brand-cyan/20 shadow-sm dark:shadow-none"
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="md:hidden absolute top-full left-4 right-4 mt-2 bg-white/90 dark:bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)] ring-1 ring-gray-900/10 dark:ring-white/10 overflow-hidden"
                     >
                         <div className="px-2 pt-2 pb-3 space-y-1">
                             {navigationItems.map((item, index) => (
@@ -137,7 +156,7 @@ export function Header() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.3, delay: index * 0.1 }}
                                     onClick={() => handleNavClick(item.href)}
-                                    className="text-gray-600 hover:text-brand-cyan hover:bg-gray-100 dark:text-gray-300 dark:hover:text-brand-cyan dark:hover:bg-dark-800 block px-3 py-2 text-base font-medium w-full text-left rounded-md transition-colors duration-200"
+                                    className="text-gray-600 dark:text-gray-300 hover:text-dark-950 dark:hover:text-white hover:bg-gray-900/5 dark:hover:bg-white/10 block px-4 py-3 text-base font-medium w-full text-left rounded-2xl transition-all duration-300"
                                 >
                                     {item.name}
                                 </motion.button>

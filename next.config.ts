@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   experimental: {
     mcpServer: true,
   },
+  devIndicators: {
+    appIsrStatus: false,
+    buildActivity: false,
+  },
   images: {
     domains: ['i.ibb.co'],
   },

@@ -41,14 +41,14 @@ export function Contact() {
                             initial={{ opacity: 0, x: -50 }}
                             animate={inView ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="glass p-8 rounded-2xl"
+                            className="spotlight-card glass p-8 rounded-2xl"
                         >
                             <div className="mb-8">
                                 <h3 className="text-2xl font-bold text-dark-950 dark:text-white mb-2">
                                     Cuéntanos Tu Situación
                                 </h3>
                                 <p className="text-gray-500 dark:text-gray-400">
-                                    📞 Hablas directo con Diego, el desarrollador • ⏰ Respuesta garantizada en menos de 24 horas
+                                    📞 Hablas directo con el desarrollador • ⏰ Respuesta garantizada en menos de 24 horas
                                 </p>
                             </div>
 
@@ -61,7 +61,7 @@ export function Contact() {
                             initial={{ opacity: 0, x: 50 }}
                             animate={inView ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="bg-white dark:bg-dark-800/10 border border-gray-200 dark:border-white/10 p-6 rounded-2xl shadow-sm dark:shadow-none"
+                            className="spotlight-card bg-white dark:bg-dark-800/10 border border-gray-200 dark:border-white/10 p-6 rounded-2xl shadow-sm dark:shadow-none"
                         >
                             <h3 className="text-xl font-bold text-dark-950 dark:text-white mb-6">
                                 💬 Contacto Personal

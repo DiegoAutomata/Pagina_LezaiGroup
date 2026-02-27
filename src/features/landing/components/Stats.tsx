@@ -74,41 +74,6 @@ export function Stats() {
                     animate={inView ? 'visible' : 'hidden'}
                     className="space-y-16"
                 >
-                    <motion.div variants={itemVariants} className="text-center space-y-4">
-                        <h2 className="text-3xl sm:text-4xl font-display font-bold text-dark-950 dark:text-white">
-                            Lo Que{' '}
-                            <span className="text-gold-gradient">Nuestros Clientes</span>{' '}
-                            Nos Dicen
-                        </h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                            Historias reales de empresarios que ya automatizaron lo que más tiempo les quitaba
-                        </p>
-                    </motion.div>
-
-                    <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {testimonials.map((testimonial, index) => (
-                            <motion.div
-                                key={index}
-                                variants={itemVariants}
-                                className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/10 rounded-2xl p-6 text-center space-y-4 hover:border-brand-cyan/30 transition-all duration-300 transform hover:-translate-y-1 shadow-sm dark:shadow-none"
-                            >
-                                <div className="w-12 h-12 bg-brand-cyan/10 rounded-xl flex items-center justify-center mx-auto">
-                                    <testimonial.icon className="w-6 h-6 text-brand-orange" />
-                                </div>
-
-                                <blockquote className="text-dark-950 dark:text-white font-medium text-lg leading-relaxed">
-                                    "{testimonial.quote}"
-                                </blockquote>
-
-                                {testimonial.context && (
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-                                        {testimonial.context}
-                                    </p>
-                                )}
-                            </motion.div>
-                        ))}
-                    </motion.div>
-
                     <motion.div variants={itemVariants} className="text-center">
                         <div className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 max-w-6xl mx-auto shadow-sm dark:shadow-none">
                             <h3 className="text-2xl font-display font-bold text-dark-950 dark:text-white mb-8">

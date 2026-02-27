@@ -103,7 +103,7 @@ export function FAQ() {
                             <motion.div
                                 key={index}
                                 variants={itemVariants}
-                                className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/10 rounded-2xl overflow-hidden hover:border-brand-cyan/30 transition-all duration-300 shadow-sm dark:shadow-none"
+                                className="spotlight-card bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/10 rounded-2xl overflow-hidden hover:border-brand-cyan/30 transition-all duration-300 shadow-sm dark:shadow-none"
                             >
                                 <button
                                     onClick={() => toggleItem(index)}

@@ -67,61 +67,45 @@ export function Process() {
                     className="space-y-16"
                 >
                     <motion.div variants={itemVariants} className="text-center space-y-4">
-                        <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan dark:text-brand-cyan text-sm font-medium">
-                            <PlayIcon className="w-4 h-4 mr-2" />
-                            Nuestro Proceso Probado
-                        </div>
-                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-950 dark:text-white">
-                            Cómo Pasas De <span className="text-gold-gradient">'Estoy Saturado'</span> a 'Tengo Tiempo Para Crecer'
+                        <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-950 dark:text-white text-center">
+                            El paso a paso que seguimos con <span className="text-gold-gradient">nuestros clientes.</span>
                         </h2>
                     </motion.div>
 
                     <motion.div variants={itemVariants} className="space-y-12">
-                        <div className="text-center">
-                            <h3 className="text-2xl sm:text-3xl font-display font-bold text-dark-950 dark:text-white mb-4">
-                                Simple, Claro y <span className="text-gold-gradient">Sin Sorpresas</span>
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                                Te explicamos exactamente qué va a pasar en cada paso, sin letra pequeña ni tecnicismos
-                            </p>
-                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
                             {processSteps.map((step, index) => (
                                 <motion.div
                                     key={index}
                                     variants={itemVariants}
-                                    className="relative"
+                                    className="relative flex"
                                 >
-                                    <div className="bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 hover:border-brand-cyan/40 transition-all duration-300 hover:shadow-lg hover:shadow-brand-cyan/10 text-center space-y-6 relative flex flex-col h-full shadow-sm dark:shadow-none">
-                                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                                            <div className="w-8 h-8 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full flex items-center justify-center text-white font-bold text-sm">
-                                                {index + 1}
-                                            </div>
-                                        </div>
-
-                                        <div className="flex justify-center pt-4">
+                                    <div className="spotlight-card bg-white dark:bg-dark-800/50 border border-gray-200 dark:border-brand-cyan/20 rounded-2xl p-8 hover:border-brand-cyan/40 transition-all duration-300 hover:shadow-lg hover:shadow-brand-cyan/10 text-center space-y-6 flex flex-col w-full shadow-sm dark:shadow-none mt-4">
+                                        <div className="flex justify-center pt-2">
                                             <div className="w-16 h-16 bg-brand-cyan/10 rounded-xl flex items-center justify-center">
                                                 <step.icon className="w-8 h-8 text-brand-orange" />
                                             </div>
                                         </div>
 
-                                        <div className="space-y-3 flex-grow">
+                                        <div className="space-y-3 flex-grow flex flex-col">
                                             <h4 className="text-xl font-display font-semibold text-dark-950 dark:text-white">
                                                 {step.title}
                                             </h4>
-                                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed flex-grow">
                                                 {step.description}
                                             </p>
-                                            <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-cyan/10 text-brand-cyan text-sm">
-                                                <ClockIcon className="w-4 h-4 mr-1" />
-                                                {step.duration}
+                                            <div className="pt-4 mt-auto">
+                                                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-brand-orange/10 dark:bg-brand-orange/5 border border-brand-orange/50 text-brand-orange dark:text-brand-orange font-extrabold text-sm shadow-[0_0_15px_rgba(212,175,55,0.4)] focus:outline-none">
+                                                    <ClockIcon className="w-4 h-4 mr-1.5" />
+                                                    {step.duration}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     {index < processSteps.length - 1 && (
-                                        <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-gold-500 to-transparent transform -translate-y-1/2" />
+                                        <div className="hidden md:block absolute top-[60%] -right-4 w-8 h-px bg-gradient-to-r from-gold-500 to-transparent" />
                                     )}
                                 </motion.div>
                             ))}

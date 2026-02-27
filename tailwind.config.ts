@@ -12,11 +12,11 @@ const config: Config = {
         foreground: "var(--foreground)",
         // R&L AI Brand Colors
         brand: {
-          cyan: '#06b6d4',
-          blue: '#1e3a8a',
-          orange: '#f97316',
-          amber: '#f59e0b',
-          dark: '#0f172a'
+          cyan: '#1F2937', // Replaced bright cyan with deep slate gray
+          blue: '#111827', // Replaced blue with very dark gray/black
+          orange: '#D4AF37', // Replaced bright orange with classic metallic gold
+          amber: '#FBBF24', // Kept amber as a highlight gold
+          dark: '#030712'
         },
         // Custom AI Agency Gold & Black Palette
         gold: {
@@ -116,7 +116,7 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gold-gradient': 'linear-gradient(135deg, #06b6d4 0%, #f97316 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #1F2937 100%)',
         'dark-gradient': 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%)',
         'hero-gradient': 'linear-gradient(135deg, #030712 0%, #111827 100%)',
       },

@@ -20,8 +20,8 @@ interface FormErrors {
 
 const serviceOptions = [
     { value: 'saas-platforms', label: 'Plataformas SaaS y Páginas Web' },
-    { value: 'customer-support', label: 'Asistente multicanal 24/7' },
-    { value: 'n8n-automation', label: 'Automatizaciones N8N' },
+    { value: 'customer-support', label: 'Centro de Atención al Cliente' },
+    { value: 'secretario-personal', label: 'Secretario Personal con IA' },
     { value: 'custom-solution', label: 'Solución Personalizada' },
 ];
 
@@ -66,10 +66,6 @@ export function ContactForm() {
 
         if (!formData.company.trim()) {
             newErrors.company = 'La empresa es requerida';
-        }
-
-        if (!formData.whatsappVolume) {
-            newErrors.whatsappVolume = 'Selecciona el volumen de clientes';
         }
 
         if (!formData.service) {
@@ -261,7 +257,7 @@ export function ContactForm() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label htmlFor="whatsappVolume" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                    Volumen de clientes en WhatsApp *
+                                    Volumen de clientes en WhatsApp (Opcional)
                                 </label>
                                 <select
                                     id="whatsappVolume"
