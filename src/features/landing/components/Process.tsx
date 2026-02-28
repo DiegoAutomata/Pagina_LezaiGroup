@@ -25,7 +25,7 @@ const processSteps = [
     },
 ];
 
-export function Process() {
+export function Process({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.2,
@@ -121,14 +121,16 @@ export function Process() {
                                 🤝 Te acompañamos hasta que te sientas cómodo usándolo<br />
                                 💬 Platicamos sin compromiso sobre tu situación específica
                             </p>
-                            <motion.button
-                                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="btn-primary text-lg px-8 py-4"
+                            <motion.a
+                                href={isAuthenticated ? "https://wa.me/1234567890" : "/login"}
+                                target={isAuthenticated ? "_blank" : undefined}
+                                rel={isAuthenticated ? "noopener noreferrer" : undefined}
+                                className="btn-primary text-lg px-8 py-4 inline-block"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Quiero Platicar Mi Situación
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </motion.div>

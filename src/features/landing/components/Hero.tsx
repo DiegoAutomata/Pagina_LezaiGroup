@@ -55,12 +55,8 @@ const metricsData: MetricData[] = [
     }
 ];
 
-export function Hero() {
+export function Hero({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
     const [selectedMetric, setSelectedMetric] = useState<MetricData | null>(null);
-
-    const handleCTAClick = () => {
-        scrollToElement('contact');
-    };
 
     return (
         <section
@@ -124,8 +120,8 @@ export function Hero() {
                         </motion.div>
 
                         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full mt-4">
-                            <motion.button
-                                onClick={handleCTAClick}
+                            <motion.a
+                                href="/login"
                                 className="btn-primary text-lg group flex-1 md:flex-none shadow-brand-orange/30 dark:shadow-brand-orange/20 relative overflow-hidden"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -134,12 +130,12 @@ export function Hero() {
                                     Descubrir Cómo Funciona
                                     <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform inline" />
                                 </span>
-                            </motion.button>
+                            </motion.a>
 
                             <motion.a
-                                href="https://wa.me/1234567890"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href={isAuthenticated ? "https://wa.me/1234567890" : "/login"}
+                                target={isAuthenticated ? "_blank" : undefined}
+                                rel={isAuthenticated ? "noopener noreferrer" : undefined}
                                 className="btn-secondary text-lg text-center flex-1 md:flex-none flex items-center justify-center"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

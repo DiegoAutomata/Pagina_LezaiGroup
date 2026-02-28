@@ -17,7 +17,7 @@ const navigationItems = [
     { name: 'Contacto', href: 'contact' },
 ];
 
-export function Header() {
+export function Header({ authNode }: { authNode?: React.ReactNode }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { theme } = useTheme();
@@ -107,6 +107,7 @@ export function Header() {
                         className="hidden md:flex items-center space-x-6"
                     >
                         <ThemeToggle />
+                        {authNode}
                     </motion.div>
 
                     <div className="flex items-center space-x-2 md:hidden">
@@ -160,8 +161,9 @@ export function Header() {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: 0.4 }}
-                                className="space-y-2 mt-4"
+                                className="space-y-2 mt-4 px-4"
                             >
+                                {authNode}
                             </motion.div>
                         </div>
                     </motion.div>

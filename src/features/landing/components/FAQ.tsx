@@ -37,7 +37,7 @@ const faqData: FAQItem[] = [
     }
 ];
 
-export function FAQ() {
+export function FAQ({ isAuthenticated = false }: { isAuthenticated?: boolean }) {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -151,14 +151,16 @@ export function FAQ() {
                                     Escríbeme directamente y te respondo en menos de 24 horas.
                                 </span>
                             </p>
-                            <motion.button
-                                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="btn-primary text-lg px-8 py-4"
+                            <motion.a
+                                href={isAuthenticated ? "https://wa.me/1234567890" : "/login"}
+                                target={isAuthenticated ? "_blank" : undefined}
+                                rel={isAuthenticated ? "noopener noreferrer" : undefined}
+                                className="btn-primary text-lg px-8 py-4 inline-block"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Hacer Mi Pregunta Específica
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </motion.div>
                 </motion.div>
