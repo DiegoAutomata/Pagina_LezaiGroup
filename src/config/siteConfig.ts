@@ -126,7 +126,7 @@ export interface SiteConfig {
 // ============================================================
 
 export const siteConfig: SiteConfig = {
-  firmName: 'González & Asociados',
+  firmName: 'Lezrai',
   firmSlogan: 'Nos centramos en las necesidades de su familia',
   firmDescription: 'Bufete de abogados especializado en derecho de familia en Managua, Nicaragua. Representación legal compasiva y efectiva para proteger lo que más importa.',
   founderName: 'Irene González',
@@ -319,9 +319,9 @@ export const siteConfig: SiteConfig = {
   },
 
   seo: {
-    siteTitle: 'González & Asociados | Derecho de Familia en Managua, Nicaragua',
-    titleTemplate: '%s | González & Asociados',
-    defaultDescription: 'Bufete de abogados especializado en derecho de familia en Managua, Nicaragua. Divorcio, custodia, pensión alimenticia, mediación. Consulta gratuita.',
+    siteTitle: 'Lezrai | Software a medida mediante Inteligencia Artificial',
+    titleTemplate: '%s | Lezrai',
+    defaultDescription: 'Digitaliza tu empresa con software a medida mediante inteligencia artificial. Agentes de atención 24/7, webs y sistemas internos.',
     locale: 'es_NI',
   },
 

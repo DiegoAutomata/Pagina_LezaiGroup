@@ -27,6 +27,9 @@ const fontMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: siteConfig.seo.siteTitle,
   description: siteConfig.seo.defaultDescription,
+  icons: {
+    icon: '/images/logo.png',
+  },
   openGraph: {
     title: siteConfig.seo.siteTitle,
     description: siteConfig.seo.defaultDescription,

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { cn, scrollToElement } from '@/shared/lib/utils';
 import { ThemeToggle } from '@/shared/components/ui/ThemeToggle';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const navigationItems = [
     { name: 'Inicio', href: 'hero' },
@@ -56,28 +56,23 @@ export function Header() {
                     ? "max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10"
                     : "max-w-7xl px-4 sm:px-6 lg:px-8 bg-transparent shadow-none ring-0 rounded-none"
             )}>
-                <div className={cn("flex items-center justify-between transition-all duration-500", isScrolled ? "h-20 md:h-24" : "h-32 md:h-40")}>
+                <div className={cn("flex items-center justify-between transition-all duration-500", isScrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="flex-shrink-0 flex items-center space-x-4"
                     >
-                        {mounted && (
-                            <Link href="/" className="relative flex-shrink-0 transition-transform duration-500 hover:scale-105 group-hover:opacity-90 flex items-center">
-                                <Image
-                                    src="/logo-lezrai-cropped.png"
-                                    alt="Lezrai Logo"
-                                    width={325}
-                                    height={327}
-                                    className={cn(
-                                        "object-contain w-auto drop-shadow-md transition-all duration-500",
-                                        isScrolled ? "h-14 md:h-16" : "h-20 md:h-28 lg:h-32"
-                                    )}
-                                    priority
-                                />
-                            </Link>
-                        )}
+                        <button onClick={() => scrollToElement('hero')} className="flex items-center gap-2 cursor-pointer" aria-label="Volver arriba">
+                            <Image
+                                src="/images/logo.png"
+                                alt="LezaiGroup Logo"
+                                width={150}
+                                height={153}
+                                className="h-12 w-auto md:h-16 transition-transform duration-300 hover:scale-105"
+                                priority
+                            />
+                        </button>
                     </motion.div>
 
                     <motion.nav

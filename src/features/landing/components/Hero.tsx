@@ -65,7 +65,7 @@ export function Hero() {
     return (
         <section
             id="hero"
-            className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-[#0A0A0A] pt-32 pb-16 lg:pt-20 transition-colors duration-300"
+            className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-white dark:bg-[#0A0A0A] pt-[64px] md:pt-[80px] pb-12 transition-colors duration-300"
         >
             {/* Unified Video-Like Fluid Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none bg-white dark:bg-[#0A0A0A]">
@@ -93,7 +93,7 @@ export function Hero() {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="space-y-8 text-center lg:text-left pt-24 lg:pt-32 flex flex-col items-center lg:items-start"
+                        className="space-y-8 text-center lg:text-left flex flex-col items-center lg:items-start"
                     >
                         <motion.div variants={itemVariants} className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
                             <h1 className="text-5xl md:text-7xl font-extrabold text-dark-950 dark:text-white tracking-tight leading-[1.1]">

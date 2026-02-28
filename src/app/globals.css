@@ -60,30 +60,57 @@ body {
     @apply bg-dark-800/50 border border-gold-500/20 rounded-2xl p-8 hover:border-gold-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/10;
   }
 
-  /* Premium Spotlight Cards Hover Effect */
-  .spotlight-card {
-    @apply relative overflow-hidden;
+  @property --glow-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
   }
 
+  /* Premium Spotlight Cards - Running Light Border & Hover Aura */
+  .spotlight-card {
+    @apply relative overflow-visible transition-all duration-300 border-transparent dark:border-transparent;
+  }
+
+  /* Running border light (Always active) */
   .spotlight-card::before {
     content: "";
-    @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
-    /* Usa relative fixed coordinates con el mouse tracked global */
-    background: radial-gradient(600px circle at var(--mouse-abs-x, 50vw) var(--mouse-abs-y, 50vh),
-        rgba(212, 175, 55, 0.15),
-        transparent 40%);
-    background-attachment: fixed;
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none;
+    z-index: 10;
+    padding: 2px;
+    background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(37, 99, 235, 1) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin-angle 3s linear infinite;
   }
 
   .dark .spotlight-card::before {
-    background: radial-gradient(600px circle at var(--mouse-abs-x, 50vw) var(--mouse-abs-y, 50vh),
-        rgba(212, 175, 55, 0.15),
-        transparent 40%);
-    background-attachment: fixed;
+    background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(255, 255, 255, 1) 100%);
   }
 
-  .spotlight-card:hover::before {
+  /* Huge aura (Activates on Hover) */
+  .spotlight-card::after {
+    content: "";
+    @apply absolute inset-0 rounded-[inherit] z-[-2] pointer-events-none transition-all duration-500 opacity-0 bg-blue-600/30 dark:bg-white/20;
+    filter: blur(20px);
+    transform: scale(0.95);
+  }
+
+  .spotlight-card:hover {
+    @apply border-blue-500/40 dark:border-white/30;
+    transform: translateY(-2px);
+  }
+
+  .spotlight-card:hover::after {
     @apply opacity-100;
+    transform: scale(1.1);
+    filter: blur(30px);
+  }
+
+  @keyframes spin-angle {
+    to {
+      --glow-angle: 360deg;
+    }
   }
 
   /* Animated underline */
