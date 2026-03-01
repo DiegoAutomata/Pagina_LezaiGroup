@@ -276,16 +276,14 @@ export function ChatWidget() {
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                message.type === 'user'
+              className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.type === 'user'
                   ? 'bg-primary-500 text-white rounded-br-md'
                   : 'bg-white shadow-sm rounded-bl-md'
-              }`}
+                }`}
             >
               <p className="text-sm whitespace-pre-line">{message.content}</p>
-              <p className={`text-[10px] mt-1 ${
-                message.type === 'user' ? 'text-white/60' : 'text-foreground-muted'
-              }`}>
+              <p className={`text-[10px] mt-1 ${message.type === 'user' ? 'text-white/60' : 'text-foreground-muted'
+                }`}>
                 {message.timestamp.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
               </p>
             </div>

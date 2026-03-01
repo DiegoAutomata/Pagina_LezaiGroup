@@ -11,6 +11,7 @@ import { ChatMessage } from '@/shared/components/ui/ChatMessage';
 import { TypingIndicator } from '@/shared/components/ui/TypingIndicator';
 import { useChatBot } from '@/shared/hooks/useChatBot';
 import { getChatBotConfig } from '@/shared/lib/chatbot-config';
+import Image from 'next/image';
 
 export function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +30,10 @@ export function ChatBot() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (inputMessage.trim() && !isLoading) {
-            await sendMessage(inputMessage.trim());
+        const text = inputMessage.trim();
+        if (text && !isLoading) {
             setInputMessage('');
+            await sendMessage(text);
         }
     };
 
@@ -45,7 +47,7 @@ export function ChatBot() {
     return (
         <>
             <motion.div
-                className="fixed bottom-6 right-6 z-50 sm:bottom-6 sm:right-6"
+                className="fixed bottom-4 right-4 z-[60] sm:bottom-6 sm:right-6"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{
@@ -107,7 +109,7 @@ export function ChatBot() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed bottom-24 right-6 z-40 w-96 max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-8rem)] bg-white dark:bg-dark-900/90 backdrop-blur-md border border-gray-200 dark:border-brand-cyan/20 shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-96 sm:bottom-24 sm:right-6"
+                        className="fixed bottom-20 right-4 z-[60] w-[340px] max-w-[calc(100vw-2rem)] h-[65vh] max-h-[550px] bg-white dark:bg-dark-900/90 backdrop-blur-md border border-gray-200 dark:border-brand-cyan/20 shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-[380px] md:w-[400px] sm:bottom-24 sm:right-6"
                         initial={{
                             opacity: 0,
                             scale: 0.8,
@@ -132,8 +134,8 @@ export function ChatBot() {
                     >
                         <div className="bg-gray-50/90 dark:bg-dark-900/90 border-b border-gray-200 dark:border-brand-cyan/20 p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <div className="w-8 h-8 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full flex items-center justify-center">
-                                    <span className="text-white font-bold text-sm">AI</span>
+                                <div className="w-10 h-10 bg-dark-950 dark:bg-dark-900 rounded-full flex items-center justify-center overflow-hidden border border-brand-cyan/30 flex-shrink-0">
+                                    <Image src="/images/logo.png" alt="LezaiGroup Logo" width={40} height={40} className="object-contain p-1" />
                                 </div>
                                 <div>
                                     <h3 className="text-dark-950 dark:text-white font-semibold">{config.branding.name}</h3>
@@ -161,7 +163,7 @@ export function ChatBot() {
                                     </div>
                                     <h4 className="text-dark-950 dark:text-white font-semibold mb-2">¡Hola! 👋</h4>
                                     <p className="text-gray-600 dark:text-gray-400 text-sm">
-                                        Soy tu asistente de IA. ¿En qué puedo ayudarte hoy?
+                                        Soy Lezi, tu asistente de IA. ¿En qué puedo ayudarte hoy?
                                     </p>
                                 </motion.div>
                             )}

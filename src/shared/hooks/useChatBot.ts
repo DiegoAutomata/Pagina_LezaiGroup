@@ -11,7 +11,7 @@ interface ChatBotState {
     isTyping: boolean;
     isLoading: boolean;
     sendMessage: (content: string) => Promise<void>;
-    messagesEndRef: React.RefObject<HTMLDivElement>;
+    messagesEndRef: React.RefObject<HTMLDivElement | null>;
     clearMessages: () => void;
 }
 
@@ -55,21 +55,24 @@ export function useChatBot(): ChatBotState {
         );
     };
 
-    const tryWebhook = async (url: string, message: string, timeout: number): Promise<string> => {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), timeout);
-
+    const sendToWebhook = async (allMessages: ChatMessageType[]): Promise<string> => {
         try {
-            const params = new URLSearchParams({
-                message,
-                timestamp: new Date().toISOString(),
-                sessionId: `session_${Date.now()}`,
-                source: 'landing-page-chatbot',
-                userAgent: navigator.userAgent
-            });
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), config.webhook.timeout || 15000);
 
-            const response = await fetch(`${url}?${params.toString()}`, {
-                method: 'GET',
+            const payload = {
+                messages: allMessages.map(m => ({
+                    role: m.role,
+                    content: m.content
+                }))
+            };
+
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload),
                 signal: controller.signal
             });
 
@@ -80,52 +83,10 @@ export function useChatBot(): ChatBotState {
             }
 
             const data = await response.json();
-
-            if (data.output) return data.output;
-            else if (Array.isArray(data) && data.length > 0 && data[0].output) return data[0].output;
-            else if (data.response) return data.response;
-            else if (data.message) return data.message;
-            else if (typeof data === 'string') return data;
-            else if (data.data && data.data.response) return data.data.response;
-            else return 'Gracias por tu mensaje. Te responderé pronto.';
-
-        } finally {
-            clearTimeout(timeoutId);
-        }
-    };
-
-    const sendToWebhook = async (message: string, retryCount = 0): Promise<string> => {
-        try {
-            if (config.webhook.url) {
-                try {
-                    const testResponse = await tryWebhook(
-                        config.webhook.url,
-                        message,
-                        config.webhook.testTimeout || 3000
-                    );
-                    return testResponse;
-                } catch {
-                    // fallback
-                }
-            }
-
-            if (config.webhook.fallbackUrl) {
-                const prodResponse = await tryWebhook(
-                    config.webhook.fallbackUrl,
-                    message,
-                    config.webhook.timeout
-                );
-                return prodResponse;
-            }
-
-            throw new Error('No webhook URLs configured');
+            return data.output || 'Gracias por tu mensaje. Te responderé pronto.';
 
         } catch (error) {
-            if (retryCount < config.webhook.retries && config.webhook.fallbackUrl) {
-                await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1)));
-                return sendToWebhook(message, retryCount + 1);
-            }
-
+            console.error(error);
             if (error instanceof Error && error.name === 'AbortError') {
                 return 'Lo siento, la respuesta está tardando más de lo esperado. Por favor, intenta de nuevo.';
             } else {
@@ -144,10 +105,29 @@ export function useChatBot(): ChatBotState {
             updateMessageStatus(userMessage.id, 'sent');
             setIsTyping(true);
 
-            const response = await sendToWebhook(content);
+            // Send the entire conversation history instead of just the latest message
+            const response = await sendToWebhook([...messages, userMessage]);
 
             setIsTyping(false);
-            addMessage(response, 'assistant', 'sent');
+
+            // Split response by double newlines or list bullets to create separate messages organically
+            const messageChunks = response
+                .replace(/\\n/g, '\n') // Sanitize literal strings just in case the LLM prints them
+                .split(/\n\s*\n/)
+                .map(chunk => chunk.trim())
+                .filter(chunk => chunk.length > 0);
+
+            for (let i = 0; i < messageChunks.length; i++) {
+                if (i > 0) {
+                    setIsTyping(true);
+                    // Add a dynamic natural pseudo-typing delay based on message length
+                    const delay = Math.min(1500, Math.max(700, messageChunks[i].length * 15));
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    setIsTyping(false);
+                }
+
+                addMessage(messageChunks[i], 'assistant', 'sent');
+            }
 
         } catch (error) {
             console.error('Error sending message:', error);

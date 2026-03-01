@@ -40,7 +40,7 @@ export const defaultChatBotConfig: ChatBotConfig = {
         theme: 'dark',
         showTimestamps: true,
         maxMessages: 100,
-        welcomeMessage: '¡Hola! 👋\n\nSoy tu asistente de IA. ¿En qué puedo ayudarte hoy?',
+        welcomeMessage: '¡Hola! 👋\n\nSoy Lezi, tu asistente de IA de Lezrai. ¿En qué puedo ayudarte hoy?',
         placeholderText: 'Escribe tu mensaje...'
     },
     features: {
@@ -50,8 +50,8 @@ export const defaultChatBotConfig: ChatBotConfig = {
         enableMessageStatus: true
     },
     branding: {
-        name: 'AI Assistant',
-        avatar: 'AI',
+        name: 'Lezi',
+        avatar: 'LZ',
         description: 'Aquí para ayudarte 24/7'
     }
 };

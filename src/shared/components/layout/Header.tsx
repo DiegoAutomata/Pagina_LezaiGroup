@@ -43,20 +43,10 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform',
-                isScrolled
-                    ? 'py-4'
-                    : 'py-0 bg-transparent dark:bg-transparent border-b border-transparent dark:border-transparent'
-            )}
+            className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform py-4"
         >
-            <div className={cn(
-                "transition-all duration-500 mx-auto",
-                isScrolled
-                    ? "max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10"
-                    : "max-w-7xl px-4 sm:px-6 lg:px-8 bg-transparent shadow-none ring-0 rounded-none"
-            )}>
-                <div className={cn("flex items-center justify-between transition-all duration-500", isScrolled ? "h-14 md:h-16" : "h-16 md:h-20")}>
+            <div className="transition-all duration-500 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10">
+                <div className="flex items-center justify-between transition-all duration-500 h-14 md:h-16">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -88,12 +78,7 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                                 onClick={() => handleNavClick(item.href)}
-                                className={cn(
-                                    "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full",
-                                    isScrolled
-                                        ? "text-gray-300 hover:text-white hover:bg-white/10"
-                                        : "text-dark-950 dark:text-white hover:bg-gray-900/5 dark:hover:bg-white/10"
-                                )}
+                                className="relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-gray-300 hover:text-white hover:bg-white/10"
                             >
                                 {item.name}
                             </motion.button>
@@ -116,12 +101,7 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className={cn(
-                                "p-2 rounded-full transition-all duration-300",
-                                isScrolled
-                                    ? "text-gray-300 hover:text-white hover:bg-white/10"
-                                    : "text-dark-950 dark:text-white hover:bg-gray-900/5 dark:hover:bg-white/10"
-                            )}
+                            className="p-2 rounded-full transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             <span className="sr-only">Abrir menú principal</span>

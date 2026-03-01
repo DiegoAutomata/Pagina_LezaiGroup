@@ -72,15 +72,6 @@ export function ChatMessage({ message }: ChatMessageProps) {
                     </div>
                 )}
 
-                <div
-                    className={`text-xs mt-1 opacity-60 ${isUser ? 'text-dark-800' : 'text-gray-400'
-                        }`}
-                >
-                    {message.timestamp.toLocaleTimeString('es-ES', {
-                        hour: '2-digit',
-                        minute: '2-digit'
-                    })}
-                </div>
             </div>
         </motion.div>
     );
