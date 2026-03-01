@@ -21,6 +21,18 @@ export async function GET(request: Request) {
 
             const isOwner = profile?.role === 'admin' || profile?.role === 'lawyer'
 
+            // Enviar email de bienvenida si acaba de registrarse (ej. primer login con Google)
+            if (authData.user.created_at) {
+                const createdAt = new Date(authData.user.created_at).getTime()
+                const now = Date.now()
+                // Si se creó hace menos de 60 segundos, es un usuario nuevo
+                if (now - createdAt < 60000) {
+                    const { sendWelcomeEmailDelayed } = await import('@/lib/email/welcome-sender')
+                    const userName = authData.user.user_metadata?.full_name || authData.user.user_metadata?.name
+                    sendWelcomeEmailDelayed(authData.user.email!, userName)
+                }
+            }
+
             // Si next fue seteado explicitamente, lo respetamos (con fallback lógico si es /dashboard)
             let finalRedirect = next
             if (next === '/dashboard' && !isOwner) {

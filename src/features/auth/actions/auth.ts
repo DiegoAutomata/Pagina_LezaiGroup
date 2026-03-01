@@ -29,9 +29,12 @@ export async function loginWithEmail(formData: FormData) {
 export async function signupWithEmail(formData: FormData) {
     const supabase = await createClient()
 
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
+
     const data = {
-        email: formData.get('email') as string,
-        password: formData.get('password') as string,
+        email,
+        password,
     }
 
     const { error } = await supabase.auth.signUp(data)
@@ -39,6 +42,10 @@ export async function signupWithEmail(formData: FormData) {
     if (error) {
         redirect('/register?error=Could not authenticate user')
     }
+
+    // Enviar email de bienvenida diferido 1 minuto (soporta Resend o Zoho SMTP)
+    const { sendWelcomeEmailDelayed } = await import('@/lib/email/welcome-sender')
+    sendWelcomeEmailDelayed(email)
 
     revalidatePath('/', 'layout')
     redirect('/dashboard')
