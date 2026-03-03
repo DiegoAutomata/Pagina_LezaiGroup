@@ -25,12 +25,20 @@ export async function GET(request: Request) {
             if (authData.user.created_at) {
                 const createdAt = new Date(authData.user.created_at).getTime()
                 const now = Date.now()
+                console.log(`[AUTH CALLBACK] User email: ${authData.user.email}`);
+                console.log(`[AUTH CALLBACK] User created at: ${authData.user.created_at} (${createdAt}) | Now: ${now} | Diff: ${now - createdAt}`);
+
                 // Si se creó hace menos de 60 segundos, es un usuario nuevo
                 if (now - createdAt < 60000) {
+                    console.log(`[AUTH CALLBACK] Es un usuario nuevo/registrado recientemente. Preparando envío de email...`);
                     const { sendWelcomeEmailDelayed } = await import('@/lib/email/welcome-sender')
                     const userName = authData.user.user_metadata?.full_name || authData.user.user_metadata?.name
                     sendWelcomeEmailDelayed(authData.user.email!, userName)
+                } else {
+                    console.log(`[AUTH CALLBACK] Usuario existente (creado hace más de 60s). No se enviará email de bienvenida.`);
                 }
+            } else {
+                console.log(`[AUTH CALLBACK] No se encontró created_at en el usuario.`);
             }
 
             // Si next fue seteado explicitamente, lo respetamos (con fallback lógico si es /dashboard)

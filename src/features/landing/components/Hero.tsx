@@ -133,7 +133,7 @@ export function Hero({ isAuthenticated = false }: { isAuthenticated?: boolean })
                             </motion.a>
 
                             <motion.a
-                                href={isAuthenticated ? "https://wa.me/1234567890" : "/login"}
+                                href={isAuthenticated ? "https://wa.me/5492944670562" : "/login"}
                                 target={isAuthenticated ? "_blank" : undefined}
                                 rel={isAuthenticated ? "noopener noreferrer" : undefined}
                                 className="btn-secondary text-lg text-center flex-1 md:flex-none flex items-center justify-center"

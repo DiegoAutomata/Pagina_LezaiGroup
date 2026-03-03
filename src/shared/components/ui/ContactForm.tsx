@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircleIcon, ExclamationCircleIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
+
 
 interface FormData {
     name: string;
@@ -33,6 +36,9 @@ const whatsappVolumeOptions = [
 ];
 
 export function ContactForm() {
+    const { user, loading } = useAuth();
+    const router = useRouter();
+
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -93,9 +99,15 @@ export function ContactForm() {
         setIsSubmitting(true);
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
 
-            console.log('Form submitted:', formData);
+            if (!response.ok) {
+                throw new Error('Error al enviar el formulario');
+            }
 
             setIsSubmitted(true);
 
@@ -134,7 +146,18 @@ export function ContactForm() {
     );
 
     return (
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto relative group">
+            {!loading && !user && (
+                <div
+                    className="absolute inset-0 z-50 cursor-pointer"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        router.push('/login');
+                    }}
+                    title="Inicia sesión para poder contactarnos"
+                />
+            )}
             <AnimatePresence mode="wait">
                 {isSubmitted ? (
                     <SuccessMessage />

@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY)
 
         const { data: resendData, error: resendError } = await resend.emails.send({
-          from: 'LexAgenda <onboarding@resend.dev>',
+          from: 'Diego de Lezrai <onboarding@resend.dev>',
           to: 'contacto@lezrai.com',
           subject: `Nuevo Lead de Contacto: ${name.trim()} (${company.trim()})`,
           html: htmlEmail,
@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
         });
 
         await transporter.sendMail({
-          from: `"SaaS Factory Lead" <${process.env.SMTP_USER}>`,
+          from: `"Diego de Lezrai" <${process.env.SMTP_USER}>`,
           to: 'contacto@lezrai.com',
           subject: `Nuevo Lead de Contacto: ${name.trim()} (${company.trim()})`,
           html: htmlEmail,

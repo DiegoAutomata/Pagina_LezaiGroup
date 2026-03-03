@@ -304,6 +304,11 @@ test('should calculate total with tax', () => {
 - **Fix**: Siempre usar `npm run dev` (auto-detecta puerto)
 - **Aplicar en**: Todos los proyectos
 
+### 2026-03-02: Emails transaccionales directos al Inbox Principal
+- **Error**: Correos de bienvenida se van a la pestaña de "Notificaciones" (o "Promociones") por tener cabeceras como \`List-Unsubscribe\`, alias impersonales ("Lezrai Team") y emojis. Gmail los marca como *marketing* masivo.
+- **Fix**: Escribir de "persona a persona". Remitente personal ("Diego de Lezrai"), eliminar por completo la cabecera \`List-Unsubscribe\`, quitar prioridades innecesarias e incluir un Asunto sobrio.
+- **Aplicar en**: Toda lógica de envíos (Nodemailer, Resend).
+
 ---
 
 *Este archivo es el cerebro de la fábrica. Cada error documentado la hace más fuerte.*

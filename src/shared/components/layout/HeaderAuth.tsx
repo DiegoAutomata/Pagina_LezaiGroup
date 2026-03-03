@@ -23,7 +23,7 @@ export async function HeaderAuth() {
                 {isOwner && (
                     <Link
                         href="/dashboard"
-                        className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                        className="auth-link text-sm font-medium text-gray-700 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors"
                     >
                         Dashboard
                     </Link>
@@ -31,7 +31,7 @@ export async function HeaderAuth() {
                 <form action={logout}>
                     <button
                         type="submit"
-                        className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                        className="auth-link text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
                     >
                         Cerrar Sesión
                     </button>

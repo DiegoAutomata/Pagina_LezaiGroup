@@ -23,13 +23,43 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = await createClient()
 
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+
   const { error } = await supabase.auth.signUp({
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
+    email,
+    password,
   })
 
   if (error) {
     return { error: error.message }
+  }
+
+  // Enviar email de bienvenida diferido 1 minuto si Resend está configurado
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const { Resend } = await import('resend')
+      const { generateWelcomeEmailHtml } = await import('@/lib/email/templates/welcome-html')
+      const resend = new Resend(process.env.RESEND_API_KEY)
+
+      const sendAt = new Date(Date.now() + 1 * 60 * 1000) // 1 minute from now
+
+      const { data, error: resendError } = await resend.emails.send({
+        from: 'LezaiGroup <onboarding@resend.dev>',
+        to: email,
+        subject: '¡Bienvenido a LezaiGroup! Impulsa tu negocio con IA',
+        html: generateWelcomeEmailHtml(email.split('@')[0]),
+        scheduledAt: sendAt.toISOString(),
+      })
+
+      if (resendError) {
+        console.error('Error enviando email de bienvenida:', resendError)
+      } else {
+        console.log('Email de bienvenida programado exitosamente:', data)
+      }
+    } catch (e) {
+      console.error('Excepción programando email de bienvenida', e)
+    }
   }
 
   revalidatePath('/', 'layout')

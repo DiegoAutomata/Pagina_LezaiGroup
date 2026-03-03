@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { ContactForm } from '@/shared/components/ui/ContactForm';
 
+
 export function Contact() {
     const [ref, inView] = useInView({
         triggerOnce: true,

@@ -43,10 +43,26 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 will-change-transform py-4"
+            className={cn(
+                "fixed left-0 right-0 z-50 transition-all duration-500 will-change-transform",
+                isScrolled ? "top-4 py-0" : "top-0 py-4"
+            )}
         >
-            <div className="transition-all duration-500 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 bg-[#0A0A0A]/90 backdrop-blur-2xl rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.15)] ring-1 ring-white/10">
-                <div className="flex items-center justify-between transition-all duration-500 h-14 md:h-16">
+            <div className={cn(
+                "transition-all duration-500 mx-auto px-4 sm:px-6 lg:px-8 relative",
+                isScrolled
+                    ? "max-w-5xl bg-[#0A0A0A]/80 backdrop-blur-2xl rounded-full shadow-[0_10px_40px_rgba(255,255,255,0.05)] border border-white/10"
+                    : "max-w-7xl bg-transparent"
+            )}>
+                {/* Efecto de luz blanca (glow line) */}
+                <div
+                    className={cn(
+                        "absolute top-0 left-1/2 -translate-x-1/2 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent transition-all duration-700 pointer-events-none",
+                        isScrolled ? "w-3/4 opacity-100 shadow-[0_-2px_15px_3px_rgba(255,255,255,0.5)]" : "w-0 opacity-0"
+                    )}
+                />
+
+                <div className="flex items-center justify-between transition-all duration-500 h-14 md:h-16 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -78,7 +94,12 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                                 onClick={() => handleNavClick(item.href)}
-                                className="relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full text-gray-300 hover:text-white hover:bg-white/10"
+                                className={cn(
+                                    "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full",
+                                    isScrolled
+                                        ? "text-gray-300 hover:text-white hover:bg-white/10"
+                                        : "text-gray-900 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
+                                )}
                             >
                                 {item.name}
                             </motion.button>
@@ -89,7 +110,10 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.5 }}
-                        className="hidden md:flex items-center space-x-6"
+                        className={cn(
+                            "hidden md:flex items-center space-x-6",
+                            isScrolled && "[&_.auth-link]:text-gray-300 [&_.auth-link:hover]:text-white"
+                        )}
                     >
                         <ThemeToggle />
                         {authNode}
@@ -101,7 +125,12 @@ export function Header({ authNode }: { authNode?: React.ReactNode }) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.6, delay: 0.6 }}
-                            className="p-2 rounded-full transition-all duration-300 text-gray-300 hover:text-white hover:bg-white/10"
+                            className={cn(
+                                "p-2 rounded-full transition-all duration-300",
+                                isScrolled
+                                    ? "text-gray-300 hover:text-white hover:bg-white/10"
+                                    : "text-gray-900 dark:text-gray-300 hover:text-black hover:bg-black/5 dark:hover:bg-white/10"
+                            )}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             <span className="sr-only">Abrir menú principal</span>

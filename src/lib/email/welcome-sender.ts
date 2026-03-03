@@ -3,7 +3,7 @@ import { generateWelcomeEmailHtml } from '@/lib/email/templates/welcome-html';
 export async function sendWelcomeEmailDelayed(email: string, name?: string) {
     const userName = name || email.split('@')[0];
     const htmlEmail = generateWelcomeEmailHtml(userName);
-    const subject = `¡Adentro! Bienvenido a LezaiGroup 🚀`;
+    const subject = `Bienvenido a Lezrai - Acceso a plataforma`;
 
     // Envío en 1 minuto (60,000 milisegundos)
     setTimeout(async () => {
@@ -14,7 +14,7 @@ export async function sendWelcomeEmailDelayed(email: string, name?: string) {
                 const resend = new Resend(process.env.RESEND_API_KEY);
 
                 await resend.emails.send({
-                    from: 'LezaiGroup <onboarding@resend.dev>',
+                    from: 'Diego de Lezrai <onboarding@resend.dev>',
                     to: email,
                     subject,
                     html: htmlEmail,
@@ -34,16 +34,12 @@ export async function sendWelcomeEmailDelayed(email: string, name?: string) {
                 });
 
                 await transporter.sendMail({
-                    from: `"LezaiGroup" <${process.env.SMTP_USER}>`,
+                    from: `"Diego de Lezrai" <${process.env.SMTP_USER}>`,
                     to: email,
                     replyTo: process.env.SMTP_USER,
                     subject,
                     html: htmlEmail,
-                    text: `¡Bienvenido a LezaiGroup! Nos emociona tenerte a bordo. Conoce más de nuestros servicios en https://lezrai.com`,
-                    headers: {
-                        'X-Entity-Ref-ID': Date.now().toString(),
-                        'List-Unsubscribe': `<mailto:${process.env.SMTP_USER}?subject=unsubscribe>`,
-                    }
+                    text: `¡Bienvenido a Lezrai! Nos emociona tenerte a bordo. Conoce más de nuestros servicios en https://lezrai.com`,
                 });
                 console.log('Email de bienvenida enviado (Zoho SMTP).');
             } else {

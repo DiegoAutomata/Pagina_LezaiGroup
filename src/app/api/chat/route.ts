@@ -54,6 +54,40 @@ INSTRUCCIONES CLAVE DE FORMATO Y COMPORTAMIENTO (¡CRÍTICO!):
             "arcee-ai/trinity-large-preview:free"
         ];
 
+        const tools = [
+            {
+                type: "function",
+                function: {
+                    name: "checkCalendarAvailability",
+                    description: "Revisa la disponibilidad en el calendario en una fecha específica (YYYY-MM-DD).",
+                    parameters: {
+                        type: "object",
+                        properties: {
+                            date: { type: "string", description: "Fecha a consultar en formato YYYY-MM-DD" }
+                        },
+                        required: ["date"]
+                    }
+                }
+            },
+            {
+                type: "function",
+                function: {
+                    name: "bookMeeting",
+                    description: "Agenda una reunión en el calendario de la empresa y notifica por email pidiendo los datos del cliente.",
+                    parameters: {
+                        type: "object",
+                        properties: {
+                            title: { type: "string", description: "Título descriptivo de la cita" },
+                            startTime: { type: "string", description: "Fecha y hora de inicio en formato ISO (ej: 2024-03-01T10:00:00Z)" },
+                            endTime: { type: "string", description: "Fecha y hora de fin en formato ISO (ej: 2024-03-01T10:30:00Z)" },
+                            clientEmail: { type: "string", description: "Email del cliente para notificarle" }
+                        },
+                        required: ["title", "startTime", "endTime", "clientEmail"]
+                    }
+                }
+            }
+        ];
+
         let replyText = "";
         let lastError = null;
 
@@ -71,6 +105,7 @@ INSTRUCCIONES CLAVE DE FORMATO Y COMPORTAMIENTO (¡CRÍTICO!):
                         model: model,
                         temperature: 0.3,
                         messages: formattedMessages,
+                        tools: tools,
                     })
                 });
 
@@ -82,14 +117,82 @@ INSTRUCCIONES CLAVE DE FORMATO Y COMPORTAMIENTO (¡CRÍTICO!):
                 }
 
                 const data = await response.json();
-                replyText = data.choices[0].message.content;
+                const message = data.choices[0].message;
+
+                // Handle tool calls
+                if (message.tool_calls && message.tool_calls.length > 0) {
+                    const toolCall = message.tool_calls[0];
+                    const functionName = toolCall.function.name;
+                    const args = JSON.parse(toolCall.function.arguments);
+
+                    console.log(`Ejecutando tool call: ${functionName}`, args);
+
+                    let toolResult = "";
+
+                    if (functionName === "checkCalendarAvailability") {
+                        const { checkZohoCalendarAvailability } = await import('@/lib/zoho/calendar');
+                        const result = await checkZohoCalendarAvailability(args.date);
+                        toolResult = JSON.stringify(result);
+                    } else if (functionName === "bookMeeting") {
+                        const { createZohoCalendarEvent } = await import('@/lib/zoho/calendar');
+                        const { sendGmailNotification } = await import('@/lib/email/gmail');
+
+                        const result = await createZohoCalendarEvent({
+                            title: args.title,
+                            startTime: args.startTime,
+                            endTime: args.endTime,
+                            attendeeEmail: args.clientEmail
+                        });
+
+                        if (result.success) {
+                            await sendGmailNotification({
+                                to: 'contacto@lezrai.com',
+                                subject: `Nueva Cita Agendada: ${args.title}`,
+                                html: `<p>El Agente de IA ha agendado una nueva cita.</p><p><strong>Cliente:</strong> ${args.clientEmail}</p><p><strong>Inicio:</strong> ${args.startTime}</p>`
+                            });
+                            toolResult = JSON.stringify({ success: true, message: "Cita agendada correctamente y notificada al equipo." });
+                        } else {
+                            toolResult = JSON.stringify({ success: false, message: "Error agendando cita: " + result.error });
+                        }
+                    }
+
+                    // For simplicy in this serverless function, if a tool was called, we append the result and make ONE MORE call to the same model
+                    formattedMessages.push(message);
+                    formattedMessages.push({
+                        role: "tool",
+                        name: functionName,
+                        content: toolResult,
+                        tool_call_id: toolCall.id
+                    });
+
+                    const secondResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${apiKey}`,
+                            "Content-Type": "application/json",
+                            "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+                        },
+                        body: JSON.stringify({
+                            model: model,
+                            temperature: 0.3,
+                            messages: formattedMessages
+                        })
+                    });
+
+                    const secondData = await secondResponse.json();
+                    replyText = secondData.choices[0].message.content;
+                } else {
+                    replyText = message.content;
+                }
 
                 // Remove deepseek thinking blocks <think>...</think> if present
-                if (replyText.includes('<think>')) {
+                if (replyText && replyText.includes('<think>')) {
                     replyText = replyText.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
                 }
 
-                break; // Success! Exit the loop
+                if (replyText) {
+                    break; // Success! Exit the loop
+                }
 
             } catch (err) {
                 console.error(`[${model}] Connection error:`, err);
@@ -107,6 +210,6 @@ INSTRUCCIONES CLAVE DE FORMATO Y COMPORTAMIENTO (¡CRÍTICO!):
         console.error("Error connecting to OpenRouter:", error);
         return NextResponse.json({
             output: "Disculpa, estoy experimentando una saturación temporal. Por favor intenta de nuevo en un momento, los sistemas se están estabilizando."
-        }, { status: 200 }); // Return 200 to fail gracefully on the frontend without console errors
+        }, { status: 200 });
     }
 }
