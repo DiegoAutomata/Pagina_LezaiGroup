@@ -31,7 +31,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${isUser
                     ? 'bg-gradient-to-r from-brand-cyan to-brand-orange text-white'
-                    : 'bg-gray-100 dark:bg-dark-700 border border-gray-200 dark:border-brand-cyan/20'
+                    : 'bg-[#1e293b] dark:bg-dark-700 border border-[#334155] dark:border-brand-cyan/20'
                     }`}
             >
                 {isUser ? (
@@ -44,13 +44,29 @@ export function ChatMessage({ message }: ChatMessageProps) {
             <div
                 className={`max-w-[280px] rounded-2xl px-4 py-3 relative ${isUser
                     ? 'bg-gradient-to-r from-brand-cyan to-brand-orange text-white rounded-br-md'
-                    : 'bg-gray-100 dark:bg-dark-700 text-dark-950 dark:text-white border border-gray-200 dark:border-brand-cyan/10 rounded-bl-md'
+                    : 'bg-[#1e293b] dark:bg-dark-700 text-white border border-[#334155] dark:border-brand-cyan/10 rounded-bl-md'
                     } ${isError ? 'border-red-500/50 bg-red-900/20' : ''} ${isSending ? 'opacity-70' : ''
                     }`}
             >
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">
-                    {message.content}
-                </p>
+                <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                    {message.content.split(/(\[[^[\]]+\]\([^)]+\))/).map((part, index) => {
+                        const match = part.match(/\[([^\]]+)\]\(([^)]+)\)/);
+                        if (match) {
+                            return (
+                                <a
+                                    key={index}
+                                    href={match[2]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`underline font-medium hover:opacity-80 transition-opacity ${isUser ? 'text-white' : 'text-brand-orange'}`}
+                                >
+                                    {match[1]}
+                                </a>
+                            );
+                        }
+                        return part;
+                    })}
+                </div>
 
                 {isSending && (
                     <div className="absolute -bottom-1 -right-1">

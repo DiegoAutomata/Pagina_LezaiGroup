@@ -12,6 +12,8 @@ import { TypingIndicator } from '@/shared/components/ui/TypingIndicator';
 import { useChatBot } from '@/shared/hooks/useChatBot';
 import { getChatBotConfig } from '@/shared/lib/chatbot-config';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +27,16 @@ export function ChatBot() {
         sendMessage,
         messagesEndRef
     } = useChatBot();
+    const { user, loading } = useAuth();
+    const router = useRouter();
 
-    const toggleChat = () => setIsOpen(!isOpen);
+    const toggleChat = () => {
+        if (!loading && !user) {
+            router.push('/login');
+            return;
+        }
+        setIsOpen(!isOpen);
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -109,7 +119,7 @@ export function ChatBot() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed bottom-20 right-4 z-[60] w-[340px] max-w-[calc(100vw-2rem)] h-[65vh] max-h-[550px] bg-white dark:bg-dark-900/90 backdrop-blur-md border border-gray-200 dark:border-brand-cyan/20 shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-[380px] md:w-[400px] sm:bottom-24 sm:right-6"
+                        className="fixed bottom-20 right-4 z-[60] w-[340px] max-w-[calc(100vw-2rem)] h-[65vh] max-h-[550px] bg-[#0f172a] dark:bg-dark-900/90 backdrop-blur-md border border-[#1e293b] dark:border-brand-cyan/20 shadow-2xl rounded-2xl overflow-hidden flex flex-col sm:w-[380px] md:w-[400px] sm:bottom-24 sm:right-6"
                         initial={{
                             opacity: 0,
                             scale: 0.8,
@@ -132,19 +142,19 @@ export function ChatBot() {
                             damping: 25
                         }}
                     >
-                        <div className="bg-gray-50/90 dark:bg-dark-900/90 border-b border-gray-200 dark:border-brand-cyan/20 p-4 flex items-center justify-between">
+                        <div className="bg-[#0f172a]/90 dark:bg-dark-900/90 border-b border-[#1e293b] dark:border-brand-cyan/20 p-4 flex items-center justify-between">
                             <div className="flex items-center space-x-3">
                                 <div className="w-10 h-10 bg-dark-950 dark:bg-dark-900 rounded-full flex items-center justify-center overflow-hidden border border-brand-cyan/30 flex-shrink-0">
                                     <Image src="/images/logo.png" alt="LezaiGroup Logo" width={40} height={40} className="object-contain p-1" />
                                 </div>
                                 <div>
-                                    <h3 className="text-dark-950 dark:text-white font-semibold">{config.branding.name}</h3>
+                                    <h3 className="text-white font-semibold">{config.branding.name}</h3>
                                     <p className="text-brand-orange text-xs">{config.branding.description}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={toggleChat}
-                                className="text-gray-500 hover:text-dark-950 dark:text-gray-400 dark:hover:text-white transition-colors p-1"
+                                className="text-gray-400 hover:text-white transition-colors p-1"
                                 aria-label="Close chat"
                             >
                                 <XMarkIcon className="w-5 h-5" />
@@ -161,8 +171,8 @@ export function ChatBot() {
                                     <div className="w-12 h-12 bg-gradient-to-r from-brand-cyan to-brand-orange rounded-full mx-auto mb-4 flex items-center justify-center">
                                         <ChatBubbleLeftRightIcon className="w-6 h-6 text-white" />
                                     </div>
-                                    <h4 className="text-dark-950 dark:text-white font-semibold mb-2">¡Hola! 👋</h4>
-                                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                                    <h4 className="text-white font-semibold mb-2">¡Hola! 👋</h4>
+                                    <p className="text-gray-300 dark:text-gray-400 text-sm">
                                         Soy Lezi, tu asistente de IA. ¿En qué puedo ayudarte hoy?
                                     </p>
                                 </motion.div>
@@ -177,14 +187,14 @@ export function ChatBot() {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="border-t border-gray-200 dark:border-brand-cyan/20 p-4">
+                        <div className="border-t border-[#1e293b] dark:border-brand-cyan/20 p-4">
                             <form onSubmit={handleSubmit} className="flex items-end space-x-2">
                                 <textarea
                                     value={inputMessage}
                                     onChange={(e) => setInputMessage(e.target.value)}
                                     onKeyDown={handleKeyPress}
                                     placeholder={config.ui.placeholderText}
-                                    className="flex-1 bg-gray-50 dark:bg-dark-800 border border-gray-300 dark:border-brand-cyan/20 rounded-xl px-4 py-3 text-dark-950 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-brand-cyan/40 focus:ring-1 focus:ring-brand-cyan/20 transition-all resize-none min-h-[48px] max-h-32 overflow-y-auto"
+                                    className="flex-1 bg-[#1e293b] dark:bg-dark-800 border border-[#334155] dark:border-brand-cyan/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-brand-cyan/40 focus:ring-1 focus:ring-brand-cyan/20 transition-all resize-none min-h-[48px] max-h-32 overflow-y-auto"
                                     rows={1}
                                     disabled={isLoading}
                                     style={{
