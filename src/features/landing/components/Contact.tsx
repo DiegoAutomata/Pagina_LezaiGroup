@@ -14,9 +14,8 @@ export function Contact() {
 
     return (
         <section id="contact" className="py-24 bg-gray-50 dark:bg-dark-950 relative overflow-hidden transition-colors duration-300">
-            <div className="hidden dark:block absolute inset-0 bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950" />
-            <div className="absolute top-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl" />
+            <div className="hidden md:block absolute top-0 left-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl opacity-50" />
+            <div className="hidden md:block absolute bottom-0 right-0 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl opacity-50" />
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <motion.div

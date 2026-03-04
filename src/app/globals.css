@@ -48,11 +48,11 @@ body {
 
   /* Glass morphism effect */
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+    @apply bg-slate-900/95 sm:bg-white/10 sm:backdrop-blur-md border border-white/20 rounded-xl;
   }
 
   .glass-dark {
-    @apply bg-dark-900/80 backdrop-blur-md border border-gold-500/20 rounded-xl;
+    @apply bg-dark-900/95 sm:bg-dark-900/80 sm:backdrop-blur-md border border-gold-500/20 rounded-xl;
   }
 
   /* Premium card styles */
@@ -97,23 +97,25 @@ body {
     }
   }
 
-  /* Huge aura (Activates on Hover) */
-  .spotlight-card::after {
-    content: "";
-    @apply absolute inset-0 rounded-[inherit] z-[-2] pointer-events-none transition-all duration-500 opacity-0 bg-blue-600/30 dark:bg-white/20;
-    filter: blur(20px);
-    transform: scale(0.95);
-  }
+  /* Huge aura (Activates on Hover) only on larger screens */
+  @media (min-width: 640px) {
+    .spotlight-card::after {
+      content: "";
+      @apply absolute inset-0 rounded-[inherit] z-[-2] pointer-events-none transition-all duration-500 opacity-0 bg-blue-600/30 dark:bg-white/20;
+      filter: blur(20px);
+      transform: scale(0.95);
+    }
 
-  .spotlight-card:hover {
-    @apply border-blue-500/40 dark:border-white/30;
-    transform: translateY(-2px);
-  }
+    .spotlight-card:hover {
+      @apply border-blue-500/40 dark:border-white/30;
+      transform: translateY(-2px);
+    }
 
-  .spotlight-card:hover::after {
-    @apply opacity-100;
-    transform: scale(1.1);
-    filter: blur(30px);
+    .spotlight-card:hover::after {
+      @apply opacity-100;
+      transform: scale(1.1);
+      filter: blur(30px);
+    }
   }
 
   @keyframes spin-angle {
