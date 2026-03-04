@@ -67,9 +67,8 @@ export function Hero({ isAuthenticated = false }: { isAuthenticated?: boolean })
             <div className="absolute inset-0 overflow-hidden pointer-events-none bg-white dark:bg-[#0A0A0A]">
                 <div className="absolute inset-0 bg-grid-pattern animate-bg-grid opacity-30 dark:opacity-20 z-0" />
 
-                {/* Flowing Unified Light */}
                 <div
-                    className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] animate-fluid-bg opacity-10 dark:opacity-25 mix-blend-multiply dark:mix-blend-screen blur-[80px]"
+                    className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] hidden md:block animate-fluid-bg opacity-10 dark:opacity-25 mix-blend-multiply dark:mix-blend-screen blur-[80px]"
                     style={{
                         backgroundImage: `
                             radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.4) 0%, transparent 40%),

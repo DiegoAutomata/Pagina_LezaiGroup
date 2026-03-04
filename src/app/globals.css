@@ -71,21 +71,30 @@ body {
     @apply relative overflow-visible transition-all duration-300 border-transparent dark:border-transparent;
   }
 
-  /* Running border light (Always active) */
-  .spotlight-card::before {
-    content: "";
-    @apply absolute inset-0 rounded-[inherit] pointer-events-none;
-    z-index: 10;
-    padding: 2px;
-    background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(37, 99, 235, 1) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: spin-angle 3s linear infinite;
+  /* Running border light (Only active on sm and up) */
+  @media (min-width: 640px) {
+    .spotlight-card::before {
+      content: "";
+      @apply absolute inset-0 rounded-[inherit] pointer-events-none;
+      z-index: 10;
+      padding: 2px;
+      background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(37, 99, 235, 1) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: spin-angle 3s linear infinite;
+    }
+
+    .dark .spotlight-card::before {
+      background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(255, 255, 255, 1) 100%);
+    }
   }
 
-  .dark .spotlight-card::before {
-    background: conic-gradient(from var(--glow-angle) at 50% 50%, transparent 60%, rgba(255, 255, 255, 1) 100%);
+  /* Very subtle static border for mobile so it still looks good but runs fast */
+  @media (max-width: 639px) {
+    .spotlight-card {
+      @apply border border-blue-500/20 dark:border-white/10;
+    }
   }
 
   /* Huge aura (Activates on Hover) */
@@ -152,8 +161,10 @@ body {
       linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 
-  .animate-bg-grid {
-    animation: slide-grid 20s linear infinite;
+  @media (min-width: 768px) {
+    .animate-bg-grid {
+      animation: slide-grid 20s linear infinite;
+    }
   }
 
   @keyframes slide-grid {
@@ -167,9 +178,11 @@ body {
   }
 
   /* Fluid unified video-like AI background */
-  .animate-fluid-bg {
-    background-size: 200% 200%;
-    animation: fluid-bg 15s ease infinite alternate;
+  @media (min-width: 768px) {
+    .animate-fluid-bg {
+      background-size: 200% 200%;
+      animation: fluid-bg 15s ease infinite alternate;
+    }
   }
 
   @keyframes fluid-bg {
