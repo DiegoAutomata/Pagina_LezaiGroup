@@ -9,11 +9,17 @@ import { Process } from '@/features/landing/components/Process';
 import { FAQ } from '@/features/landing/components/FAQ';
 import { Contact } from '@/features/landing/components/Contact';
 import { createClient } from '@/shared/lib/supabase/server';
+import { redirect } from 'next/navigation';
 
 export default async function Home() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   const isAuthenticated = !!user
+
+  // Si ya está logueado, redirigir directamente a Servicios
+  if (isAuthenticated) {
+    redirect('/servicios')
+  }
 
   return (
     <>

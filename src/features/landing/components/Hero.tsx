@@ -120,7 +120,7 @@ export function Hero({ isAuthenticated = false }: { isAuthenticated?: boolean })
 
                         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full mt-4">
                             <motion.a
-                                href="/login"
+                                href={isAuthenticated ? "/servicios" : "/login"}
                                 className="btn-primary text-lg group flex-1 md:flex-none shadow-brand-orange/30 dark:shadow-brand-orange/20 relative overflow-hidden"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}

@@ -62,7 +62,7 @@ export async function oAuthSignIn(provider: Provider) {
     const headersList = await headers()
     const host = headersList.get('host')
     const protocol = headersList.get('x-forwarded-proto') || (host?.includes('localhost') ? 'http' : 'https')
-    const origin = `${protocol}://${host}`
+    const origin = process.env.NEXT_PUBLIC_SITE_URL || `${protocol}://${host}`
 
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider,

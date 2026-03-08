@@ -5,8 +5,8 @@ import { ServiceIcon } from '@/components/public/icons'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: siteConfig.seo.titleTemplate.replace('%s', 'Servicios Legales'),
-  description: `Conozca nuestros servicios de derecho de familia: ${siteConfig.services.map(s => s.title).join(', ')}. ${siteConfig.firmName} en ${siteConfig.contact.city}.`,
+  title: siteConfig.seo.titleTemplate.replace('%s', 'Servicios de Software e IA'),
+  description: `Conozca nuestros servicios de desarrollo: ${siteConfig.services.map(s => s.title).join(', ')}. ${siteConfig.firmName} en ${siteConfig.contact.city}.`,
 }
 
 export default function ServiciosPage() {
@@ -16,9 +16,9 @@ export default function ServiciosPage() {
       <section className="bg-gradient-to-br from-teal-800 to-teal-700 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            label="Áreas de Práctica"
-            title="Nuestros Servicios Legales"
-            subtitle={`En ${siteConfig.firmName} ofrecemos una amplia gama de servicios de derecho de familia para proteger lo que más importa.`}
+            label="Nuestras Especialidades"
+            title="Nuestros Servicios"
+            subtitle={`En ${siteConfig.firmName} ofrecemos una amplia gama de soluciones de software a medida e Inteligencia Artificial para potenciar tu negocio.`}
             light
           />
         </div>
@@ -75,10 +75,10 @@ export default function ServiciosPage() {
       <section className="bg-teal-900 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="font-heading text-display-sm text-white mb-4">
-            &iquest;Necesita asesor&iacute;a legal?
+            ¿Estás listo para escalar tu empresa?
           </h2>
           <p className="text-body-lg text-teal-200 mb-8">
-            Agende su consulta gratuita hoy y permítanos ayudarle a proteger sus derechos.
+            Agende su consulta gratuita hoy y descubra cómo la Inteligencia Artificial puede transformar su negocio.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link

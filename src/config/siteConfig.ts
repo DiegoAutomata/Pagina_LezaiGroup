@@ -1,15 +1,9 @@
 // ============================================================
-// SITE CONFIG - Template Reutilizable para Bufetes de Abogados
-// ============================================================
-// Para personalizar para un nuevo cliente:
-// 1. Cambiar firmName, founderName, contact, services, team, testimonials
-// 2. Agregar URLs de imágenes reales en los campos imageUrl
-// 3. Ajustar theme.primaryColor si se desea otro color
-// 4. Deploy
+// SITE CONFIG - Lezrai SaaS Factory
 // ============================================================
 
 export interface ServiceItem {
-  icon: 'divorce' | 'custody' | 'alimony' | 'mediation' | 'domestic-violence' | 'separation' | 'contracts' | 'corporate' | 'real-estate' | 'criminal' | 'immigration' | 'labor' | 'custom'
+  icon: 'divorce' | 'custody' | 'alimony' | 'mediation' | 'domestic-violence' | 'separation' | 'contracts' | 'corporate' | 'real-estate' | 'criminal' | 'immigration' | 'labor' | 'custom' | 'ai-agents' | 'web-systems' | 'automation'
   title: string
   slug: string
   shortDescription: string
@@ -80,7 +74,7 @@ export interface SiteConfig {
   }
 
   values: Array<{
-    icon: 'respect' | 'quality' | 'team' | 'experience' | 'confidential' | 'results'
+    icon: 'respect' | 'quality' | 'team' | 'experience' | 'confidential' | 'results' | 'innovation' | 'efficiency' | 'scalability'
     title: string
     description: string
   }>
@@ -122,207 +116,143 @@ export interface SiteConfig {
 }
 
 // ============================================================
-// CONFIGURACIÓN: Irene González - Bufete en Managua, Nicaragua
+// CONFIGURACIÓN: Lezrai - Software a medida e IA
 // ============================================================
 
 export const siteConfig: SiteConfig = {
   firmName: 'Lezrai',
-  firmSlogan: 'Nos centramos en las necesidades de su familia',
-  firmDescription: 'Bufete de abogados especializado en derecho de familia en Managua, Nicaragua. Representación legal compasiva y efectiva para proteger lo que más importa.',
-  founderName: 'Irene González',
-  founderTitle: 'Abogada Principal y Fundadora',
-  founderBio: 'Con más de 9 años de experiencia en derecho de familia, la Licda. Irene González ha dedicado su carrera a proteger los derechos e intereses de las familias nicaragüenses. Su enfoque combina un profundo conocimiento legal con una genuina empatía hacia cada cliente, asegurando que cada caso reciba la atención personalizada que merece. Fundadora de González & Asociados, lidera un equipo comprometido con brindar soluciones legales integrales que priorizan el bienestar de la familia.',
-  yearsExperience: 9,
-  yearFounded: 2017,
+  firmSlogan: 'Digitaliza tu empresa con software a medida',
+  firmDescription: 'Desarrollamos soluciones de software a medida e integramos Inteligencia Artificial para automatizar procesos, escalar operaciones y potenciar tu negocio.',
+  founderName: 'Diego de Lezrai',
+  founderTitle: 'Fundador & CEO',
+  founderBio: 'Apasionado por la tecnología y la optimización de procesos. Lidero Lezrai con el objetivo de democratizar el acceso al software de alta calidad y a la Inteligencia Artificial para empresas de todos los tamaños.',
+  yearsExperience: 5,
+  yearFounded: 2023,
 
   contact: {
-    phone: '+50522781234',
-    phoneDisplay: '+505 2278-1234',
-    email: 'contacto@gonzalezabogados.com.ni',
-    address: 'Rotonda El Güegüense, 2 cuadras al sur, Edificio Plaza Sur, Oficina 305',
-    city: 'Managua',
-    country: 'Nicaragua',
-    googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.5!2d-86.27!3d12.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA3JzQ4LjAiTiA4NsKwMTYnMTIuMCJX!5e0!3m2!1ses!2sni!4v1700000000000',
-    whatsappNumber: '+50588881234',
-    officeHours: 'Lunes a Viernes, 8:00 a.m. a 5:00 p.m.',
+    phone: '+5492944670562',
+    phoneDisplay: '+54 9 294 467-0562',
+    email: 'contacto@lezrai.com',
+    address: 'San Carlos de Bariloche, Río Negro',
+    city: 'Bariloche',
+    country: 'Argentina',
+    googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192138.83597442118!2d-71.45524317133037!3d-41.133472099999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x961a7b1520c860e5%3A0x8210ae97cb7b9a65!2sSan%20Carlos%20de%20Bariloche%2C%20R%C3%ADo%20Negro!5e0!3m2!1ses-419!2sar!4v1700000000000',
+    whatsappNumber: '+5492944670562',
+    officeHours: 'Lunes a Viernes, 9:00 a.m. a 6:00 p.m.',
   },
 
   social: {
-    facebook: 'https://facebook.com/gonzalezabogadosni',
-    instagram: 'https://instagram.com/gonzalezabogadosni',
-    linkedin: 'https://linkedin.com/company/gonzalezabogadosni',
+    facebook: 'https://facebook.com/lezrai',
+    instagram: 'https://instagram.com/lezraitech',
+    linkedin: 'https://linkedin.com/company/lezrai',
   },
 
   navigation: {
     items: [
       { label: 'Inicio', href: '/' },
-      {
-        label: 'Derecho de Familia',
-        href: '/servicios',
-        children: [
-          { label: 'Divorcio', href: '/servicios#divorcio' },
-          { label: 'Custodia de Menores', href: '/servicios#custodia' },
-          { label: 'Pensión Alimenticia', href: '/servicios#pension' },
-          { label: 'Mediación Familiar', href: '/servicios#mediacion' },
-          { label: 'Violencia Doméstica', href: '/servicios#violencia' },
-          { label: 'Separación Legal', href: '/servicios#separacion' },
-        ],
-      },
-      { label: 'Equipo Legal', href: '/equipo' },
-      { label: 'Nuestro Enfoque', href: '/#enfoque' },
+      { label: 'Servicios', href: '/servicios' },
       { label: 'Contacto', href: '/contacto' },
     ],
   },
 
   hero: {
-    headline: 'Nos centramos en las necesidades de su familia',
-    subheadline: 'Representación legal compasiva y efectiva en Managua, Nicaragua. Protegemos lo que más importa para usted y los suyos.',
-    ctaText: 'Agendar Consulta',
+    headline: 'Digitaliza tu empresa con software a medida mediante la IA',
+    subheadline: 'Construimos herramientas tecnológicas que trabajan por ti. Desde agentes virtuales hasta sistemas internos complejos.',
+    ctaText: 'Hablar con un Asesor',
     ctaHref: '/contacto',
   },
 
   values: [
     {
-      icon: 'respect',
-      title: 'Respeto y Dignidad',
-      description: 'Nuestros clientes son como una familia. Tratamos cada caso con la dignidad y el respeto que merece.',
+      icon: 'innovation',
+      title: 'Innovación Constante',
+      description: 'Adaptamos las últimas tecnologías de IA y desarrollo web para darte una ventaja competitiva.',
     },
     {
       icon: 'quality',
-      title: 'Representación Legal del Más Alto Nivel',
-      description: 'Cada caso recibe dedicación completa. Nos mantenemos a la vanguardia del derecho de familia en Nicaragua.',
+      title: 'Calidad de Software',
+      description: 'Código limpio, arquitecturas escalables y un rendimiento excepcional en cada producto que entregamos.',
     },
     {
-      icon: 'team',
-      title: 'Abogados Dedicados y Experimentados',
-      description: 'Un equipo experimentado comprometido con alcanzar los mejores resultados para cada cliente.',
+      icon: 'efficiency',
+      title: 'Eficiencia y Automatización',
+      description: 'Nuestra meta es que hagas más con menos, automatizando flujos de trabajo repetitivos.',
     },
   ],
 
   services: [
     {
-      icon: 'separation',
-      title: 'Separación Legal',
-      slug: 'separacion',
-      shortDescription: 'Los acuerdos de separación son una alternativa mutuamente aceptable y duradera para resolver conflictos de pareja.',
-      fullDescription: 'La separación legal ofrece una alternativa menos adversarial al divorcio, permitiendo a las parejas establecer acuerdos formales sobre custodia, pensión y distribución de bienes mientras evalúan el futuro de su relación. Nuestro equipo facilita este proceso con sensibilidad y profesionalismo, asegurando que los derechos de ambas partes sean protegidos.',
+      icon: 'ai-agents',
+      title: 'Agentes de Inteligencia Artificial',
+      slug: 'agentes-ia',
+      shortDescription: 'Asistentes virtuales 24/7 para atención al cliente y soporte técnico.',
+      fullDescription: 'Implementamos agentes de inteligencia artificial generativa capaces de mantener conversaciones naturales con tus clientes. Pueden resolver dudas, agendar citas, y calificar leads de forma automática, operando 24 horas al día, 7 días a la semana sin interrupciones.',
     },
     {
-      icon: 'divorce',
-      title: 'Divorcio',
-      slug: 'divorcio',
-      shortDescription: 'Un divorcio es uno de los aspectos más prácticos del proceso. Podemos ayudarle a navegar cada etapa.',
-      fullDescription: 'Entendemos que el divorcio es un momento difícil. Por eso, nos enfocamos en hacer el proceso lo más claro y eficiente posible. Manejamos todos los aspectos legales incluyendo la división de bienes, acuerdos de custodia, pensión alimenticia y modificaciones post-divorcio. Nuestro objetivo es proteger sus intereses mientras minimizamos el impacto emocional y financiero.',
+      icon: 'web-systems',
+      title: 'Desarrollo Web y Sistemas Internos',
+      slug: 'desarrollo-web',
+      shortDescription: 'Plataformas a medida, CRMs y paneles de administración modernos.',
+      fullDescription: 'Construimos aplicaciones web robustas y escalables adaptadas exactamente a los flujos reales de tu empresa. Desde portales de clientes hasta sistemas complejos de gestión interna (ERP/CRM) utilizando las tecnologías más modernas y rápidas del mercado como Next.js y Supabase.',
     },
     {
-      icon: 'custody',
-      title: 'Custodia y Manutención de Menores',
-      slug: 'custodia',
-      shortDescription: 'Los intereses de los niños son siempre la máxima prioridad. Podemos ayudarle a proteger el papel que usted desempeña en sus vidas.',
-      fullDescription: 'La custodia de los hijos es uno de los temas más sensibles en el derecho de familia. Trabajamos incansablemente para proteger los derechos de los padres y, sobre todo, el bienestar de los menores. Manejamos casos de custodia compartida, custodia exclusiva, régimen de visitas y modificaciones de acuerdos existentes.',
-    },
-    {
-      icon: 'alimony',
-      title: 'Pensión Alimenticia',
-      slug: 'pension',
-      shortDescription: 'Lograr la independencia financiera tras un proceso legal. Determinamos el monto justo de pensión.',
-      fullDescription: 'La pensión alimenticia es un derecho fundamental para asegurar el bienestar de los hijos y, en algunos casos, del cónyuge. Nuestro equipo evalúa cuidadosamente la situación financiera de ambas partes para establecer montos justos y sostenibles. También manejamos casos de incumplimiento y solicitudes de modificación.',
-    },
-    {
-      icon: 'mediation',
-      title: 'Mediación Familiar',
-      slug: 'mediacion',
-      shortDescription: 'Un enfoque personal para resolver conflictos. La mediación ayuda a encontrar soluciones sin ir a juicio.',
-      fullDescription: 'La mediación es una alternativa eficiente y menos conflictiva para resolver disputas familiares. Como mediadores certificados, facilitamos el diálogo entre las partes para alcanzar acuerdos satisfactorios. Este enfoque es especialmente valioso cuando hay hijos involucrados, ya que preserva la relación de co-parentalidad.',
-    },
-    {
-      icon: 'domestic-violence',
-      title: 'Violencia Doméstica',
-      slug: 'violencia',
-      shortDescription: 'Se debe considerar la seguridad ante todo. Estamos aquí para proteger sus derechos y su bienestar.',
-      fullDescription: 'La seguridad de nuestros clientes es nuestra prioridad absoluta. Brindamos asistencia legal urgente para obtener medidas de protección, órdenes de restricción y acompañamiento legal integral. Trabajamos en coordinación con organizaciones de apoyo para asegurar que cada persona reciba la protección que necesita.',
+      icon: 'automation',
+      title: 'Automatización de Procesos (RPA)',
+      slug: 'automatizacion',
+      shortDescription: 'Conectamos tus herramientas para eliminar tareas manuales e ineficiencias.',
+      fullDescription: 'Analizamos tus flujos de trabajo actuales e implementamos integraciones y automatizaciones para que la información fluya sin intervención humana. Ahorra cientos de horas al mes que tu equipo puede dedicar a tareas de mayor valor estratégico.',
     },
   ],
 
   tabs: [
     {
-      title: 'Derecho Colaborativo',
-      content: '¿Pueden usted y su cónyuge considerar su problema de derecho de familia como un "problema por resolver" y no como una "competencia por ganar"? El derecho colaborativo es un proceso legal que permite a las parejas que han decidido separarse resolver sus diferencias fuera de los tribunales. Nuestro equipo facilita negociaciones respetuosas para alcanzar acuerdos que satisfagan las necesidades de ambas partes y sus hijos.',
+      title: 'Desarrollo Ágil',
+      content: 'Trabajamos con metodologías ágiles que nos permiten entregar valor continuo. Dividimos los proyectos en fases manejables (sprints) para que puedas ver resultados reales rápidamente y ajustar el rumbo según las necesidades de tu negocio.',
     },
     {
-      title: 'Divorcio Absoluto',
-      content: 'Cuando la separación definitiva es la mejor opción, nuestro equipo la guía a través de cada etapa del proceso de divorcio en Nicaragua. Nos encargamos de la documentación legal, la distribución equitativa de bienes, los acuerdos de custodia y pensión, asegurando que sus derechos estén protegidos en todo momento. Nuestro enfoque es hacer este proceso lo más eficiente y menos doloroso posible.',
+      title: 'Código Escalable',
+      content: 'No construimos soluciones desechables. Diseñamos nuestras arquitecturas pensando en el crecimiento futuro de tu empresa, garantizando que el sistema pueda manejar más usuarios, más datos y nuevas funcionalidades sin tener que reescribirse desde cero.',
     },
     {
-      title: 'Litigio',
-      content: 'Para los casos que requieren la intervención judicial, contamos con amplia experiencia en litigio de derecho de familia ante los tribunales de Managua y toda Nicaragua. Nuestros abogados presentan casos sólidos y bien fundamentados, luchando firmemente por los derechos de nuestros clientes. Cuando la negociación no es posible, la preparación y experiencia en el tribunal hacen la diferencia.',
+      title: 'Soporte Continuo',
+      content: 'Nuestro compromiso no termina con el lanzamiento. Ofrecemos planes de mantenimiento y soporte proactivo para asegurar que tu software siga funcionando perfectamente, se mantenga seguro frente a nuevas amenazas y evolucione con tu negocio.',
     },
   ],
 
   team: [
     {
-      name: 'Irene González',
-      title: 'Abogada Principal y Fundadora',
-      bio: 'Especialista en derecho de familia con más de 9 años de experiencia. Licda. González es reconocida por su enfoque compasivo y su dedicación a proteger los derechos de las familias nicaragüenses. Egresada de la Universidad Centroamericana (UCA) con maestría en Derecho de Familia.',
-      specialties: ['Derecho de Familia', 'Mediación', 'Derecho Colaborativo'],
-    },
-    {
-      name: 'Roberto Martínez',
-      title: 'Abogado Asociado',
-      bio: 'Con 6 años de experiencia en litigio familiar, el Lic. Martínez se especializa en casos de custodia y pensión alimenticia. Su enfoque metódico y su compromiso con cada caso han resultado en numerosos resultados favorables para nuestros clientes.',
-      specialties: ['Custodia de Menores', 'Pensión Alimenticia', 'Litigio'],
-    },
-    {
-      name: 'Carolina Espinoza',
-      title: 'Abogada Asociada',
-      bio: 'Especialista en mediación y resolución alternativa de conflictos. La Licda. Espinoza aporta un enfoque único que prioriza el diálogo y la cooperación, logrando acuerdos duraderos que benefician a todas las partes involucradas.',
-      specialties: ['Mediación Familiar', 'Violencia Doméstica', 'Derecho Colaborativo'],
-    },
+      name: 'Diego de Lezrai',
+      title: 'Fundador & Tech Lead',
+      bio: 'Especialista en desarrollo Full-Stack e integración de Inteligencia Artificial. Dedicado a transformar negocios tradicionales en empresas eficientes impulsadas por la tecnología.',
+      specialties: ['Desarrollo Web', 'IA Generativa', 'Arquitectura de Software'],
+    }
   ],
 
   testimonials: [
     {
-      name: 'María L.',
-      quote: 'La Licda. González fue la opción perfecta para asesorarme legalmente durante mi divorcio. Escuchó mis preocupaciones, me brindó una opinión honesta y el mejor escenario posible. La recomiendo ampliamente.',
+      name: 'Cliente A.',
+      quote: 'Increíble cómo el agente de IA redujo nuestra carga de atención al cliente en un 70%. Ahora podemos enfocarnos en ventas reales.',
       rating: 5,
-      caseType: 'Divorcio',
+      caseType: 'Agentes IA',
     },
     {
-      name: 'Carlos R.',
-      quote: 'Profesionalismo y empatía en cada paso del proceso. El equipo de González & Asociados me ayudó a obtener la custodia compartida de mis hijos. Siempre estuvieron disponibles para responder mis dudas.',
+      name: 'Cliente B.',
+      quote: 'El sistema interno que desarrollaron nos permitió organizar toda la logística de la empresa que antes manejábamos con Excel. Un cambio total.',
       rating: 5,
-      caseType: 'Custodia',
-    },
-    {
-      name: 'Ana P.',
-      quote: 'Excelente atención y resultados. La mediación que facilitaron nos permitió llegar a un acuerdo justo sin necesidad de ir a juicio. Un equipo verdaderamente comprometido con el bienestar de la familia.',
-      rating: 5,
-      caseType: 'Mediación',
-    },
-    {
-      name: 'José M.',
-      quote: 'En un momento muy difícil, encontré en González & Asociados el apoyo legal y humano que necesitaba. Su experiencia en pensión alimenticia fue fundamental para proteger los derechos de mis hijos.',
-      rating: 5,
-      caseType: 'Pensión Alimenticia',
-    },
-    {
-      name: 'Laura S.',
-      quote: 'Contraté a la Licda. González para un caso de violencia doméstica. Su rapidez para actuar y su conocimiento de la ley me dieron la protección que necesitaba. Eternamente agradecida.',
-      rating: 5,
-      caseType: 'Violencia Doméstica',
-    },
+      caseType: 'Sistemas Internos',
+    }
   ],
 
   booking: {
     enabled: true,
-    ctaText: 'Agendar Consulta Gratuita',
+    ctaText: 'Agendar Llamada de Descubrimiento',
   },
 
   seo: {
     siteTitle: 'Lezrai | Software a medida mediante Inteligencia Artificial',
     titleTemplate: '%s | Lezrai',
     defaultDescription: 'Digitaliza tu empresa con software a medida mediante inteligencia artificial. Agentes de atención 24/7, webs y sistemas internos.',
-    locale: 'es_NI',
+    locale: 'es_AR',
   },
 
   legal: {
